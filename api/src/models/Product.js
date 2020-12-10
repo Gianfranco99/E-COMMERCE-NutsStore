@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    stock: {
+    stock: { 
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -25,4 +25,4 @@ module.exports = (sequelize) => {
       allownull: false
     }
   });
-};
+}
