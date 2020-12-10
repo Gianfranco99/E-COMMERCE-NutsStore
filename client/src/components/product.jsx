@@ -1,10 +1,47 @@
 // import React from 'react'
 // import { Product } from '../../../api/src/models/Product.js'
 
-// export default function Container(product) {
-
-//     product.name,
-//     product.description,
-//     product.stock,
-//     product.price
-// }
+export const ProductosHardcodeados = [
+    {
+        name: 'Almendra',
+        description: 'esto es una almendra',
+        price: 20,
+        stock: 100,
+        category: 'frutos secos'
+    },
+    {
+        name: 'Pasa de uva',
+        description: 'esto es una Pasa de uva',
+        price: 20,
+        stock: 100,
+        category: 'frutos secos'
+    },
+    {
+        name: 'Mani',
+        description: 'esto es una Mani',
+        price: 20,
+        stock: 100,
+        category: 'frutos secos'
+    },
+    {
+        name: 'avellanas',
+        description: 'esto es una avellanas',
+        price: 20,
+        stock: 100,
+        category: 'castañas de caju'
+    },
+    {
+        name: 'nueces',
+        description: 'esto es una nuez',
+        price: 20,
+        stock: 100,
+        category: 'nueces'
+    },
+    {
+        name: 'harina',
+        description: 'esto es una harina',
+        price: 20,
+        stock: 100,
+        category: 'harinas'
+    },
+]
