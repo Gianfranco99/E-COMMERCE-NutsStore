@@ -1,12 +1,38 @@
 import React from 'react';
 import './App.css';
-import Catalogue from './components/Catalogue';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+//import Product from './components/Product';
+import Catalogo from './components/Catalogo';
+//import ProductCard from './components/ProductCard';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
-      <Catalogue />
-    </div>
+  <Router>
+    <Route
+      path='/'
+      render={() => <NavBar/>}
+    />    
+    <Route
+      path='/catalogo'
+      component={() => <Catalogo/>}
+    />
+    {/*<Route
+      path='/productCard'
+      render={() => <ProductCard/>}
+    />*/}
+    <Route
+      exact path='/products'
+      render={() => <Catalogo/>}
+    />
+    <Route
+      exact path='/products/:id'
+      render={() => <Catalogo/>}
+    />
+    
+  </Router>
+</div>
   );
 }
 

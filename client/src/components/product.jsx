@@ -1,5 +1,4 @@
-// import React from 'react'
-// import { Product } from '../../../api/src/models/Product.js'
+import React from 'react';
 
 export const ProductosHardcodeados = [
     {
