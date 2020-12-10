@@ -1,23 +1,42 @@
 import React from 'react';
 import './App.css';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import Product from './components/Product';
+import Catalogo from './components/Catalogo';
+import ProductCard from './components/ProductCard';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <Router>
+    <Route
+      path='/'
+      render={() => <NavBar/>}
+    />
+    <Route
+      exact path='/'
+      render={() => <Product/>}
+    />
+    <Route
+      path='/catalogo'
+      component={() => <Catalogo/>}
+    />
+    <Route
+      path='/productCard'
+      render={() => <ProductCard/>}
+    />
+    <Route
+      exact path='/products'
+      render={() => <Catalogo/>}
+    />
+    <Route
+      exact path='/products/:id'
+      render={() => <Catalogo/>}
+    />
+    
+  </Router>
+</div>
   );
 }
 

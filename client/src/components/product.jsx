@@ -1,10 +1,12 @@
-// import React from 'react'
-// import { Product } from '../../../api/src/models/Product.js'
+import React from 'react';
 
-// export default function Container(product) {
+function Product() {
+  
+  return (
+    <div>
+      <h1>Soy Producto</h1>
+    </div>
+  );
+}
 
-//     product.name,
-//     product.description,
-//     product.stock,
-//     product.price
-// }
+export default Product;
