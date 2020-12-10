@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import Product from './components/Product';
+//import Product from './components/Product';
 import Catalogo from './components/Catalogo';
-import ProductCard from './components/ProductCard';
+import ProductCard from './components/productCard';
 import NavBar from './components/NavBar';
 
 function App() {
@@ -14,10 +14,10 @@ function App() {
       path='/'
       render={() => <NavBar/>}
     />
-    <Route
+    {/*<Route
       exact path='/'
       render={() => <Product/>}
-    />
+    /> */}
     <Route
       path='/catalogo'
       component={() => <Catalogo/>}
