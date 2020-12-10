@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBar from './SearchBar.jsx';
+import SearchBar from './searchBar.jsx';
 import { Link } from 'react-router-dom';
-import Product from './Product.jsx';
+//import Product from './Product.jsx';
 
 function Nav() {
   return (
