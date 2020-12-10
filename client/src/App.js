@@ -3,7 +3,7 @@ import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 //import Product from './components/Product';
 import Catalogo from './components/Catalogo';
-//import ProductCard from './components/ProductCard';
+import ProductCard from './components/productCard';
 import NavBar from './components/NavBar';
 
 function App() {
@@ -13,15 +13,19 @@ function App() {
     <Route
       path='/'
       render={() => <NavBar/>}
-    />    
+    />
+    {/*<Route
+      exact path='/'
+      render={() => <Product/>}
+    /> */}
     <Route
       path='/catalogo'
       component={() => <Catalogo/>}
     />
-    {/*<Route
+    <Route
       path='/productCard'
       render={() => <ProductCard/>}
-    />*/}
+    />
     <Route
       exact path='/products'
       render={() => <Catalogo/>}

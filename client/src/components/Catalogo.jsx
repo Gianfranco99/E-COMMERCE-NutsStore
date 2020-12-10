@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {ProductosHardcodeados} from './product.jsx'
 import ProductCard from './productCard.jsx';
 
-function Catalogue(props) {
+function Catalogo(props) {
 
   const [CategorySelected, setCategorySelected] = useState('TODOS');
 
@@ -48,5 +48,5 @@ function Catalogue(props) {
   );
 }
 
-export default Catalogue;
+export default Catalogo;
 
