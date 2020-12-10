@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 
-export default function productCard(product) {
+function ProductCard(product) {
     return (
         <div>
             <h2>{product.name}</h2>
@@ -9,5 +9,20 @@ export default function productCard(product) {
             <p>{product.price}</p>
             <p>{product.stock}</p>
         </div>
-    )
+    );
 }
+// function Dashboard() {
+//     return (
+//       <div className="Dashboard">
+//         <header className="Dashboard-header">
+//           <div>
+//               <Token/>
+  
+//           </div>
+//         </header>
+//       </div>
+//     );
+//   }
+  
+//   export default Dashboard;
+export default ProductCard;
