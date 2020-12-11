@@ -42,7 +42,7 @@ server.delete("/:id",function(req,res,next){
 	.then(res.send('Producto Eliminado'))
 })
 //----------------------------------------------------//
-
+//agregar category de product
 server.post("/:idProducto/:idCategoria", (req, res) => {
     console.log('paso')
      const idProducto = req.params.idProducto;
@@ -59,7 +59,7 @@ server.post("/:idProducto/:idCategoria", (req, res) => {
    
   }
 );
-
+//eliminar category de product
 server.delete("/:idProducto/:idCategoria", (req, res) => {
     console.log('paso')
      const idProducto = req.params.idProducto;
