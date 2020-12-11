@@ -19,7 +19,8 @@ server.get("/products/categoria/:nombreCat",function(req,res,next){
 })
 
 server.post("/products",function(req,res,next){
- Product.create(req.body)
+	console.log(req.body)
+	Product.create(req.body)
 .then(product => res.status(201).send(product))
 })
 
@@ -32,6 +33,11 @@ server.put("/products/:id",function(req,res,next){
 })
 
 server.delete("/products/:id",function(req,res,next){
+	Product.destroy({
+		where :{
+			id :req.params.id
+		}
+	})
 	
 })
 module.exports = server;
