@@ -68,3 +68,5 @@ server.post('/category', (req,res,next)=>{
   //     }
   //   })
   // })
+
+  module.exports = server;
