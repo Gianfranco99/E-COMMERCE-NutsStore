@@ -11,7 +11,16 @@ server.get('/', function (req, res, next) {
 		.catch(next);
 });
 
-//Crea una categoría nueva.
+server.get('/', function (req, res, next) {
+	console.log('pase por aquí')
+	Category.findAll()
+	
+		.then(category => {
+			res.send(category);
+		})
+		.catch(next);
+});
+
 server.post('/', (req,res,next)=>{
   console.log('pase por aquí')
   Category.create({
@@ -22,8 +31,7 @@ server.post('/', (req,res,next)=>{
 	.catch((error) => res.status(412).send(error));
   })
 
-  //Modificar Categoría
-  server.put('/:id', (req, res)=>{
+  server.put("/:id",function(req,res,next){
     Category.update(req.body,{
       where:{
         id:req.params.id
@@ -32,7 +40,6 @@ server.post('/', (req,res,next)=>{
     .then(category => res.status(202).send(category))
   })
 
-  //eliminar Categoria
   server.delete('/:id',(req, res) => {
     Category.destroy({
       where:{
