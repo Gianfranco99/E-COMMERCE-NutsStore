@@ -1,0 +1,6 @@
+{
+    "liveshare.allowInvites": "all",
+    "extensions.ignoreRecommendations": true,
+    "files.autoSave": "off",
+    "typescript.tsc.autoDetect": "off"
+}
