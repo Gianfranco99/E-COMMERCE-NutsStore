@@ -2,17 +2,17 @@ const server = require('express').Router();
 const { Category } = require('../db');
 
 //Crea una categoría nueva.
-server.post('/products/category/', (req,res,next)=>{
-    console.log("entro aca")
-	Category.create(
-        {
-		name: req.body.name,
-        description: req.body.description
-        })
-        
-	.then((category) => {
-	  res.status(201).json(category);
-	});
+server.post('/category', (req,res,next)=>{
+  console.log('pase por aquí')
+	Category.create({
+		name: req.body.name, 
+		description: req.body.description
+		// price: req.body.price, 
+		// stock: req.body.stock, 
+		// image: req.body.image,
+	})
+	.then((category) => res.status(201).send(category))
+	.catch((error) => res.status(412).send(error));
   })
 
   //Modificar Categoría
