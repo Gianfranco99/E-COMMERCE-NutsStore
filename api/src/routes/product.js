@@ -59,4 +59,23 @@ server.post("/:idProducto/:idCategoria", (req, res) => {
    
   }
 );
+
+server.delete("/:idProducto/:idCategoria", (req, res) => {
+    console.log('paso')
+     const idProducto = req.params.idProducto;
+     const idCategoria  = req.params.idCategoria;
+     console.log(idProducto, ' asdads ', idCategoria)
+	 product_category.destroy({
+		 where:{
+			productId: idProducto,
+			categoryId: idCategoria
+		 }     
+    })
+    .then(
+    	res.status(201).send('ok')
+    )
+    .catch((err) => err);
+   
+  }
+);
 module.exports = server;
