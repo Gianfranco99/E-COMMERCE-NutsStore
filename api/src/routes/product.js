@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Product } = require('../db.js');
+const { Product, product_category } = require('../db.js');
 
 server.get('/', function (req, res, next) {
 	console.log('pase por aquí')
@@ -41,5 +41,22 @@ server.delete("/:id",function(req,res,next){
 	}) 
 	.then(res.send('Producto Eliminado'))
 })
+//----------------------------------------------------//
 
+server.post("/:idProducto/:idCategoria", (req, res) => {
+    console.log('paso')
+     const idProducto = req.params.idProducto;
+     const idCategoria  = req.params.idCategoria;
+     console.log(idProducto, ' asdads ', idCategoria)
+	 product_category.create({
+			productId: idProducto,
+			categoryId: idCategoria        
+    })
+    .then(
+    	res.status(201).send('ok')
+    )
+    .catch((err) => err);
+   
+  }
+);
 module.exports = server;
