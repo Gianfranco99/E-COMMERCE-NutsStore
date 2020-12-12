@@ -1,24 +1,24 @@
 const server = require('express').Router();
-const { Category, product_category } = require('../db.js');
+const { Category, Product } = require('../db.js');
 
 server.get('/', function (req, res, next) {
-	console.log('pase por category')
-	Category.findAll()
-	
-		.then(category => {
-			res.send(category);
-		})
-		.catch(next);
+  console.log('pase por category')
+  Category.findAll()
+
+    .then(category => {
+      res.send(category);
+    })
+    .catch(next);
 });
 
 server.get('/', function (req, res, next) {
-	console.log('pase por category')
-	Category.findAll()
-	
-		.then(category => {
-			res.send(category);
-		})
-		.catch(next);
+  console.log('pase por category')
+  Category.findAll()
+
+    .then(category => {
+      res.send(category);
+    })
+    .catch(next);
 });
 
 server.post('/', (req, res, next) => {
@@ -42,30 +42,33 @@ server.put("/:id", function (req, res, next) {
 
 server.delete('/:id', (req, res) => {
   console.log('borrame, amigo')
-    Category.destroy({    
+  Category.destroy({
     where: {
       id: req.params.id
     }
   })
 })
 
-  server.delete('/:id',(req, res) => {
-    Category.destroy({
-      where:{
-        id: req.params.id
-      }
-    })
-    .then(res.send('Categoria Eliminada'))
+server.delete('/:id', (req, res) => {
+  Category.destroy({
+    where: {
+      id: req.params.id
+    }
   })
-    .then((category) => {
-      const catID = JSON.stringify(category.id)
-      product_category.findAll({
-        where: {
-          categoryId: catID
-        }
-      })
-      .then(products => res.send(JSON.stringify(products.productsId)))
-    })
-    .catch(error => error)
+    .then(res.send('Categoria Eliminada'))
+});
 
+server.get('/:categoryName', (req, res) => {
+	const name = req.params.categoryName;
+	Product.findAll ({
+		include: {
+      model: Category,
+			where: { name }
+		}
+	})
+	.then((products => {
+		if (!products[0]) return res.status(400).json({message : 'Ningún producto corresponde con esa categoría'})
+		res.json(products)
+	}))
+})
 module.exports = server;
