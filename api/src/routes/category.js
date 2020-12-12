@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Category, Product } = require('../db.js');
+const { Category } = require('../db.js');
 
 server.get('/', function (req, res, next) {
 	console.log('pase por aquí')
