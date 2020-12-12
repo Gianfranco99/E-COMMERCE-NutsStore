@@ -2,23 +2,23 @@ const server = require('express').Router();
 const { Category, product_category } = require('../db.js');
 
 server.get('/', function (req, res, next) {
-  console.log('pase por aquí')
-  Category.findAll()
-
-    .then(category => {
-      res.send(category);
-    })
-    .catch(next);
+	console.log('pase por category')
+	Category.findAll()
+	
+		.then(category => {
+			res.send(category);
+		})
+		.catch(next);
 });
 
 server.get('/', function (req, res, next) {
-  console.log('pase por aquí')
-  Category.findAll()
-
-    .then(category => {
-      res.send(category);
-    })
-    .catch(next);
+	console.log('pase por category')
+	Category.findAll()
+	
+		.then(category => {
+			res.send(category);
+		})
+		.catch(next);
 });
 
 server.post('/', (req, res, next) => {
@@ -49,13 +49,13 @@ server.delete('/:id', (req, res) => {
   })
 })
 
-// S22 Retorna todos los productos de {name} category
-server.get('/:name', (req, res) => {
-  // :name = trae todos los productos de acuerdo al nombre de la categoría 
-  Category.findOne({
-    where: {
-      name: req.params.name // obtenemos el nombre de la categoría
-    }
+  server.delete('/:id',(req, res) => {
+    Category.destroy({
+      where:{
+        id: req.params.id
+      }
+    })
+    .then(res.send('Categoria Eliminada'))
   })
     .then((category) => {
       const catID = JSON.stringify(category.id)
@@ -67,6 +67,5 @@ server.get('/:name', (req, res) => {
       .then(products => res.send(JSON.stringify(products.productsId)))
     })
     .catch(error => error)
-})
 
 module.exports = server;

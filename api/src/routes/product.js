@@ -2,7 +2,7 @@ const server = require('express').Router();
 const { Product, product_category } = require('../db.js');
 
 server.get('/', function (req, res, next) {
-	console.log('pase por aquí')
+	console.log('pase por product')
 	Product.findAll()
 	
 		.then(products => {
@@ -12,7 +12,7 @@ server.get('/', function (req, res, next) {
 });
 
 server.post('/', function(req,res,next){
-	console.log('pase por aquí')
+	console.log('pase por product')
 	Product.create({
 		name: req.body.name, 
 		description: req.body.description, 
@@ -44,7 +44,7 @@ server.delete("/:id",function(req,res,next){
 //----------------------------------------------------//
 
 //agregar category de product
-server.post("/:idProducto/:idCategoria", (req, res) => {
+server.post("/:idProducto/category/:idCategoria", (req, res) => {
     console.log('paso')
      const idProducto = req.params.idProducto;
      const idCategoria  = req.params.idCategoria;
@@ -54,13 +54,14 @@ server.post("/:idProducto/:idCategoria", (req, res) => {
 			categoryId: idCategoria        
     })
     .then(
-    	res.status(201).send('ok')
+    	res.status(201).send('Categoría y producto se han relacionado')
     )
     .catch((err) => err)   
   }
 );
 //eliminar category de product
 server.delete("/:idProducto/category/:idCategoria", (req, res) => {
+    console.log('paso')
      const idProducto = req.params.idProducto;
      const idCategoria = req.params.idCategoria;
      console.log(idProducto, ' asdads ', idCategoria)
@@ -70,7 +71,7 @@ server.delete("/:idProducto/category/:idCategoria", (req, res) => {
 		 }     
     })
     .then(
-    	res.send('categoría eliminada')
+    	res.status(201).send('Relación eliminada')
     )
     .catch((err) => err);   
   }
