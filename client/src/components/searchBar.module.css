@@ -1,0 +1,37 @@
+.form{
+    float: right;
+    width: 400px;
+}
+.form input[type=search] {
+    margin: 10px 10px;
+    padding: 5px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 60%;
+    background: #f1f1f1;
+    border-radius:30px;
+  }
+  
+.form button {
+    display:ruby-base-container;
+    margin: 10px 10px;
+    padding: 5px;
+    width: 20%;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left:20px;
+    cursor: pointer;
+  }
+  
+form.form button:hover {
+    background: #0b7dda;
+  }
+  
+form.form::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
