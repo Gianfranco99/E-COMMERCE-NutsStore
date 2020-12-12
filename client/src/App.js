@@ -34,6 +34,11 @@ function App() {
       exact path='/products/:id'
       render={() => <Catalogo/>}
     />
+    <Route
+      exact path='/about'
+      render={() => <Catalogo/>}
+    />
+    
     
   </Router>
 </div>

@@ -2,7 +2,7 @@ const server = require('express').Router();
 const { Category, Product } = require('../db.js');
 
 server.get('/', function (req, res, next) {
-	console.log('pase por aquí')
+	console.log('pase por category')
 	Category.findAll()
 	
 		.then(category => {
@@ -12,7 +12,7 @@ server.get('/', function (req, res, next) {
 });
 
 server.get('/', function (req, res, next) {
-	console.log('pase por aquí')
+	console.log('pase por category')
 	Category.findAll()
 	
 		.then(category => {
@@ -43,8 +43,9 @@ server.post('/', (req,res,next)=>{
   server.delete('/:id',(req, res) => {
     Category.destroy({
       where:{
-        id : req.params.id
+        id: req.params.id
       }
     })
+    .then(res.send('Categoria Eliminada'))
   })
   module.exports = server;
