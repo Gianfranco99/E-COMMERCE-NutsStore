@@ -2,7 +2,6 @@ const server = require('express').Router();
 const { Category, Product } = require('../db.js');
 
 server.get('/', function (req, res, next) {
-  console.log('pase por category')
   Category.findAll()
 
     .then(category => {
@@ -12,17 +11,15 @@ server.get('/', function (req, res, next) {
 });
 
 server.get('/', function (req, res, next) {
-  console.log('pase por category')
   Category.findAll()
-
     .then(category => {
       res.send(category);
     })
     .catch(next);
 });
 
+// S18: Crear ruta para crear/agregar categoría
 server.post('/', (req, res, next) => {
-  console.log('pase por aquí')
   Category.create({
     name: req.body.name,
     description: req.body.description
@@ -31,33 +28,28 @@ server.post('/', (req, res, next) => {
     .catch((error) => res.status(412).send(error));
 })
 
-server.put("/:id", function (req, res, next) {
+// S19: Crear ruta para eliminar categoría
+server.delete('/:id', (req, res) => {
+  Category.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(res.send('categoría eliminada'))
+})
+
+// S20: Crear ruta para modificar categoría
+server.put('/:id', function (req, res) {
   Category.update(req.body, {
     where: {
       id: req.params.id
     }
   })
     .then(category => res.status(202).send(category))
+    .catch((error) => res.send(error))
 })
 
-server.delete('/:id', (req, res) => {
-  console.log('borrame, amigo')
-  Category.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-})
-
-server.delete('/:id', (req, res) => {
-  Category.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(res.send('Categoria Eliminada'))
-});
-
+// S22: Crear ruta que devuelva los productos de X categoría
 server.get('/:categoryName', (req, res) => {
 	const name = req.params.categoryName;
 	Product.findAll ({
@@ -67,8 +59,9 @@ server.get('/:categoryName', (req, res) => {
 		}
 	})
 	.then((products => {
-		if (!products[0]) return res.status(400).json({message : 'Ningún producto corresponde con esa categoría'})
+		if (!products[0]) return res.status(400).json({message : 'Ningún producto corresponde a esa categoría'})
 		res.json(products)
 	}))
 })
+
 module.exports = server;
