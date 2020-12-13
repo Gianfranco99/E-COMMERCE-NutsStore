@@ -33,8 +33,8 @@ class ConnectedForm extends Component {
         <div>
           <input
             type="text"
-            id="title"
-            value={title}
+            id="search"
+            value={search}
             onChange={this.handleChange}
           />
         </div>
