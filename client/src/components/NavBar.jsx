@@ -14,6 +14,8 @@ function Nav() {
               <li className={style.a}><Link className={style.a} to='/'>INICIO</Link></li>
               <li className={style.a}><Link className={style.a} to='/catalogo'>TIENDA</Link></li>
               <li className={style.a}><Link className={style.a} to='/about'>NOSOTROS</Link></li>
+              <li className={style.a}><Link className={style.a} to='/admin'>ADMIN</Link></li>
+              <li className={style.a}><Link className={style.a} to='/admin2'>ADMIN2</Link></li>
             </ul>
             <SearchBar/>
           </div>
