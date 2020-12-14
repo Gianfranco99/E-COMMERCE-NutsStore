@@ -1,20 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-//import Product from './components/Product';
 import Catalogo from './components/Catalogo';
 import ProductCard from './components/productCard';
 import NavBar from './components/NavBar';
 import Admin from './components/Admin'
 import Admin2 from './components/Admin2'
 
+
 function App() {
+  const [product, setProduct]=useState([]);
+  function onSearch(product){
+    const productExample = {
+      name: 'Almendra',
+      description: 'tal cosa',
+      price: 200,
+      stock: 'disponible'
+    };
+
+    setProduct(oldProducts => [...oldProducts, product])
+  }
   return (
     <div className="App">
   <Router>
-    <Route
-      path='/'
-      render={() => <NavBar/>}
+    <Route path='/' render={() => <NavBar onSearch={onSearch}/>}
     />
     {/*<Route
       exact path='/'
@@ -26,7 +35,7 @@ function App() {
     />
     <Route
       path='/productCard'
-      render={() => <ProductCard/>}
+      render={() => <ProductCard product={product}/>}
     />
     <Route
       exact path='/products'
@@ -49,9 +58,8 @@ function App() {
       render={() => <Admin2/>}
     />
     
-    
   </Router>
-</div>
+ </div>
   );
 }
 
