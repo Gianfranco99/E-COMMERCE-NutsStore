@@ -11,6 +11,7 @@ server.get('/', function (req, res, next) {
 		.catch(next);
 });
 
+
 server.post('/', function(req,res,next){
 	console.log('pase por product')
 	Product.create({

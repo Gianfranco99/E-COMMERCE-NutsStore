@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const ProductTable = (props) => {
 
     console.log(props.products)

@@ -11,6 +11,7 @@ server.get('/', function (req, res, next) {
 		.catch(next);
 });
 
+
 server.get('/', function (req, res, next) {
 	console.log('pase por category')
 	Category.findAll()

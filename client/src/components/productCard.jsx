@@ -1,7 +1,6 @@
 import React from 'react';
 //import Product from './Product'
 
-
 function ProductCard(product) {
     return (
 

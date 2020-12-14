@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export const ProductosHardcodeados = [
     {
         name: 'Almendra',
