@@ -3,6 +3,10 @@ const { Product, product_category } = require('../db.js');
 
 // S21: Crear ruta que devuelva todos los productos
 server.get('/', function (req, res, next) {
+<<<<<<< HEAD
+=======
+	console.log('pase por aquí')
+>>>>>>> parent of 6df3a8c... varias cositas
 	Product.findAll()
 		.then(products => {
 			res.send(products);
@@ -10,6 +14,7 @@ server.get('/', function (req, res, next) {
 		.catch(next);
 });
 
+<<<<<<< HEAD
 // S24: Retorna un objeto de tipo producto con todos sus datos (incluidas las categorías e imágenes)
 server.get('/:id', (req, res) => {
 	Product.findByPk(req.params.id)
@@ -19,6 +24,10 @@ server.get('/:id', (req, res) => {
 
 // S25: Crear ruta para crear/agregar producto
 server.post('/', function (req, res, next) {
+=======
+server.post('/', function(req,res,next){
+	console.log('pase por aquí')
+>>>>>>> parent of 6df3a8c... varias cositas
 	Product.create({
 		name: req.body.name,
 		description: req.body.description,

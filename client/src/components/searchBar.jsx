@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import React, {useState} from 'react';
 import style from './searchBar.module.css';
+=======
+import React from 'react';
+>>>>>>> parent of 6df3a8c... varias cositas
 
 function SearchBar ({onSearch}){
   const [producto, setProducto]= useState("");
