@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-//import {ProductosHardcodeados} from './product.jsx'
-import Producto from './Product';
+import {ProductosHardcodeados} from './product.jsx'
+//import Producto from './Product';
 import ProductCard from './productCard.jsx';
 
 function Catalogo(props) {
@@ -11,6 +11,7 @@ function Catalogo(props) {
   let value = e.target.value
   setCategorySelected (value)
   }
+  
 
   return (
     <div>

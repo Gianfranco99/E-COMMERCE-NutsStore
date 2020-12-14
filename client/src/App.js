@@ -4,6 +4,9 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogo';
 import ProductCard from './components/productCard';
 import NavBar from './components/NavBar';
+import Admin from './components/Admin'
+import Admin2 from './components/Admin2'
+
 
 
 function App() {
@@ -42,6 +45,18 @@ function App() {
     <Route
       exact path='/products/:id'
       render={() => <Catalogo/>}
+    />
+    <Route
+      exact path='/about'
+      render={() => <Catalogo/>}
+    />
+    <Route
+      exact path='/admin'
+      render={() => <Admin/>}
+    />
+    <Route
+      exact path='/admin2'
+      render={() => <Admin2/>}
     />
     
   </Router>
