@@ -1,25 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import Catalogo from './components/Catalogo';
+import ProductCard from './components/productCard';
+import NavBar from './components/NavBar';
+
 
 function App() {
+  const [product, setProduct]=useState([]);
+  function onSearch(product){
+    const productExample = {
+      name: 'Almendra',
+      description: 'tal cosa',
+      price: 200,
+      stock: 'disponible'
+    };
+
+    setProduct(oldProducts => [...oldProducts, product])
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <Router>
+    <Route path='/' render={() => <NavBar onSearch={onSearch}/>}
+    />
+    {/*<Route
+      exact path='/'
+      render={() => <Product/>}
+    /> */}
+    <Route
+      path='/catalogo'
+      component={() => <Catalogo/>}
+    />
+    <Route
+      path='/productCard'
+      render={() => <ProductCard product={product}/>}
+    />
+    <Route
+      exact path='/products'
+      render={() => <Catalogo/>}
+    />
+    <Route
+      exact path='/products/:id'
+      render={() => <Catalogo/>}
+    />
+    <Route
+      exact path='/about'
+      render={() => <Catalogo/>}
+    />
+  
+  </Router>
+ </div>
   );
 }
 
