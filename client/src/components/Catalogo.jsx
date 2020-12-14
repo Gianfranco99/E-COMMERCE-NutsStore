@@ -11,6 +11,7 @@ function Catalogo(props) {
   let value = e.target.value
   setCategorySelected (value)
   }
+  
 
   return (
     <div>
