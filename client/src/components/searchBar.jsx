@@ -5,8 +5,8 @@ function SearchBar ({onSearch}){
   const [producto, setProducto]= useState("");
   
   return (
-    <div className={style.form}>
-      <input type="search" placeholder="Search products..." aria-label="Search"/>
+    <div>
+      <input type="text" placeholder="Search products..." />
       <button>Buscar</button>
     </div>
   );

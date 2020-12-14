@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchBar from './searchBar';
 import { Link } from 'react-router-dom';
-import style from './NavBar.module.css';
 //import Product from './Product.jsx';
 
 function Nav({onSearch}) {
