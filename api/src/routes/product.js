@@ -42,6 +42,7 @@ server.delete("/:id",function(req,res,next){
 	.then(res.send('Producto Eliminado'))
 })
 //----------------------------------------------------//
+
 //agregar category de product
 server.post("/:idProducto/category/:idCategoria", (req, res) => {
     console.log('paso')
@@ -55,27 +56,24 @@ server.post("/:idProducto/category/:idCategoria", (req, res) => {
     .then(
     	res.status(201).send('Categoría y producto se han relacionado')
     )
-    .catch((err) => err);
-   
+    .catch((err) => err)   
   }
 );
 //eliminar category de product
 server.delete("/:idProducto/category/:idCategoria", (req, res) => {
     console.log('paso')
      const idProducto = req.params.idProducto;
-     const idCategoria  = req.params.idCategoria;
+     const idCategoria = req.params.idCategoria;
      console.log(idProducto, ' asdads ', idCategoria)
 	 product_category.destroy({
-		 where:{
-			productId: idProducto,
+		 where:{			
 			categoryId: idCategoria
 		 }     
     })
     .then(
     	res.status(201).send('Relación eliminada')
     )
-    .catch((err) => err);
-   
+    .catch((err) => err);   
   }
 );
 module.exports = server;
