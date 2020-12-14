@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.BLOB, //para guardar imagenes en base64
-      allownull: false
+      allownull: true
     }
   });
 }

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {ProductosHardcodeados} from './product.jsx'
+//import {ProductosHardcodeados} from './product.jsx'
+import Producto from './Product';
 import ProductCard from './productCard.jsx';
 
 function Catalogo(props) {
