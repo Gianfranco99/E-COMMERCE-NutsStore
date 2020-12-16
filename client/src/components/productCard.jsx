@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from './product.jsx';
+// import Product from './Product';
 
 function ProductCard(product) {
     return (
