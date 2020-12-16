@@ -7,7 +7,6 @@ import React from 'react';
 //         <p>{props.description}</p>
 //         <h4>{props.price}</h4>
 //         <h4>{props.stock} </h4>
-//         <img src="image URL"/>
 //     </div>
 //     )
     
