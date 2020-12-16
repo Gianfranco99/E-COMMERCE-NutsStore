@@ -11,10 +11,14 @@ server.get('/', function (req, res, next) {
 });
 
 // S24: Retorna un objeto de tipo producto con todos sus datos (incluidas las categorías e imágenes)
-server.get('/:id', (req, res) => {
-	Product.findByPk(req.params.id)
+server.get('/:id', (req, res, next) => {
+	Product.findOne({
+		where:{
+			id: req.params.id
+		}
+	})
 		.then(product => res.send(product))
-		.catch(error => res.send(error))
+		.catch(error => res.send(error))		
 })
 
 // S25: Crear ruta para crear/agregar producto
@@ -79,9 +83,9 @@ server.delete('/:idProducto/category/:idCategoria', (req, res) => {
 }
 );
 // S23: Retorna todos los productos que tengan {valor} en su nombre o descripcion.
-server.get('/search', (req, res, next) => {
+server.get('/search/search', (req, res, next) => {
 	const description = req.query.description
-	if (desc) {
+	if (description) {
 		Product.findAll({
 			where: {
 				description: description
@@ -93,14 +97,20 @@ server.get('/search', (req, res, next) => {
 	}
 })
 // S23 --> next
-server.get('/search', (req, res) => {
-	Product.findAll({
-		where: {
-			name: req.query.name
-		}
-	})
+server.get('/search/search', (req, res, next) => {
+	const name = req.query.name
+	if(name){
+		
+		Product.findAll({
+			where: {
+				name: req.query.name
+			}
+		})
 		.then(products => res.send(products))
 		.catch(error => error)
+	} else {
+		next()
+	}
 })
 
 module.exports = server;

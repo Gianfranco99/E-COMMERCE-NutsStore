@@ -1,11 +1,21 @@
 import React, {useState} from 'react';
+import { Link,Route,Router, Switch } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function SearchBar ({onSearch}){
   const [producto, setProducto]= useState("");
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/SearchProduct");
+  }
+
 
   return (
-    <form onSubmit={e => {e.preventDefault();
-      onSearch(producto); 
+    <form onSubmit={e =>
+     {
+      e.preventDefault();
+      onSearch(producto);
       setProducto("")
     }}>
     <input
@@ -14,7 +24,8 @@ function SearchBar ({onSearch}){
     value={producto}
     onChange={ e => {setProducto(e.target.value)}}
     />
-    <input type="submit" value="agregar"/>
+    <button type="submit" onClick={handleClick} >Buscar</button>
+    
     </form>
   )
 }

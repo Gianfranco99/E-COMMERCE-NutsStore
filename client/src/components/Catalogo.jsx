@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ProductosHardcodeados} from './product.jsx'
+import {ProductosHardcodeados} from './product.js'
 //import Producto from './Product';
 import ProductCard from './productCard.jsx';
 

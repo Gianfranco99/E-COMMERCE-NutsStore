@@ -6,19 +6,26 @@ import ProductCard from './components/productCard';
 import NavBar from './components/NavBar';
 import Admin from './components/Admin'
 import Admin2 from './components/Admin2'
-
+import SearchProduct from "./components/SearchProduct"
 
 function App() {
   const [product, setProduct]=useState([]);
   function onSearch(product){
-    const productExample = {
-      name: 'Almendra',
-      description: 'tal cosa',
-      price: 200,
-      stock: 'disponible'
-    };
-
-    setProduct(oldProducts => [...oldProducts, product])
+    fetch(`http://localhost:3001/products/search/search?name=${product}`)
+    .then(response  => response.json())
+    .then((respuesta) =>{
+      console.log(respuesta)
+      const product = {
+        name: respuesta.name,
+        description: respuesta.description,
+        price: respuesta.price,
+        stock: respuesta.stock,
+        id:respuesta.id
+      };
+      setProduct(oldProducts => [...oldProducts, product])
+    }).catch(err => console.log(err + "error"))
+  
+    
   }
   return (
     <div className="App">
@@ -36,6 +43,10 @@ function App() {
     <Route
       path='/productCard'
       render={() => <ProductCard product={product}/>}
+    />
+    <Route
+      path='/SearchProduct'
+      render={() => <SearchProduct product={product}/>}
     />
     <Route
       exact path='/products'
