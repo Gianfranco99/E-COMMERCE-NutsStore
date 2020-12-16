@@ -11,15 +11,26 @@ import Admin2 from './components/Admin2'
 
 function App() {
   const [product, setProduct]=useState([]);
+  setProduct(oldProducts => [...oldProducts, product])
   function onSearch(product){
-    const productExample = {
-      name: 'Almendra',
-      description: 'tal cosa',
-      price: 200,
-      stock: 'disponible'
-    };
-
-    setProduct(oldProducts => [...oldProducts, product])
+    const url = "http://localhost:3001/";
+    console.log(url)
+    fetch(url)
+      .then(r => r.json())
+      .then((recurso) =>{
+        if(recurso.name !== undefined){
+          const producto = {          
+            name: recurso.name,
+            description: recurso.description,
+            price: recurso.price,
+            stock: recurso.stock,
+            image: recurso.image,
+          };
+          setProduct(todoslosproductos => [...todoslosproductos, producto]);          
+        } else{
+          alert("Producto no encontrado");
+        }
+      });    
   }
   return (
     <div className="App">
@@ -40,7 +51,9 @@ function App() {
     />
     <Route
       exact path='/products'
-      render={() => <Catalogo/>}
+      render={() => <Catalogo
+        product = {product}
+      />}
     />
     <Route
       exact path='/products/:id'

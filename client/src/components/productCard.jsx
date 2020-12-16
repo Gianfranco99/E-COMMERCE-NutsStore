@@ -1,29 +1,5 @@
 import React from 'react';
-import Product from './Product';
-<<<<<<< HEAD
-
-
-function ProductCard({product}) {
-    if (product){
-        return (
-            <div>
-                {product.map( p => <Product
-                name={p.name}
-                description= {p.description}
-                price={p.price}
-                stock={p.stock} 
-                />
-                )}
-            </div>
-        );
-    }
-    else {
-        return (
-        <div> No exite el producto</div>)
-        
-    }
-    
-=======
+import Product from './product.jsx';
 
 function ProductCard(product) {
     return (
@@ -37,7 +13,6 @@ function ProductCard(product) {
             <p>{product.stock}</p>
         </div>
     );
->>>>>>> b25bdcdcb39a01f0c0e2a22c4e8136091558d80e
 }
 /*
 function ProductCard({product}) {
