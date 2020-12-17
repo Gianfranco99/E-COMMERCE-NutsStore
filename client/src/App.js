@@ -31,7 +31,7 @@ function App() {
       
     }
      else {
-      alert("Producto no encontrada");
+      alert("Producto no encontrado");
      }   
     })
   
