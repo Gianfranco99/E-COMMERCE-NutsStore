@@ -15,15 +15,25 @@ function App() {
     .then(response  => response.json())
     .then((respuesta) =>{
       console.log(respuesta)
-      const product = {
-        name: respuesta.name,
-        description: respuesta.description,
-        price: respuesta.price,
-        stock: respuesta.stock,
-        id:respuesta.id
-      };
-      setProduct(oldProducts => [...oldProducts, product])
-    }).catch(err => console.log(err + "error"))
+      if(respuesta !== undefined){
+        respuesta.forEach((product) => {
+          const producto = {
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            stock: product.stock,
+            id:product.id
+          }
+          setProduct(oldProducts => [...oldProducts, producto])
+        })
+
+  
+      
+    }
+     else {
+      alert("Producto no encontrada");
+     }   
+    })
   
     
   }
@@ -42,7 +52,7 @@ function App() {
     />
     <Route
       path='/productCard'
-      render={() => <ProductCard product={product}/>}
+      render={() => <ProductCard />}
     />
     <Route
       path='/SearchProduct'
