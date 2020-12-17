@@ -26,8 +26,8 @@ function App() {
           }
           setProduct(oldProducts => [...oldProducts, producto])
         })
-  
-    
+      }  
+    })
   }
   return (
     <div className="App">
