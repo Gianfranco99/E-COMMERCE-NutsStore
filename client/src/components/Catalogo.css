@@ -1,0 +1,10 @@
+.catalogo-banner {
+    background-image: url("../assets/bannerCatalogo.jpg");
+    height: 700px;
+    background-size: cover;
+    width: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

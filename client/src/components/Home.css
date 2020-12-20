@@ -53,3 +53,19 @@
 .boton-container{
     margin-top: 50px;
 }
+
+.carrusel {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: rgb(245, 244, 244);
+  }
+
+.tarjeta{
+    background-color: gold;
+    border-radius: 50px;
+}
+
+
+
+

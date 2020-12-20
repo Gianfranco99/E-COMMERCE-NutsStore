@@ -14,8 +14,9 @@ function Catalogo(props) {
   
 
   return (
-    <div>
-        <select value={CategorySelected} onChange={selectedChange}>  
+    <div className="catalogo-banner">
+      <div>
+      <select value={CategorySelected} onChange={selectedChange}>  
           <option value="TODOS">TODOS</option>          
           <option value="frutos secos">frutos secos</option>
           <option value="castañas de caju">castañas de caju</option>
@@ -46,6 +47,7 @@ function Catalogo(props) {
             />
         ) ))
       }
+      </div>
     </div>
   );
 }
