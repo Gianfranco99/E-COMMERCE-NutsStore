@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import "./Home.css"
 import imageAlmendra from '../assets/almendra.jpeg';
-import banner from '../assets/banner.jpg';
+import bannerAlmendra from '../assets/bannerAlmendra';
+import bannerPistacho from '../assets/bannerPistacho';
 
 
 
@@ -51,10 +52,10 @@ function Home() {
              <br/>
              <section className="carrusel">
                  <div>
-                     <img src={banner} width="975" alt="banner 1"/>
+                     <img src={bannerAlmendra} width="975" alt="banner 1"/>
                  </div>
                  <div>
-                     <img src={banner} height="300" alt="banner 2"/>
+                     <img src={bannerPistacho} height="300" alt="banner 2"/>
                  </div>
              </section>
              <br/>
