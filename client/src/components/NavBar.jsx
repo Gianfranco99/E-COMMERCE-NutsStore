@@ -30,7 +30,7 @@ import Carrito from "../assets/carritoMobile.png"
             </div>
               <div className="searchbar-carrito">
                 <SearchBar onSearch={onSearch} /> 
-                <img src={Carrito}></img>
+                <img className= "carrito" src={Carrito}></img>
               </div>              
           </div>   
       </nav>
