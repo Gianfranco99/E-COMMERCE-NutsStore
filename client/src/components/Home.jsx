@@ -59,30 +59,30 @@ function Home() {
                  </div>
              </div>
              <br/>
-             <section className="carrusel">
+             <div className="carrusel">
                  <div>
-                     <img src={bannerAlmendra} width="700px" alt="banner Almendra"/>
+                     <img className="banner" src={bannerAlmendra} alt="banner Almendra"/>
                  </div>
-                 <div>
-                     <img src={bannerPistacho} width="700px" alt="banner 2"/>
+                 <div >
+                     <img className="banner" src={bannerPistacho} alt="banner Pistacho"/>
                  </div>
-             </section>
+             </div>
              <br/>
              <div>
                  <h2>Productos Destacados</h2>
                  <section className="carrusel">
-                 <div className="cardProduct">
-                <img src={imageAlmendra} height="150" alt="1"/>
+                 <div>
+                <img className="destacados" src={imageAlmendra} height="150" alt="1"/>
                  <h2>Almendra</h2>
                  <h3>$ 20.00 - cantidad por este valor</h3>
                  </div>
-                 <div className="cardProduct">
-                 <img src={imageAlmendra} height="150" alt="Card 2"/>
+                 <div>
+                 <img className="destacados" src={imageAlmendra} height="150" alt="Card 2"/>
                  <h2>Nueces</h2>
                  <h3>$ 30.00 - cantidad por este valor</h3>
                  </div>
-                 <div className="cardProduct">
-                 <img src={imageAlmendra} height="150" alt="Card 3"/>
+                 <div>
+                 <img className="destacados" src={imageAlmendra} height="150" alt="Card 3"/>
                 <h2>Pistacho</h2>
                 <h3>$ 40.00 - cantidad por este valor</h3>
                  </div>
