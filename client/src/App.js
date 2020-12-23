@@ -7,6 +7,8 @@ import NavBar from './components/NavBar';
 import Admin from './components/Admin'
 import Admin2 from './components/Admin2'
 import SearchProduct from "./components/SearchProduct"
+import Home from "./components/Home"
+import Nosotros from "./components/Nosotros"
 
 function App() {
   const [product, setProduct]=useState([]);
@@ -34,10 +36,12 @@ function App() {
   <Router>
     <Route path='/' render={() => <NavBar onSearch={onSearch}/>}
     />
-    {/*<Route
+    
+    <Route
       exact path='/'
-      render={() => <Product/>}
-    /> */}
+      render={() => <Home/>}
+    />
+
     <Route
       path='/catalogo'
       component={() => <Catalogo/>}
@@ -60,7 +64,7 @@ function App() {
     />
     <Route
       exact path='/about'
-      render={() => <Catalogo/>}
+      render={() => <Nosotros/>}
     />
     <Route
       exact path='/admin'

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Link,Route,Router, Switch } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"; 
 
 function SearchBar ({onSearch}){
   const [producto, setProducto]= useState("");
@@ -19,12 +19,11 @@ function SearchBar ({onSearch}){
       setProducto("")
     }}>
     <input
-    type="text"
     placeholder="producto..."
     value={producto}
     onChange={ e => {setProducto(e.target.value)}}
     />
-    <button type="submit" onClick={handleClick} >Buscar</button>
+    <button className= "button-search" type="submit" onClick={handleClick} >Buscar</button>
     
     </form>
   )
