@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 import NavLogo from "../assets/logo.png"
 import Carrito from "../assets/carritoMobile.png"
-//import Product from './Product.js
-
-//function Nav() 
+//import Product from './Product.js 
 
   function Nav({onSearch}){
   return (
