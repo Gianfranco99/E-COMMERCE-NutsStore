@@ -3,28 +3,26 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  const Orden = sequelize.define('orden', {
-    ordenId: {
+  const User = sequelize.define('user', {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
     },
     
-    precio: {
-      type: DataTypes.INTEGER,
+    email: { 
+      type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {
+      isEmail: true,
+    }
     },
-
-    products: {
-        type: DataTypes.ARRAY(DataTypes.JSON),
-        allowNull: false,
-      },
-
-    status: {
+    password: { 
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-        isIn: [['carrito', 'creada', 'procesando', 'cancelada', 'completa']]
+        isAlphanumeric: true,
     }
-    }
+    },
   });
 }
