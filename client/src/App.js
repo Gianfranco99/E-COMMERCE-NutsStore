@@ -8,6 +8,7 @@ import Admin from './components/Admin'
 import Admin2 from './components/Admin2'
 import SearchProduct from "./components/SearchProduct"
 import Home from "./components/Home"
+import Nosotros from "./components/Nosotros"
 
 function App() {
   const [product, setProduct]=useState([]);
@@ -63,7 +64,7 @@ function App() {
     />
     <Route
       exact path='/about'
-      render={() => <Catalogo/>}
+      render={() => <Nosotros/>}
     />
     <Route
       exact path='/admin'
