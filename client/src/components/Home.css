@@ -62,6 +62,8 @@
     align-items: center;
     height: 460px;
     background-color: rgb(245, 244, 244);
+    padding: 0;
+    margin: 0;
   }
 
 .tarjeta{
@@ -74,16 +76,17 @@
     box-shadow: 4px 4px 5px rgb(131, 130, 130);
 }
  .img-tarjeta{
+     margin: 0;
      border-top-left-radius: 15px;
      border-top-right-radius: 15px;
      width: 240px;
+     height: 180px;
  }
 
 .container-tarjeta{
     color: white;
     text-align: left;
     margin-left: 30px;
-    font-family: 
 }
 
 .title{
@@ -109,4 +112,63 @@
     font-weight: bold;
     margin: 0;
     padding: 0;
+}
+
+.banner{
+    width: 700px;
+    height: 350px;
+}
+
+.tarjeta-destacados{
+    height: 250px;
+    width: 200px;
+    margin: 50px;
+}
+
+.img-tarjeta-destacados{
+    width: 200px;
+    height: 200px;
+    padding: 0;
+    margin: 0;
+}
+.container-tarjeta-destacados{
+    color: #94564c;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.title-destacados{
+    font-size: 20px;
+    font-weight: bold;
+}
+.destacados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+    height: 700px;
+    background-color: rgb(245, 244, 244);
+    padding: 0px;
+    margin: 0px;
+}
+
+.footer{
+    width: 100%;
+    height: 230px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: initial;
+}
+.img-footer{
+    width: 100px;
+    height: 100px;
+}
+
+.copyright{
+    display: flex;
+    align-items:flex-start;
+    padding-left: 5rem;
+    color: gray;
 }

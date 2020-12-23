@@ -4,6 +4,7 @@ import "./Home.css"
 import imageAlmendra from '../assets/almendra.jpeg';
 import bannerAlmendra from '../assets/banner-almendra.jpeg';
 import bannerPistacho from '../assets/banner-pistacho.jpeg';
+import hojita from '../assets/hojita.jpeg';
 
 
 
@@ -59,58 +60,97 @@ function Home() {
                  </div>
              </div>
              <br/>
-             <section className="carrusel">
+             <div className="carrusel">
                  <div>
-                     <img src={bannerAlmendra} width="700px" alt="banner Almendra"/>
+                     <img className="banner" src={bannerAlmendra} alt="banner Almendra"/>
                  </div>
-                 <div>
-                     <img src={bannerPistacho} width="700px" alt="banner 2"/>
+                 <div >
+                     <img className="banner" src={bannerPistacho} alt="banner Pistacho"/>
                  </div>
-             </section>
+             </div>
              <br/>
              <div>
                  <h2>Productos Destacados</h2>
-                 <section className="carrusel">
-                 <div className="cardProduct">
-                <img src={imageAlmendra} height="150" alt="1"/>
-                 <h2>Almendra</h2>
-                 <h3>$ 20.00 - cantidad por este valor</h3>
+                 <section className="destacados">
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
                  </div>
-                 <div className="cardProduct">
-                 <img src={imageAlmendra} height="150" alt="Card 2"/>
-                 <h2>Nueces</h2>
-                 <h3>$ 30.00 - cantidad por este valor</h3>
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
                  </div>
-                 <div className="cardProduct">
-                 <img src={imageAlmendra} height="150" alt="Card 3"/>
-                <h2>Pistacho</h2>
-                <h3>$ 40.00 - cantidad por este valor</h3>
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
+                 </div>
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
+                 </div>
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
+                 </div>
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
+                 </div>
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
+                 </div>
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
+                 </div>
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
+                 </div>
+                 <div className="tarjeta-destacados">
+                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
+                 <div className="container-tarjeta-destacados">
+                    <p className="title-destacados">Nueces</p>
+                    <p className="price">$ 40.00</p>
+                   </div>
                  </div>
                  </section>
              </div>
              <br/>
              <footer>
-             <div className= "boton-container">
-            <Link to="/catalogo">
-                <button className="boton-comprar">Conocer más</button>
-            </Link>
-             </div>
-             <div className="home-container">
-             <div className= "titulo-descripcion-container">
-             <div className= "titulo-container">
-                <span className= "titulo1">
-                    NutStore</span>
-             </div>
-             </div>
-             <div className= "descripcion-container">
-                <p className= "descripcion-home">
-                Toda la información de las propiedades de los frutos secos en un solo sitio.</p>
-             </div>
-            </div>
+             <section className="footer">
+                 <img className="img-footer" src={hojita} alt="img footer"/>
+                 <p>Lorem ipsum dolor sit amet, <br/> consectetur adipisicing elit. <br/> Tempora recusandae amet harum! <br/> Impedit tempore laborum.</p>
+             </section>
              <br/>
-                 <div className="footer">
-
-                 </div>
              <span className="copyright">Copyright &#169; </span>
              </footer>
          </div>
