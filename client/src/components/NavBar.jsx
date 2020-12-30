@@ -2,16 +2,14 @@ import React from 'react';
 import SearchBar from './searchBar';
 import { Link } from 'react-router-dom';
 import style from './NavBar.module.css';
-//import Product from './Product.jsx';
 
-//function Nav() 
 
-  function Nav({onSearch}){
+  function Nav(){
   return (
     <div>
       <nav className={style.nav}>
         <div>
-          {     <SearchBar onSearch={onSearch} />        }
+          {     <SearchBar/>        }
           <div>
             <ul className={style.ul}>
               <li className={style.a}><Link className={style.a} to='/'>INICIO</Link></li>
