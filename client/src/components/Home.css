@@ -1,0 +1,174 @@
+.boton-comprar {
+    background-color: #519F10;
+    border: none;
+    text-decoration-color: #519F10;
+    font-size: 25px;
+    border-radius: 15px;
+    padding: 10px 51px 5px 50px;
+}
+
+.boton-comprar:hover {
+    background: #41810d;
+    border: #41810d;
+  }
+
+.titulo-descripcion-container {
+    width: 55%;
+    margin: 0 0 0 70px;
+}
+.titulo-container{
+    text-align: start;
+    margin-bottom: 30px;
+}
+.titulo1 {
+    color: #612425;
+    font-family: 'Playfair Display', serif;
+    font-size: 65px;
+    font-weight: 600;
+    line-height: 80px;
+}
+
+.palabra {
+    color: #519F10;
+}
+
+.descripcion-home {
+    font-family: 'Montserrat', sans-serif;
+    text-align: start;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+.home-container {
+    background-image: url("../assets/home.jpg");
+    height: 700px;
+    background-size: cover;
+    width: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.boton-container{
+    margin-top: 50px;
+}
+
+.carrusel {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+    height: 460px;
+    background-color: rgb(245, 244, 244);
+    padding: 0;
+    margin: 0;
+  }
+
+.tarjeta{
+    height: 360px;
+    width: 240px;
+    background-color: #94564c;
+    border-radius: 15px;
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 4px 4px 5px rgb(131, 130, 130);
+}
+ .img-tarjeta{
+     margin: 0;
+     border-top-left-radius: 15px;
+     border-top-right-radius: 15px;
+     width: 240px;
+     height: 180px;
+ }
+
+.container-tarjeta{
+    color: white;
+    text-align: left;
+    margin-left: 30px;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+.cantidad{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.description{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;    
+}
+.price{
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.banner{
+    width: 700px;
+    height: 350px;
+}
+
+.tarjeta-destacados{
+    height: 250px;
+    width: 200px;
+    margin: 50px;
+}
+
+.img-tarjeta-destacados{
+    width: 200px;
+    height: 200px;
+    padding: 0;
+    margin: 0;
+}
+.container-tarjeta-destacados{
+    color: #94564c;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.title-destacados{
+    font-size: 20px;
+    font-weight: bold;
+}
+.destacados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+    height: 700px;
+    background-color: rgb(245, 244, 244);
+    padding: 0px;
+    margin: 0px;
+}
+
+.footer{
+    width: 100%;
+    height: 230px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: initial;
+}
+.img-footer{
+    width: 100px;
+    height: 100px;
+}
+
+.copyright{
+    display: flex;
+    align-items:flex-start;
+    padding-left: 5rem;
+    color: gray;
+}
