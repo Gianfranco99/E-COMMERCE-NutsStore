@@ -6,7 +6,7 @@ import NavLogo from "../assets/logo.png"
 import Carrito from "../assets/carritoMobile.png"
 //import Product from './Product.js 
 
-  function Nav({onSearch}){
+  function Nav(){
   return (
       <nav className="nav">
           <div className="logo-titulo">

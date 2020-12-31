@@ -11,38 +11,10 @@ import Home from "./components/Home"
 import Nosotros from "./components/Nosotros"
 
 function App() {
-  const [product, setProduct]=useState([]);
-  function onSearch(product){
-    fetch(`http://localhost:3001/products/search/search?name=${product}`)
-    .then(response  => response.json())
-    .then((respuesta) =>{
-      console.log(respuesta)
-      if(respuesta !== undefined){
-        respuesta.forEach((product) => {
-          const producto = {
-            name: product.name,
-            description: product.description,
-            price: product.price,
-            stock: product.stock,
-            id:product.id
-          }
-          setProduct(oldProducts => [...oldProducts, producto])
-        })
-
-  
-      
-    }
-     else {
-      alert("Producto no encontrado");
-     }   
-    })
-  
-    
-  }
   return (
     <div className="App">
   <Router>
-    <Route path='/' render={() => <NavBar onSearch={onSearch}/>}
+    <Route path='/' render={() => <NavBar />}
     />
     
     <Route
@@ -60,7 +32,7 @@ function App() {
     />
     <Route
       path='/SearchProduct'
-      render={() => <SearchProduct product={product}/>}
+      render={() => <SearchProduct />}
     />
     <Route
       exact path='/products'
