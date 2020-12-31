@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogo';
-import ProductCard from './components/productCard';
+
 import NavBar from './components/NavBar';
 import Admin from './components/Admin'
 import Admin2 from './components/Admin2'
@@ -13,30 +13,10 @@ import MiCuenta from "./components/MiCuenta"
 import Registrarse from "./components/Registrarse"
 
 function App() {
-  const [product, setProduct]=useState([]);
-  function onSearch(product){
-    fetch(`http://localhost:3001/products/search/search?name=${product}`)
-    .then(response  => response.json())
-    .then((respuesta) =>{
-      console.log(respuesta)
-      if(respuesta !== undefined){
-        respuesta.forEach((product) => {
-          const producto = {
-            name: product.name,
-            description: product.description,
-            price: product.price,
-            stock: product.stock,
-            id:product.id
-          }
-          setProduct(oldProducts => [...oldProducts, producto])
-        })
-      }  
-    })
-  }
   return (
     <div className="App">
   <Router>
-    <Route path='/' render={() => <NavBar onSearch={onSearch}/>}
+    <Route path='/' render={() => <NavBar />}
     />
     
     <Route
@@ -49,12 +29,8 @@ function App() {
       component={() => <Catalogo/>}
     />
     <Route
-      path='/productCard'
-      render={() => <ProductCard product={product}/>}
-    />
-    <Route
       path='/SearchProduct'
-      render={() => <SearchProduct product={product}/>}
+      render={() => <SearchProduct />}
     />
     <Route
       exact path='/products'

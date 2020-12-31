@@ -1,7 +1,9 @@
 import React from "react"
-import Product from "./Product.jsx"
+import Product from "./Product"
+import {useSelector} from "react-redux"
 
-export default function SearchProduct({product}){
+export default function SearchProduct(){
+    const product = useSelector(store => store.productSearch)
     if (product){
         console.log(product)
         return (

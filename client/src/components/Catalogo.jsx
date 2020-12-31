@@ -1,17 +1,28 @@
-import React, {useState} from 'react';
-import {ProductosHardcodeados} from './product.js'
-//import Producto from './Product';
-import ProductCard from './productCard.jsx';
+import React, {useState,useEffect} from 'react';
+import {useSelector,useDispatch} from "react-redux"
+import Product from "./Product.jsx"
 
-function Catalogo(props) {
+
+
+import {getProducts} from "../redux/actions/actions"
+
+function Catalogo() {
 
   const [CategorySelected, setCategorySelected] = useState('TODOS');
+  const dispatch = useDispatch()
+  const producto = useSelector(state => state.products);
+  useEffect(() => {
+   dispatch(getProducts());
+}, [])
+console.log(producto)
 
   const selectedChange = (e) => {
   let value = e.target.value
   setCategorySelected (value)
   }
   
+
+
 
   return (
     <div className="catalogo-banner">
@@ -26,8 +37,8 @@ function Catalogo(props) {
 
       {
         CategorySelected === 'TODOS' ?
-        ProductosHardcodeados.map ( p =>(
-          <ProductCard
+        producto.map ( p =>(
+          <Product
             name={p.name}
             description={p.description}
             price={p.price}
@@ -36,10 +47,10 @@ function Catalogo(props) {
         ) )
         :
         (
-          ProductosHardcodeados
+          producto
           .filter(el => el.category === CategorySelected)
           .map ( p =>(
-          <ProductCard
+          <Product
             name={p.name}
             description={p.description}
             price={p.price}
