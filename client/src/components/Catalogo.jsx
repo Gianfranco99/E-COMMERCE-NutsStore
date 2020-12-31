@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import {useSelector,useDispatch} from "react-redux"
-import {ProductosHardcodeados} from './product.js'
-//import Producto from './Product';
-import ProductCard from './productCard.jsx';
+import Product from "./Product.jsx"
+
+
 
 import {getProducts} from "../redux/actions/actions"
 
@@ -38,7 +38,7 @@ console.log(producto)
       {
         CategorySelected === 'TODOS' ?
         producto.map ( p =>(
-          <ProductCard
+          <Product
             name={p.name}
             description={p.description}
             price={p.price}
@@ -50,7 +50,7 @@ console.log(producto)
           producto
           .filter(el => el.category === CategorySelected)
           .map ( p =>(
-          <ProductCard
+          <Product
             name={p.name}
             description={p.description}
             price={p.price}
