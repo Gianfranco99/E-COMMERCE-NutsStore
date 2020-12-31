@@ -9,6 +9,8 @@ import Admin2 from './components/Admin2'
 import SearchProduct from "./components/SearchProduct"
 import Home from "./components/Home"
 import Nosotros from "./components/Nosotros"
+import MiCuenta from "./components/MiCuenta"
+import Registrarse from "./components/Registrarse"
 
 function App() {
   const [product, setProduct]=useState([]);
@@ -66,6 +68,17 @@ function App() {
       exact path='/about'
       render={() => <Nosotros/>}
     />
+
+    <Route
+      exact path='/micuenta'
+      render={() => <MiCuenta/>}
+    />
+
+    <Route
+      exact path='/registro'
+      render={() => <Registrarse/>}
+    />    
+
     <Route
       exact path='/admin'
       render={() => <Admin/>}
