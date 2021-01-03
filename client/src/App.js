@@ -2,52 +2,34 @@ import React, {useState} from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogo';
-import ProductCard from './components/productCard';
+
 import NavBar from './components/NavBar';
 import Admin from './components/Admin'
 import Admin2 from './components/Admin2'
-
+import SearchProduct from "./components/SearchProduct"
+import Home from "./components/Home"
+import Nosotros from "./components/Nosotros"
 
 
 function App() {
-  const [product, setProduct]=useState([]);
-  setProduct(oldProducts => [...oldProducts, product])
-  function onSearch(product){
-    const url = "http://localhost:3001/";
-    console.log(url)
-    fetch(url)
-      .then(r => r.json())
-      .then((recurso) =>{
-        if(recurso.name !== undefined){
-          const producto = {          
-            name: recurso.name,
-            description: recurso.description,
-            price: recurso.price,
-            stock: recurso.stock,
-            image: recurso.image,
-          };
-          setProduct(todoslosproductos => [...todoslosproductos, producto]);          
-        } else{
-          alert("Producto no encontrado");
-        }
-      });    
-  }
   return (
     <div className="App">
   <Router>
-    <Route path='/' render={() => <NavBar onSearch={onSearch}/>}
+    <Route path='/' render={() => <NavBar />}
     />
-    {/*<Route
+    
+    <Route
       exact path='/'
-      render={() => <Product/>}
-    /> */}
+      render={() => <Home/>}
+    />
+
     <Route
       path='/catalogo'
       component={() => <Catalogo/>}
     />
     <Route
-      path='/productCard'
-      render={() => <ProductCard product={product}/>}
+      path='/SearchProduct'
+      render={() => <SearchProduct />}
     />
     <Route
       exact path='/products'
@@ -61,7 +43,7 @@ function App() {
     />
     <Route
       exact path='/about'
-      render={() => <Catalogo/>}
+      render={() => <Nosotros/>}
     />
     <Route
       exact path='/admin'

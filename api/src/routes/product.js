@@ -29,6 +29,7 @@ server.post('/', function (req, res, next) {
 		price: req.body.price,
 		stock: req.body.stock,
 		image: req.body.image,
+		category: req.body.category
 	})
 		.then((product) => res.status(201).send(product))
 		.catch((error) => res.status(412).send(error));
@@ -91,7 +92,7 @@ server.get('/search/search', (req, res, next) => {
 				description: description
 			}
 		})
-			.then(products => res.send(products))
+			.then(products => res.json(products))
 	} else {
 		next()
 	}
@@ -106,7 +107,7 @@ server.get('/search/search', (req, res, next) => {
 				name: req.query.name
 			}
 		})
-		.then(products => res.send(products))
+		.then(products => res.json(products))
 		.catch(error => error)
 	} else {
 		next()
