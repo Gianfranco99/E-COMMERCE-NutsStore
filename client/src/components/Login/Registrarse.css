@@ -5,7 +5,7 @@
 }
 
 .Background {
-    background-image: url("../assets/frutosbackground.jpeg");
+    background-image: url("../../assets/frutosbackground.jpeg");
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -14,11 +14,11 @@
     justify-content: center;
 }
 
-.Login-container {
+.Registro-container {
     background-color: white;
     opacity: 0.8;
     width: 35%;
-    height: 65%;
+    height: 70%;
     z-index: 10;
     border-radius: 13px;
     display: flex;
@@ -28,7 +28,7 @@
     justify-content: center;
 }
 
-.titulo-iniciarsesion {
+.titulo-registrarse {
     font-weight: 900;
     font-size: 26px;
     font-family: 'Playfair Display', serif;
@@ -55,7 +55,7 @@
     height: 40px;
 }
 
-.boton-ingresar {
+.boton-registrarse {
     background-color: #8d3f35 !important;
     color: white !important;
     border: none !important;
@@ -63,5 +63,3 @@
     padding: 8px !important;
     margin: 5px !important;
 }
-
-
