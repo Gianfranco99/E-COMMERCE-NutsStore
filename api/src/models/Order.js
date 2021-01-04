@@ -3,19 +3,19 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  const Orden = sequelize.define('orden', {
-    ordenId: {
+  const Order = sequelize.define('order', {
+    orderId: {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
     },
     
-    precio: {
+    price: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
 
-    products: {
+    orderProducts: {
         type: DataTypes.ARRAY(DataTypes.JSON),
         allowNull: false,
       },
