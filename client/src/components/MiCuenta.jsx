@@ -18,7 +18,7 @@ const handleInputChange = function(e) {
 
 const iniciarsesion = () => {
   console.log(input);
-  axios.post('http://localhost:3001/registrarse', input)
+  axios.post('http://localhost:3001/micuenta', input)
     .then(res => console.log(res))
 }
 

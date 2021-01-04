@@ -19,7 +19,7 @@ const handleInputChange = function(e) {
 
 const registrarse = () => {
   console.log(input);
-  axios.post('http://localhost:3001/registrarse', input)
+  axios.post('http://localhost:3001/user/registrarse', input)
     .then(res => console.log(res))
 }
 
@@ -34,7 +34,7 @@ return (
         <input className="input" type="text" 
                placeholder= "Ingrese su nombre" 
                name="nombre" 
-               value={input.nombre} 
+               value={input.name} 
                onChange = {handleInputChange}/>
         </label>
         <p></p>

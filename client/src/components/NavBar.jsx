@@ -28,7 +28,7 @@ import Carrito from "../assets/carritoMobile.png"
               </ul>
             </div>
               <div className="searchbar-carrito">
-                <SearchBar onSearch={onSearch} /> 
+                <SearchBar /> 
                 <Link to='/micuenta'><img className= "icono-usuario" src={IconoUsuario}></img></Link>
                 <Link to='/Carrito'><img className= "carrito" src={Carrito}></img></Link>
               </div>              
