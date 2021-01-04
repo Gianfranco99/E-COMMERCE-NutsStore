@@ -9,7 +9,6 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true
     },
-    
     precio: {
       type: DataTypes.INTEGER,
       allowNull: false,
