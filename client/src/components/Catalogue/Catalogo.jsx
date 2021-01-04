@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Product from "./Product.jsx";
+import Product from "../Product/Product.jsx";
 import "./Catalogo.css";
 
-import { addProductCart, getProducts } from "../redux/actions/actions";
+import { addProductCart, getProducts } from "../../redux/actions/actions";
 
 function Catalogo() {
   const [CategorySelected, setCategorySelected] = useState("TODOS");

@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Carrito.css"
-import imageneliminar from "../assets/cruz.png"
+import imageneliminar from "../../assets/cruz.png"
 
 function Carrito() {
 

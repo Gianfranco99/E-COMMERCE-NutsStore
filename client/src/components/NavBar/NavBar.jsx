@@ -1,10 +1,10 @@
 import React from 'react';
-import SearchBar from './searchBar';
+import SearchBar from '../SearchBar/searchBar';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
-import NavLogo from "../assets/logo.png"
-import IconoUsuario from "../assets/iconousuario.png"
-import Carrito from "../assets/carritoMobile.png"
+import NavLogo from "../../assets/logo.png"
+import IconoUsuario from "../../assets/iconousuario.png"
+import Carrito from "../../assets/carritoMobile.png"
 //import Product from './Product.js 
 
   function Nav(){
