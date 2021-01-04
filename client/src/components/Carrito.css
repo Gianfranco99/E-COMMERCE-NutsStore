@@ -1,0 +1,55 @@
+.img-nosotros {
+  display: flex;
+  background-image: url("../assets/nosotros1.jpg");
+  height: 358px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10%;
+}
+
+.titulo-carrito {
+  display: flex;
+  position: absolute;
+  font-family: "Playfair Display", serif;
+  color: #612425;
+  font-size: 50px;
+  justify-content: center;
+}
+
+.titulos-tabla {
+  background-color: rgb(240, 239, 239);
+}
+
+th {
+  font-size: 13px;
+  font-weight: 500;
+  color: black;
+  text-align: center;
+}
+
+td {
+  font-size: 14px;
+  font-family: "Playfair Display", serif;
+  color: rgb(26, 25, 25);
+  text-align: center;
+}
+
+.div-table {
+  padding-top: 30px;
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 90%;
+  border: rgb(240, 239, 239);
+}
+
+.imageneliminar {
+  width: 20px;
+  height: 20px;
+}

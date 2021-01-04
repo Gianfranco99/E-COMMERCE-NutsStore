@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
       },
 
     status: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING, 
         validate: {
         isIn: [['carrito', 'creada', 'procesando', 'cancelada', 'completa']]
     }
