@@ -29,6 +29,7 @@ server.post('/', function (req, res, next) {
 		price: req.body.price,
 		stock: req.body.stock,
 		image: req.body.image,
+		category: req.body.category
 	})
 		.then((product) => res.status(201).send(product))
 		.catch((error) => res.status(412).send(error));

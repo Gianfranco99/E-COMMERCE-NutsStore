@@ -6,7 +6,7 @@ import NavLogo from "../assets/logo.png"
 import Carrito from "../assets/carritoMobile.png"
 //import Product from './Product.js 
 
-  function Nav({onSearch}){
+  function Nav(){
   return (
       <nav className="nav">
           <div className="logo-titulo">
@@ -27,7 +27,7 @@ import Carrito from "../assets/carritoMobile.png"
               </ul>
             </div>
               <div className="searchbar-carrito">
-                <SearchBar onSearch={onSearch} /> 
+                <SearchBar/> 
                 <img className= "carrito" src={Carrito}></img>
               </div>              
           </div>   
