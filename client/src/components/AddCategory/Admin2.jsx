@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Admin.module.css'
+import style from './../AddProduct/Admin.module.css'
 
 export default function  FormCategorie() {
     const [input, setInput] = React.useState({

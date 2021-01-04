@@ -1,6 +1,6 @@
 import React from 'react';
-import nosotrosimagen from "../assets/nosotrosimagen.png"
-import planta from "../assets/planta.png"
+import nosotrosimagen from "../../assets/nosotrosimagen.png"
+import planta from "../../assets/planta.png"
 import "./Nosotros.css"
 
 function Nosotros() {

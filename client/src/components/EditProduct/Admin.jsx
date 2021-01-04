@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import AddProductForm from "./AddProductForm";
+import AddProductForm from "./../AddProduct/AddProductForm";
 import EditProductForm from "./EditProductForm";
-import ProductTable from "./ProductTable";
+import ProductTable from "../ProductTable/ProductTable";
 import { v4 as uuidv4 } from "uuid";
-import style from "./Admin.module.css";
+import style from "./../AddProduct/Admin.module.css";
 import axios from "axios";
 
 //instalar react-hook-form

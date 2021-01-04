@@ -40,7 +40,7 @@
 }
 
 .home-container {
-    background-image: url("../assets/home.jpg");
+    background-image: url("../../assets/home.jpg");
     height: 700px;
     background-size: cover;
     width: 100%;

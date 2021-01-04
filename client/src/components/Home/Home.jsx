@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import "./Home.css"
-import imageAlmendra from '../assets/almendra.jpeg';
-import bannerAlmendra from '../assets/banner-almendra.jpeg';
-import bannerPistacho from '../assets/banner-pistacho.jpeg';
-import planta from '../assets/planta.png';
+import imageAlmendra from '../../assets/almendra.jpeg';
+import bannerAlmendra from '../../assets/banner-almendra.jpeg';
+import bannerPistacho from '../../assets/banner-pistacho.jpeg';
+import planta from '../../assets/planta.png';
 
 
 

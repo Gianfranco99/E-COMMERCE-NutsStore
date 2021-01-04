@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import Catalogo from './components/Catalogo';
-import NavBar from './components/NavBar';
-import Admin from './components/Admin'
-import Admin2 from './components/Admin2'
-import SearchProduct from "./components/SearchProduct"
-import Home from "./components/Home"
-import Nosotros from "./components/Nosotros"
-import MiCuenta from "./components/MiCuenta"
-import Registrarse from "./components/Registrarse"
-import Carrito from "./components/Carrito"
-import Product from "./components/Product"
+import Catalogo from './components/Catalogue/Catalogo';
+import NavBar from './components/NavBar/NavBar';
+import Admin from './components/EditProduct/Admin'
+import Admin2 from './components/AddCategory/Admin2'
+import SearchProduct from "./components/SearchBar/SearchProduct"
+import Home from "./components/Home/Home"
+import Nosotros from "./components/AboutUS/Nosotros"
+import MiCuenta from "./components/MyUser/MiCuenta"
+import Registrarse from "./components/Login/Registrarse"
+import Carrito from "./components/Cart/Carrito"
+import Product from "./components/Product/Product"
 
 function App() {
   return (
