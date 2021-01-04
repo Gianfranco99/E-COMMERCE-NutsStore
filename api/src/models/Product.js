@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     image: {
-      type: DataTypes.BLOB, //para guardar imagenes en base64
+      type: DataTypes.ARRAY(DataTypes.TEXT), //para guardar imagenes en base64
       allownull: true
     }
   });
