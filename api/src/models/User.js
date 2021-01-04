@@ -7,18 +7,18 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    
+    },    
     email: { 
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      primaryKey: true,
       validate: {
-      isEmail: true,
-    }
+        isEmail: true,
+      }
     },
     password: { 
-        type: DataTypes.STRING,
+        type: DataTypes.STRING, 
         allowNull: false,
         validate: {
         isAlphanumeric: true,
