@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogo';
-
+import product from './components/Product';
 import NavBar from './components/NavBar';
 import Admin from './components/Admin'
 import Admin2 from './components/Admin2'

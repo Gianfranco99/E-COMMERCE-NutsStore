@@ -37,12 +37,8 @@ function SearchBar (){
 }
 
 
-<<<<<<< HEAD
-export default SearchBar;
-=======
 
 
 
 
 export default SearchBar;
->>>>>>> 531d3c6d3563cbf9cdd6a65ad08ecbb65e853928
