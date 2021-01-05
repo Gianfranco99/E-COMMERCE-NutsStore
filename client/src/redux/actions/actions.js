@@ -30,4 +30,11 @@ export function searchProducts(product) {
       payload
     }
   }
+// se creo un action para el detalle del producto
+  export function DetailProduct (payload){
+    return {
+      type : "DETAIL_PRODUCT",
+      payload
+    }
+  }
   

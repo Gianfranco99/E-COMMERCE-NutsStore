@@ -1,7 +1,8 @@
 import React from 'react';
 import './ProductCard.css';
 import {useDispatch} from 'react-redux'
-import {addProductCart} from '../../redux/actions/actions'
+import {addProductCart, DetailProduct} from '../../redux/actions/actions'
+
 
 export default function Producto(props){
     const dispatch = useDispatch();
@@ -26,6 +27,11 @@ export default function Producto(props){
                     <a>Agregar al carrito</a>
                 </button>
             </div>
+                <div className='btn-more'>
+                    <button onClick={() => dispatch(DetailProduct(props))}>
+                        <a >ver mas</a>
+                    </button>
+                </div>
         </div>
     )    
 }
