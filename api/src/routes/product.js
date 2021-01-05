@@ -23,16 +23,20 @@ server.get('/:id', (req, res, next) => {
 
 // S25: Crear ruta para crear/agregar producto
 server.post('/', function (req, res, next) {
-	Product.create({
-		name: req.body.name,
-		description: req.body.description,
-		price: req.body.price,
-		stock: req.body.stock,
-		image: req.body.image,
-		category: req.body.category
-	})
-		.then((product) => res.status(201).send(product))
-		.catch((error) => res.status(412).send(error));
+	try {
+		Product.create({
+			name: req.body.name,
+			description: req.body.description,
+			price: req.body.price,
+			stock: req.body.stock,
+			image: req.body.image,
+			category: req.body.category
+		})
+			.then((product) => res.status(201).send(product))
+	} catch (error) {
+		console.log(error);
+		res.status(412).send(error);
+	}
 })
 
 // S26: Crear ruta para modificar producto

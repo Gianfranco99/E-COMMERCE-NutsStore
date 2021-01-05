@@ -1,0 +1,65 @@
+.Background-container {
+    width: 100%;
+    height: 800px;
+    display: flex;
+}
+
+.Background {
+    background-image: url("../../assets/frutosbackground.jpeg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+}
+
+.Registro-container {
+    background-color: white;
+    opacity: 0.8;
+    width: 35%;
+    height: 70%;
+    z-index: 10;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.titulo-registrarse {
+    font-weight: 900;
+    font-size: 26px;
+    font-family: 'Playfair Display', serif;
+}
+
+.titulo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    color: black;
+}
+
+.titulo2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    color: black;
+}
+
+.titulo3 {
+    color: #8d3f35;
+}
+
+.input {
+    width: 300px;
+    height: 40px;
+}
+
+.boton-registrarse {
+    background-color: #8d3f35 !important;
+    color: white !important;
+    border: none !important;
+    font-size: 14px !important;
+    padding: 8px !important;
+    margin: 5px !important;
+}

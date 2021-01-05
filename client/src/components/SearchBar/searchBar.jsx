@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Link,Route,Router, Switch } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import {useSelector,useDispatch} from "react-redux"
-import {searchProducts} from "../redux/actions/actions"
+import {searchProducts} from "../../redux/actions/actions"
 
 
 

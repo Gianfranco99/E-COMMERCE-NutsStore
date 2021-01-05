@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import "./Home.css"
-import imageAlmendra from '../assets/almendra.jpeg';
-import bannerAlmendra from '../assets/banner-almendra.jpeg';
-import bannerPistacho from '../assets/banner-pistacho.jpeg';
-import hojita from '../assets/hojita.jpeg';
+import imageAlmendra from '../../assets/almendra.jpeg';
+import bannerAlmendra from '../../assets/banner-almendra.jpeg';
+import bannerPistacho from '../../assets/banner-pistacho.jpeg';
+import planta from '../../assets/planta.png';
 
 
 
@@ -128,27 +128,17 @@ function Home() {
                     <p className="price">$ 40.00</p>
                    </div>
                  </div>
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
                  </section>
              </div>
              <br/>
              <footer>
              <section className="footer">
-                 <img className="img-footer" src={hojita} alt="img footer"/>
-                 <p>Lorem ipsum dolor sit amet, <br/> consectetur adipisicing elit. <br/> Tempora recusandae amet harum! <br/> Impedit tempore laborum.</p>
+             <div className= "separador">
+              <div className= "separador1">
+                  <img src={planta} alt= "algo" className="planta-imagen"></img>
+                  <p className= "lorem-nosotros">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br></br>Mauris velit magna, congue et elit ac, vehicula pulvinar nisi.</p>
+              </div>
+              </div>
              </section>
              <br/>
              <span className="copyright">Copyright &#169; </span>

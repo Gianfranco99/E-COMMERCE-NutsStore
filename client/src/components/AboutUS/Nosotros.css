@@ -1,0 +1,80 @@
+.img-nosotros {
+  display: flex;
+  background-image: url("../../assets/nosotros1.jpg");
+  height: 358px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10%;
+}
+
+.titulo-nosotros {
+  display: flex;
+  position: absolute;
+  font-family: "Playfair Display", serif;
+  color: #612425;
+  font-size: 50px;
+  justify-content: center;
+}
+
+.principal-nosotros {
+  display: flex;
+  height: 500px;
+  align-items: center;
+}
+.principal-nosotros .nosotros-bienvenidos-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 6%;
+}
+
+.nosotros-imagen {
+  height: 340px;
+  width: 500px;
+}
+
+.titulo-nosotros-bienvenidos {
+  font-family: "Montserrat", sans-serif;
+  color: #612425;
+  font-weight: 700;
+  text-align: start;
+}
+
+.palabra-nosotros {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  color: #519f10;
+  text-align: start;
+}
+
+.lorem1-nosotros {
+  font-family: "Segoe UI";
+  color: rgb(61, 60, 60);
+  text-align: start;
+  font-weight: 500;
+  font-size: 12px;
+  width: 90%;
+}
+
+.separador {
+  display: flex;
+  background-color: rgb(228, 226, 226);
+  height: 250px;
+  justify-content: center;
+  align-items: center;
+}
+
+.planta-imagen {
+  justify-content: center;
+  margin: 0;
+}
+
+.lorem-nosotros {
+  font-family: "Playfair Display", serif;
+  color: rgb(129, 129, 129);
+  font-weight: 400;
+  text-align: center;
+  padding: 5% 0;
+}
