@@ -14,21 +14,21 @@ function Catalogo() {
     dispatch(getProducts());
   }, []);
 
-  useEffect(() => {
-    console.log(productsIncart);
-  }, [productsIncart]);
+  // useEffect(() => {
+  //   console.log(productsIncart);
+  // }, [productsIncart]);
 
   const selectedChange = (e) => {
     let value = e.target.value;
     setCategorySelected(value);
   };
 
-  const addProductToCart = (item) => {
-    dispatch({
-      type: "ADDPRODUCT_CART",
-      payload: item,
-    });
-  };
+  // const addProductToCart = (item) => {
+  //   dispatch({
+  //     type: "ADDPRODUCT_CART",
+  //     payload: item,
+  //   });
+  // };
 
   return (
     <div>
@@ -53,15 +53,24 @@ function Catalogo() {
         <div className="productos-container">
           {producto &&
             CategorySelected === "TODOS" &&
-            producto.map((p, i) => (
-              <Product addProductToCart={addProductToCart} data={p} />
+            producto.map((p) => (
+              <Product 
+              name ={p.name}
+              description = {p.description}
+              price = {p.price}
+              stock = {p.stock}
+                         />
             ))}
           {producto &&
             CategorySelected !== "TODOS" &&
             producto
               .filter((el) => el.category === CategorySelected)
-              .map((p, i) => (
-                <Product addProductToCart={addProductToCart} data={p} />
+              .map((p) => (
+                <Product 
+                name ={p.name}
+                description = {p.description}
+                price = {p.price}
+                stock = {p.stock}/>
               ))}
         </div>
       </div>
