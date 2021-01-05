@@ -20,7 +20,7 @@ export default function rootReducer (state = initialState,action){
         case "ADDPRODUCT_CART":
             return {
               ...state,
-              productCart: [...state.productCart, action.payload]
+              productCart: state.productCart.concat(action.payload)
             };
         default: return state
     }
