@@ -23,3 +23,11 @@ export function searchProducts(product) {
       })
     }
   }
+ 
+  export function addProductCart(payload){
+    return {
+      type : "ADDPRODUCT_CART",
+      payload
+    }
+  }
+  
