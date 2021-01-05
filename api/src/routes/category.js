@@ -10,13 +10,6 @@ server.get('/', function (req, res, next) {
     .catch(next);
 });
 
-server.get('/', function (req, res, next) {
-  Category.findAll()
-    .then(category => {
-      res.send(category);
-    })
-    .catch(next);
-});
 
 // S18: Crear ruta para crear/agregar categoría
 server.post('/', (req, res, next) => {

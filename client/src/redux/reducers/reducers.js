@@ -3,9 +3,10 @@ const initialState ={
     productsDetail:[], 
     productSearch:[],// los productos que se buscan
     productCart: [],
+    categories:[]
 }
 
-export default function rootReducer (state = initialState,action){
+function rootReducer (state = initialState,action){
     switch(action.type){
         case "SEARCH_PRODUCTS":
             return {
@@ -28,6 +29,13 @@ export default function rootReducer (state = initialState,action){
                   ...state,
                   detailProduct: action.payload
                 };
+        case "GET_CATEGORY" :
+            return{
+                ...state,
+              categories : action.payload
+            }
+
         default: return state
     }
 }
+export default rootReducer
