@@ -7,7 +7,7 @@ import {addProductCart} from '../../redux/actions/actions'
 
     
 
-export default function ProductDetail (props) {
+export default function ProductDetail () {
     const dispatch = useDispatch();
     const product = useSelector(state => state.detailProduct)
     
@@ -16,7 +16,7 @@ export default function ProductDetail (props) {
           
               <div className="details">
                 <div className="big-img">
-                  {/* <img src={product.src} alt=""/> */}
+                  <img src={product.image} alt=""/> 
                 </div>
   
                 <div className="box">
