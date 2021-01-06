@@ -1,8 +1,10 @@
 import React from 'react';
 import "./Carrito.css"
 import imageneliminar from "../../assets/cruz.png"
-
+import {useSelector,useDispatch} from "react-redux";
+import Product from "../Product/Product"
 function Carrito() {
+const carrito = useSelector(state => state.productCart)
 
   return (
     <div>
@@ -18,13 +20,17 @@ function Carrito() {
                     <th>SUBTOTAL</th>
                     <th>EDITAR/ELIMINAR</th>
                 </tr>
-                <tr>
-                    <td>Nueces</td>
-                    <td>$100</td>
-                    <td>1</td>
-                    <td>$100</td>
-                    <td><img className= "imageneliminar" src= {imageneliminar}></img></td>
-                </tr>
+                {carrito.map((m) =>(
+                        <tr>
+                            <td>{m.name}</td>
+                            <td>{m.price}</td>
+                           
+                        </tr>
+                    ))}
+                   
+                    {/* <tr> <td><img className= "imageneliminar" src= {imageneliminar}></img></td> </tr> */}
+              
+                 
             </table>
         </div>
 

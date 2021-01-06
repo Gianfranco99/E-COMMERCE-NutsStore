@@ -1,6 +1,6 @@
 const initialState ={
     products :[],// todos los productos para tienda
-    productsDetail:[], 
+    detailProduct:[], 
     productSearch:[],// los productos que se buscan
     productCart: [],
     categories:[]
