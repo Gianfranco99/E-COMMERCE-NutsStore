@@ -21,6 +21,7 @@ export default function Producto(props){
             <div className='card-content'>
                 <div className='card-title'>
                     <h3>{props.name}</h3>
+                    <h4></h4>
                 </div>
                 <div className='card-body'>
                     <p>{props.description}</p>
