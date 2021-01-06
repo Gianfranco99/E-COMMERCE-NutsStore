@@ -1,0 +1,19 @@
+.container{
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container label {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.container input {
+  border-style:solid; 
+  padding:5px; 
+  font-size:19px; 
+  border-radius:12px; 
+  border-color:#de9d7a; 
+  border-width:1px;
+}

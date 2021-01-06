@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { addProductCart, getProducts,getCategory} from "../../redux/actions/actions";
 
+const ProductTable = (funcion) => {
+    const props = useSelector((state) => state);
+    const dispatch = useDispatch();
 
-
-const ProductTable = (props) => {
-
-    console.log(props.products)
     return (
         <table>
             <thead>
@@ -30,13 +31,13 @@ const ProductTable = (props) => {
                             <td>
                             <button 
                                 className="button muted-button"
-                                onClick={() => {props.editRow(product)}}
+                                onClick={() => {funcion.editRow(product)}}
                             >
                                 Edit
                             </button>
                             <button 
                                 className="button muted-button"
-                                onClick={() => {props.deleteProduct(product.id)}}
+                                onClick={() => {funcion.deleteProduct(product.id)}}
                             >
                                 Delete
                             </button>
