@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductCard.css';
 import {useDispatch} from 'react-redux'
-import {addProductCart} from '../../redux/actions/actions'
+import {addProductCart,increment} from '../../redux/actions/actions'
 
 export default function Producto(props){
     const dispatch = useDispatch();

@@ -3,7 +3,8 @@ const initialState ={
     productsDetail:[], 
     productSearch:[],// los productos que se buscan
     productCart: [],
-    categories:[]
+    categories:[],
+     count : 0
 }
 
 function rootReducer (state = initialState,action){
@@ -27,7 +28,19 @@ function rootReducer (state = initialState,action){
             return{
                 ...state,
               categories : action.payload
+            };
+        case "INCREMENT" :{
+            return {
+                ...state,
+                count : state.count + 1
             }
+        };
+        case "DECREMENT":{
+            return {
+                ...state,
+                count: state.count -1
+            }
+        };
 
         default: return state
     }

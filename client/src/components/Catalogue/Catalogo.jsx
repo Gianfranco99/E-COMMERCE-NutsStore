@@ -17,7 +17,7 @@ function Catalogo() {
  useEffect(()=>{
  dispatch(getCategory())
  },[])
-console.log(category,"Aaaaaaaaaaaaaa")
+
 
 
 
