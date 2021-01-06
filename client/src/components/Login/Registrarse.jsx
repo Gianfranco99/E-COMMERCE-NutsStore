@@ -33,7 +33,7 @@ return (
         <br></br>
         <input className="input" type="text" 
                placeholder= "Ingrese su nombre" 
-               name="nombre" 
+               name="name" 
                value={input.name} 
                onChange = {handleInputChange}/>
         </label>
