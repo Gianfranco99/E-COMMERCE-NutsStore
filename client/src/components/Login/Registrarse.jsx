@@ -17,6 +17,7 @@ function Registrarse() {
   };
 
   const registrarse = () => {
+    console.log(input);
     axios
       .post("http://localhost:3001/user/registrarse", input)
       .then((res) => console.log(res));
