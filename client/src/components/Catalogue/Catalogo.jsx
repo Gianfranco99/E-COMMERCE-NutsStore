@@ -56,6 +56,8 @@ function Catalogo() {
               description = {p.description}
               price = {p.price}
               stock = {p.stock}
+              id = {p.id}
+              image = {p.image}
                          />
             ))}
           {producto &&
@@ -67,7 +69,10 @@ function Catalogo() {
                 name ={p.name}
                 description = {p.description}
                 price = {p.price}
-                stock = {p.stock}/>
+                stock = {p.stock}
+                id= {p.id}
+                image={p.image}
+                />
               ))}
         </div>
       </div>

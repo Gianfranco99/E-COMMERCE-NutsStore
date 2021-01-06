@@ -29,19 +29,26 @@ function rootReducer (state = initialState,action){
                 ...state,
               categories : action.payload
             };
-        case "INCREMENT" :{
+        case "INCREMENT" :
             return {
                 ...state,
                 count : state.count + 1
-            }
+            
         };
-        case "DECREMENT":{
+        case "DECREMENT":
             return {
                 ...state,
                 count: state.count -1
-            }
+            
         };
-
+        case "CLEAN_CART":
+            return {
+                productCart:[]
+            }
+        case "REMOVE_ITEM_CART":
+            return {
+                productCart : state.productCart.filter(p => p.id !== action.payload.id)
+            }
         default: return state
     }
 }

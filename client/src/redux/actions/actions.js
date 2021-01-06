@@ -55,3 +55,16 @@ export function searchProducts(product) {
       type: "DECREMENT"
     }
   }
+
+  export function cleanCart(){
+    return{
+      type : "CLEAN_CART"
+    }
+  }
+
+  export function removeItemCart(payload){
+    return {
+      type : "REMOVE_ITEM_CART",
+      payload
+    }
+  }
