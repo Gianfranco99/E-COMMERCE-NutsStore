@@ -13,6 +13,7 @@ import Registrarse from "./components/Login/Registrarse"
 import Carrito from "./components/Cart/Carrito"
 import Product from "./components/Product/Product"
 
+
 function App() {
   return (
     <div className="App">
@@ -33,9 +34,9 @@ function App() {
       path='/SearchProduct'
       render={() => <SearchProduct />}
     />
-    <Route
-      exact path='/products'
-      render={() => <Catalogo/>}
+    <Route       
+      exact path='/products/:id'       
+      render={() => <Catalogo/>}     
     />
     <Route
       exact path='/products/:id'

@@ -18,6 +18,7 @@ const AddProductForm = (props) => {
 
   const onSubmit = (data, e) => {
     props.addProduct({ ...data, image: Fotos });
+    console.log(data)
     //limpiar campos
     e.target.reset();
   };
@@ -25,7 +26,7 @@ const AddProductForm = (props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>Producto</label>
-      <input
+      <input className
         type="text"
         name="name"
         ref={register({
