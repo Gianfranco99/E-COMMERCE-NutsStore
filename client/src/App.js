@@ -34,11 +34,9 @@ function App() {
       path='/SearchProduct'
       render={() => <SearchProduct />}
     />
-    <Route
-      exact path='/products'
-      render={() => <Catalogo
-        product = {product}
-      />}
+    <Route       
+      exact path='/products/:id'       
+      render={() => <Catalogo/>}     
     />
     <Route
       exact path='/products/:id'

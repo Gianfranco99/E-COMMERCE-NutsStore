@@ -1,32 +1,49 @@
 import React from 'react';
-import style from './../AddProduct/Admin.module.css'
+import { useForm } from 'react-hook-form';
+import style from "./Admin2.module.css";
 
-export default function  FormCategorie() {
-    const [input, setInput] = React.useState({
-        name: '',
-        description: '',
-    });
+function FormCategorie() {
+  const { register, handleSubmit, errors } = useForm(); // initialize the hook
+  const onSubmit = (data, e) => {
+    console.log(data);
+    var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
-    const handleInputChange = function(e) {
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        });
-    }
-    
-    return (
-        <form>
-            <div className={style.container}>
-                <div>
-                    <h2>Category: </h2>
-                    <input type="text" name="name" value={input.name} onChange = {handleInputChange}/>
-                </div>
+        var raw = JSON.stringify({"name":`${data.name}`,"description":`${data.description}`});
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        fetch("http://localhost:3001/products/category", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+        e.target.reset();
+  };
+
+  return (
+    <div className={style.container}>
+        <div className="flex-row">
+            <div className="flex-large">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                <label>Categoria</label>
+                <input name="name" ref={register({ required: true })} />
+                <label>Descripción</label>
+                <input name="description" ref={register({ required: true })} />
+                {errors.name && 'Se requiere una categoría'}
+                <br></br>
+                <br></br>
+                <input type="submit" />
+                </form>
             </div>
-            <div className={style.container}>
-                <h2>Description: </h2>
-                <input type="text" name="description" value={input.description} onChange = {handleInputChange}/>
-            </div>
-            <input type="submit" value="submit"/>
-        </form>
-    )
-  }
+        </div>
+    </div>
+  )
+}
+
+export default FormCategorie;
