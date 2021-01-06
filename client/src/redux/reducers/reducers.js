@@ -1,6 +1,6 @@
 const initialState ={
     products :[],// todos los productos para tienda
-    productsDetail:[], 
+    detailProduct:[], 
     productSearch:[],// los productos que se buscan
     productCart: [],
     categories:[]
@@ -23,6 +23,12 @@ function rootReducer (state = initialState,action){
               ...state,
               productCart: state.productCart.concat(action.payload)
             };
+            // cree el reducer para el detalle del producto
+            case "DETAIL_PRODUCT":
+                return {
+                  ...state,
+                  detailProduct: action.payload
+                };
         case "GET_CATEGORY" :
             return{
                 ...state,

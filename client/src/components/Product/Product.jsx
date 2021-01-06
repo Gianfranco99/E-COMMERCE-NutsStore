@@ -1,7 +1,8 @@
 import React from 'react';
 import './ProductCard.css';
-import {useDispatch} from 'react-redux'
-import {addProductCart} from '../../redux/actions/actions'
+import {useDispatch} from 'react-redux';
+import {addProductCart, DetailProduct} from '../../redux/actions/actions';
+import { Link } from 'react-router-dom';
 
 export default function Producto(props){
     const dispatch = useDispatch();
@@ -17,8 +18,8 @@ export default function Producto(props){
                 </div>
                 <div className='card-body'>
                     <p>{props.description}</p>
-                    <p>${props.price}</p>
-                    <p><em>stock:</em> {props.stock} </p>
+                    {/* <p>${props.price}</p>
+                    <p><em>stock:</em> {props.stock} </p> */}
                 </div>
             </div>
             <div className='btn'>
@@ -26,6 +27,13 @@ export default function Producto(props){
                     <a>Agregar al carrito</a>
                 </button>
             </div>
+                <div className='btn-more'>
+                    <Link to='/productDetail'>
+                    <button onClick={() => dispatch(DetailProduct(props))}>
+                        <a>ver mas</a>
+                    </button>
+                    </Link>
+                </div>
         </div>
     )    
 }

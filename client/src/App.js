@@ -12,6 +12,7 @@ import MiCuenta from "./components/MyUser/MiCuenta"
 import Registrarse from "./components/Login/Registrarse"
 import Carrito from "./components/Cart/Carrito"
 import Product from "./components/Product/Product"
+import ProductDetail from './components/Product/ProductDetail';
 
 
 function App() {
@@ -69,6 +70,10 @@ function App() {
     <Route
       exact path='/admin2'
       render={() => <Admin2/>}
+    />
+    <Route
+      exact path='/productDetail'
+      render={() => <ProductDetail/>}
     />
     
   </Router>
