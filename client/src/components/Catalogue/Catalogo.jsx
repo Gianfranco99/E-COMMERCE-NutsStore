@@ -3,32 +3,29 @@ import { useSelector, useDispatch } from "react-redux";
 import Product from "../Product/Product.jsx";
 import "./Catalogo.css";
 
-import { addProductCart, getProducts } from "../../redux/actions/actions";
+import { addProductCart, getProducts,getCategory} from "../../redux/actions/actions";
 
 function Catalogo() {
   const [CategorySelected, setCategorySelected] = useState("TODOS");
   const dispatch = useDispatch();
   const producto = useSelector((state) => state.products);
   const productsIncart = useSelector((state) => state.productCart);
+  const category = useSelector((state) => state.categories)
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+ useEffect(()=>{
+ dispatch(getCategory())
+ },[])
+console.log(category,"Aaaaaaaaaaaaaa")
 
-  // useEffect(() => {
-  //   console.log(productsIncart);
-  // }, [productsIncart]);
+
 
   const selectedChange = (e) => {
     let value = e.target.value;
     setCategorySelected(value);
   };
 
-  // const addProductToCart = (item) => {
-  //   dispatch({
-  //     type: "ADDPRODUCT_CART",
-  //     payload: item,
-  //   });
-  // };
 
   return (
     <div>
@@ -44,10 +41,10 @@ function Catalogo() {
             onChange={selectedChange}
           >
             <option value="TODOS">TODOS</option>
-            <option value="frutos secos">frutos secos</option>
-            <option value="castañas de caju">castañas de caju</option>
-            <option value="nueces">nueces</option>
-            <option value="harinas">harinas</option>
+            {category && category.map(c =>
+              <option value = {c.name}>{c.name}</option>
+              )}
+     
           </select>
         </div>
         <div className="productos-container">
