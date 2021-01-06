@@ -14,8 +14,22 @@ server.post('/registrarse', (req, res) => {
             password: req.body.password
         }
     })
-      .then((created) => res.status(201).send(created))
-      .catch((error) => res.status(412).send(error));
+      .then((created) => res.status(200).send(created))
+      .catch((error) => res.status(400).send(error));
+})
+
+
+//iniciar sesion
+server.post('/login', (req, res) => {
+  User.findByPk(req.body.email)
+    .then((user) => {
+      if (req.body.password == user.password) {
+        res.status(200).send({logueado: true})
+      } else {
+        res.status(400).send({logueado: false, message: "los datos no coinciden"})
+      }
+    })
+    .catch((error) => res.status(400).send(error));
 })
 
 
@@ -26,7 +40,7 @@ server.put('/users/:id', function (req, res) {
         id: req.params.id
       }
     })
-      .then(User => res.status(202).send(User))
+      .then(User => res.status(200).send(User))
       .catch((error) => res.send(error))
   })
 
