@@ -19,13 +19,13 @@ server.get("/me", async (req, res, next) => {
 server.post("/registrarse", async function (req, res, next) {
   try {
     const user = await User.create(req.body);
-    const { id, name, email: userEmail, isAdmin} = user;
-    return res.send(
+    const { id, name, email, isAdmin} = user;
+    res.status(200).send(
       jwt.sign(
         {
             id,
             name,
-            email: userEmail,
+            email,
             isAdmin,
         },
         TOKEN_PASSWORD
@@ -38,9 +38,10 @@ server.post("/registrarse", async function (req, res, next) {
 
 server.post("/login", function (req, res, next) {
   passport.authenticate("local", function (err, user) { //recibe la estrategia que se usa: "local" para LocalStrategy y una funcion que se autoejecuta
-    if (err) return next(err);
+   console.log(err, user);
+  if (err) return next(err);
     else if (!user) return res.sendStatus(401);
-    else return res.send(jwt.sign(user, "secreto"));
+    else return res.send(jwt.sign(user, TOKEN_PASSWORD));
   })(req, res, next);
 });
 

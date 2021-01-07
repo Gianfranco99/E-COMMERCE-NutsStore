@@ -7,20 +7,20 @@ const jwt = require("jsonwebtoken");
 passport.use(
   new LocalStrategy(
     { usernameField: "email", passwordField: "password", session: false },
-    async (email, password, done) => {
-      const user = await User.findOne({ where: { email: email } });  //busca el usuario en la database
+    async (mail, password, done) => {
+      const user = await User.findOne({ where: { email: mail } });  //busca el usuario en la database
       if (!user) return done(null, false); //login es false
       if (!user.compare(password)) return done(null, false); //contraseña incorrecta, login false
       const {
         id,
         name,
-        email: userEmail,
+        email,
         isAdmin
       } = user;
       return done(null, {  //devolver usuario
         id,
         name,
-        email: userEmail,
+        email,
         isAdmin
       });
     }
