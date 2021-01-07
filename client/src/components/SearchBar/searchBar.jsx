@@ -23,7 +23,7 @@ function SearchBar (){
      {
       e.preventDefault();
       dispatch(searchProducts(producto))
-      dispatch(searchProductsByDescription(producto))
+      // dispatch(searchProductsByDescription(producto))
       setProducto("")
     }}>
     <input

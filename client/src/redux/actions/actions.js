@@ -17,7 +17,7 @@ export function searchProducts(product) {
         .then(response => response.json())
         .then(json => {
           dispatch({
-            type: "SEARCH_PRODUCTS",
+            type: "SEARCH_PRODUCTS_BY_DESCRIPTION",
             payload: json
           });
         });

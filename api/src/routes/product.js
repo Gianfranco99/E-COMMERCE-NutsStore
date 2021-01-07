@@ -94,7 +94,7 @@ server.get('/search/search', (req, res, next) => {
 		Product.findAll({
 			where: {
 				description: {
-					[Op.like]:`%${description}%`
+					[Op.like]:`${description}%`
 				}
 			}
 		})
@@ -107,11 +107,10 @@ server.get('/search/search', (req, res, next) => {
 server.get('/search/search', (req, res, next) => {
 	const name = req.query.name
 	if(name){
-		
 		Product.findAll({
 			where: {
 				name:{
-					[Op.like] : `%${name}%`
+					[Op.like] : `${name}%`
 				}
 			}
 		})
