@@ -50,7 +50,7 @@ export default function Producto(props){
                             <img src={props.image} alt="no image"/>                    
                         </div>
                         <div className='card-content'>
-                    <       div className='card-title'>
+                    <div className='card-title'>
                                 <h3>{props.name}</h3>
                                 <h4></h4>
                         </div>
