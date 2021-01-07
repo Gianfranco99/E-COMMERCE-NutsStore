@@ -13,7 +13,30 @@ export default function ProductDetail () {
     
       return(
         <div className="container">
-          
+          { product.stock > 0 ? (
+              <div className="details">
+                <div className="big-img">
+                  <img src={product.image} alt=""/> 
+                </div>
+  
+                <div className="box">
+                  <div className="row">
+                    <h2>{product.name}</h2>                    
+                  </div>
+                  <h3>${product.price}</h3>
+  
+                  <p>{product.description}</p>
+                  <label>Stock</label>
+                  <p>{product.stock}</p>
+                  <button className="cart" onClick={() => dispatch(addProductCart(product))}>
+                      agregaralCart
+                    </button>
+  
+                </div>
+              </div>
+
+          ) : (
+
               <div className="details">
                 <div className="big-img">
                   <img src={product.image} alt=""/> 
@@ -22,21 +45,17 @@ export default function ProductDetail () {
                 <div className="box">
                   <div className="row">
                     <h2>{product.name}</h2>
-                    <span>${product.price}</span>
                   </div>
+                  <h3>${product.price}</h3>
   
                   <p>{product.description}</p>
+                  <label>Stock</label>
                   <p>{product.stock}</p>
-  
-                  {/* <Details images={item.src} tab={handleTab} /> */}
-                  <button className="cart" onClick={() => dispatch(addProductCart(product))}>
-                      agregaralCart
-                    </button>
-  
+                  <label>Producto no disponible</label>  
                 </div>
               </div>
-            
-          
+            )
+        }
         </div>
       );
     

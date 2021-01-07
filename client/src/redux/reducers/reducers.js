@@ -3,7 +3,8 @@ const initialState ={
     detailProduct:[], 
     productSearch:[],// los productos que se buscan
     productCart: [],
-    categories:[]
+    categories:[],
+     count : 0
 }
 
 function rootReducer (state = initialState,action){
@@ -39,8 +40,27 @@ function rootReducer (state = initialState,action){
             return{
                 ...state,
               categories : action.payload
+            };
+        case "INCREMENT" :
+            return {
+                ...state,
+                count : state.count + 1
+            
+        };
+        case "DECREMENT":
+            return {
+                ...state,
+                count: state.count -1
+            
+        };
+        case "CLEAN_CART":
+            return {
+                productCart:[]
             }
-
+        case "REMOVE_ITEM_CART":
+            return {
+                productCart : state.productCart.filter(p => p.id !== action.payload.id)
+            }
         default: return state
     }
 }
