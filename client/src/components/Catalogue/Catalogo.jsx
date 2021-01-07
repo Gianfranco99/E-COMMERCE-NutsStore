@@ -17,7 +17,7 @@ function Catalogo() {
  useEffect(()=>{
  dispatch(getCategory())
  },[])
-console.log(category,"Aaaaaaaaaaaaaa")
+
 
 
 
@@ -56,6 +56,8 @@ console.log(category,"Aaaaaaaaaaaaaa")
               description = {p.description}
               price = {p.price}
               stock = {p.stock}
+              id = {p.id}
+              image = {p.image}
                          />
             ))}
           {producto &&
@@ -67,7 +69,9 @@ console.log(category,"Aaaaaaaaaaaaaa")
                 name ={p.name}
                 description = {p.description}
                 price = {p.price}
-                stock = {p.stock}/>
+                stock = {p.stock}
+                id = {p.id}
+                image = {p.image}/>
               ))}
         </div>
       </div>

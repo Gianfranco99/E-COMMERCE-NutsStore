@@ -3,8 +3,11 @@ import "./Carrito.css"
 import imageneliminar from "../../assets/cruz.png"
 import {useSelector,useDispatch} from "react-redux";
 import Product from "../Product/Product"
+import {increment,decrement,cleanCart,removeItemCart} from '../../redux/actions/actions'
 function Carrito() {
 const carrito = useSelector(state => state.productCart)
+const cantidad = useSelector(state => state.count)
+const dispatch = useDispatch()
 
   return (
     <div>
@@ -24,14 +27,21 @@ const carrito = useSelector(state => state.productCart)
                         <tr>
                             <td>{m.name}</td>
                             <td>{m.price}</td>
-                           
+                            <td>
+                                <button>+</button>
+                                {<button>-</button> }
+                            </td>
+                            <td>SUBTOTAL</td>
+                            <td>
+                                <button onClick={() => dispatch(removeItemCart({id : m.id}))}>x</button>
+                            </td>
                         </tr>
                     ))}
-                   
                     {/* <tr> <td><img className= "imageneliminar" src= {imageneliminar}></img></td> </tr> */}
               
                  
             </table>
+            <div><button onClick={()=>dispatch(cleanCart())}>limpiar carrito</button></div>
         </div>
 
     </div>

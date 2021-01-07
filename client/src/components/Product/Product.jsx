@@ -1,20 +1,27 @@
 import React from 'react';
 import './ProductCard.css';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {addProductCart, DetailProduct} from '../../redux/actions/actions';
 import { Link } from 'react-router-dom';
 
+
 export default function Producto(props){
     const dispatch = useDispatch();
+     const data = useSelector(state => state.products)
+    // const Example = <img src={`data:image/jpeg;base64,${props.image}`} />
+    
 
+    console.log(data)
     return (
         <div className='card-container'>
             <div className='image-container'>
-                <img src="https://cdn.bioguia.com/embed/3ece7bed889ff4c45abb1e84111191524266231/Frutos_secos?imagick=1&size=500" alt=""/>
+                <img src={props.image} alt="no image"/>
+                
             </div>
             <div className='card-content'>
                 <div className='card-title'>
                     <h3>{props.name}</h3>
+                    <h4></h4>
                 </div>
                 <div className='card-body'>
                     <p>{props.description}</p>
