@@ -4,11 +4,11 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   const Order = sequelize.define('order', {
-    orderId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      primaryKey: true
-    },
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   primaryKey: true
+    // },
     
     price: {
       type: DataTypes.INTEGER,
@@ -22,6 +22,7 @@ module.exports = (sequelize) => {
 
     status: {
         type: DataTypes.STRING, 
+        allowNull:false,
         validate: {
         isIn: [['carrito', 'creada', 'procesando', 'cancelada', 'completa']]
     }
