@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Link,Route,Router, Switch } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import {useSelector,useDispatch} from "react-redux"
-import {searchProducts} from "../../redux/actions/actions"
+import {searchProducts,searchProductsByDescription} from "../../redux/actions/actions"
 
 
 
@@ -23,6 +23,7 @@ function SearchBar (){
      {
       e.preventDefault();
       dispatch(searchProducts(producto))
+      // dispatch(searchProductsByDescription(producto))
       setProducto("")
     }}>
     <input
