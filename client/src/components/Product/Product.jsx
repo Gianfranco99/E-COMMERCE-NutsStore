@@ -14,34 +14,62 @@ export default function Producto(props){
     console.log(data)
     return (
         <div className='card-container'>
-            <div className='image-container'>
-                <img src={props.image} alt="no image"/>
-                
-            </div>
-            <div className='card-content'>
-                <div className='card-title'>
-                    <h3>{props.name}</h3>
-                    <h4></h4>
+            { 
+                props.stock > 0 ? (
+                    <div>
+                        <div className='image-container'>
+                            <img src={props.image} alt="no image"/>                            
+                        </div>
+                        <div className='card-content'>
+                            <div className='card-title'>
+                                <h3>{props.name}</h3>
+                                <h4></h4>
+                            </div>
+                            <div className='card-body'>
+                                <p>{props.description}</p>
+                            </div>
+                        </div>
+                        <div className='btn'>
+                            <button onClick={() => dispatch(addProductCart(props))}>
+                                <a>Agregar al carrito</a>
+                            </button>
+                        </div>
+                            <div className='btn-more'>
+                                <Link to='/productDetail'>
+                                <button onClick={() => dispatch(DetailProduct(props))}>
+                                    <a>ver mas</a>
+                                </button>
+                                </Link>
+                            </div>
                 </div>
-                <div className='card-body'>
-                    <p>{props.description}</p>
-                    {/* <p>${props.price}</p>
-                    <p><em>stock:</em> {props.stock} </p> */}
-                </div>
-            </div>
-            <div className='btn'>
-                <button onClick={() => dispatch(addProductCart(props))}>
-                    <a>Agregar al carrito</a>
-                </button>
-            </div>
-                <div className='btn-more'>
-                    <Link to='/productDetail'>
-                    <button onClick={() => dispatch(DetailProduct(props))}>
-                        <a>ver mas</a>
-                    </button>
-                    </Link>
-                </div>
-        </div>
+                ) : (
+                    <div>
+                        <div className='image-container'>
+                            <img src={props.image} alt="no image"/>                    
+                        </div>
+                        <div className='card-content'>
+                    <div className='card-title'>
+                                <h3>{props.name}</h3>
+                                <h4></h4>
+                        </div>
+                        <div className='card-body'>
+                            <p>{props.description}</p>
+                        </div>
+                    </div>
+                    <div className='btn'>
+                        <label>Producto no disponible</label>
+                    </div>
+                        <div className='btn-more'>
+                            <Link to='/productDetail'>
+                            <button onClick={() => dispatch(DetailProduct(props))}>
+                                <a>ver mas</a>
+                            </button>
+                            </Link>
+                        </div>
+                    </div>        
+                )
+            }
+        </div>        
     )    
 }
 
