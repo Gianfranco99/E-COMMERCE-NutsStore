@@ -27,8 +27,6 @@ export default function Producto(props){
                             </div>
                             <div className='card-body'>
                                 <p>{props.description}</p>
-                                {/* <p>${props.price}</p>
-                                <p><em>stock:</em> {props.stock} </p> */}
                             </div>
                         </div>
                         <div className='btn'>
@@ -56,8 +54,6 @@ export default function Producto(props){
                         </div>
                         <div className='card-body'>
                             <p>{props.description}</p>
-                            {/* <p>${props.price}</p>
-                            <p><em>stock:</em> {props.stock} </p> */}
                         </div>
                     </div>
                     <div className='btn'>

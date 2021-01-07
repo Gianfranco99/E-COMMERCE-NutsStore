@@ -28,8 +28,6 @@ export default function ProductDetail () {
                   <p>{product.description}</p>
                   <label>Stock</label>
                   <p>{product.stock}</p>
-  
-                  {/* <Details images={item.src} tab={handleTab} /> */}
                   <button className="cart" onClick={() => dispatch(addProductCart(product))}>
                       agregaralCart
                     </button>
@@ -53,8 +51,6 @@ export default function ProductDetail () {
                   <p>{product.description}</p>
                   <label>Stock</label>
                   <p>{product.stock}</p>
-  
-                  {/* <Details images={item.src} tab={handleTab} /> */}
                   <label>Producto no disponible</label>  
                 </div>
               </div>
