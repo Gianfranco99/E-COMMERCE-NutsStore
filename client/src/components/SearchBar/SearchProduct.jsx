@@ -13,7 +13,8 @@ export default function SearchProduct(){
                 name={p.name}
                 description= {p.description}
                 price={p.price}
-                stock={p.stock} 
+                stock={p.stock}
+                image={p.image} 
                 />
                 )}
             </div>
