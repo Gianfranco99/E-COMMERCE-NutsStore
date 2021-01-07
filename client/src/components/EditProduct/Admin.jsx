@@ -30,9 +30,18 @@ function Admin() {
 
   //eliminar producto
   const deleteProduct = (id) => {
-    console.log(id);
+    var raw = "";
 
-    setProducts(products.filter((product) => product.id !== id));
+    var requestOptions = {
+    method: 'DELETE',
+    body: raw,
+    redirect: 'follow'
+    };
+
+    fetch(`http://localhost:3001/products/${id}`, requestOptions)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
   };
 
   //editar producto
