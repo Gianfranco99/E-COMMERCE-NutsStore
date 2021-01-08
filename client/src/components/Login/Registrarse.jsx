@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Registrarse.css";
 import axios from "axios";
+import swal from "sweetalert";
 
 function Registrarse() {
   const [input, setInput] = useState({
@@ -17,10 +18,12 @@ function Registrarse() {
   };
 
   const registrarse = () => {
-    console.log(input);
-    axios
-      .post("http://localhost:3001/user/registrarse", input)
-      .then((res) => console.log(res));
+    axios.post("http://localhost:3001/auth/registrarse", input).then((res) =>
+      swal({
+        title: "Cuenta creada!",
+        icon: "success",
+      })
+    );
   };
 
   return (

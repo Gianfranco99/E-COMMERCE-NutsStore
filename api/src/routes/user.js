@@ -4,7 +4,7 @@ const { User } = require('../db.js');
 //Las rutas de crear usuario e iniciar sesion estan en auth.js
 
 // S35: Crear ruta para modificar usuario
-server.put('/users/:id', function (req, res) {
+server.put('/:id', function (req, res) {
     User.update(req.body, {
       where: {
         id: req.params.id

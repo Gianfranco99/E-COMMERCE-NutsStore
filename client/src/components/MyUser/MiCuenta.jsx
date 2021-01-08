@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./Micuenta.css";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 function MiCuenta() {
+  const dispatch = useDispatch();
   const [input, setInput] = useState({
     email: "",
     password: "",
@@ -17,11 +19,17 @@ function MiCuenta() {
 
   const iniciarsesion = () => {
     console.log(input);
-    axios
-      .post("http://localhost:3001/user/login", input)
-      .then((res) => console.log(res));
+    axios.post("http://localhost:3001/auth/login", input).then((res) => {
+      let {
+        data: { user, token },
+      } = res;
+      window.localStorage.setItem("token", token);
+      dispatch({
+        type: "SET_LOGIN",
+        payload: user,
+      });
+    });
   };
-
   return (
     <div className="Background-container">
       <div className="Background">

@@ -32,6 +32,7 @@ server.post("/registrarse", async function (req, res, next) {
       )
     );
   } catch (error) {
+    console.log(error)
     res.sendStatus(500).send(error);
   }
 });
@@ -39,9 +40,20 @@ server.post("/registrarse", async function (req, res, next) {
 server.post("/login", function (req, res, next) {
   passport.authenticate("local", function (err, user) { //recibe la estrategia que se usa: "local" para LocalStrategy y una funcion que se autoejecuta
    console.log(err, user);
+   const { id, name, email, isAdmin} = user;
   if (err) return next(err);
     else if (!user) return res.sendStatus(401);
-    else return res.send(jwt.sign(user, TOKEN_PASSWORD));
+    else return res.send({
+      token: jwt.sign(
+      {
+          id,
+          name,
+          email,
+          isAdmin,
+      }, TOKEN_PASSWORD
+    ),
+    user
+    });
   })(req, res, next);
 });
 
