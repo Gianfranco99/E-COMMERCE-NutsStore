@@ -10,7 +10,7 @@ const { DataTypes } = require('sequelize');
       allowNull: false,
     },
     
-    stock: {
+    quantity: {
       type: DataTypes.STRING,
       allowNull: false,
     },
