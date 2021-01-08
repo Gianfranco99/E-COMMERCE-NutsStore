@@ -4,6 +4,12 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   const User = sequelize.define('user', {
+    id: {
+      type:DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+  },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -22,7 +28,7 @@ module.exports = (sequelize) => {
         allowNull: false,
         validate: {
         isAlphanumeric: true,
-    }
+     }
     },
   });
 }

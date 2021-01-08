@@ -5,7 +5,6 @@ const {Order} = require("../db.js");
 
 server.post('/',function (req,res){
     Order.create({
-        orderId : req.body.id,
         price : req.body.price,
         orderProducts : req.body.orderProducts,
         status : req.body.status
