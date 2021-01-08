@@ -14,6 +14,12 @@ function rootReducer (state = initialState,action){
                 ...state,
                 productSearch : action.payload
             };
+        case "SEARCH_PRODUCTS_BY_DESCRIPTION":{
+            return {
+                ...state,
+                productSearch: action.payload
+        }
+    }
         case "GET_PRODUCTS":
             return {
               ...state,

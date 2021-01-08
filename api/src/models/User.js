@@ -14,7 +14,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      primaryKey: true,
       validate: {
         isEmail: true,
       }
@@ -22,6 +21,9 @@ module.exports = (sequelize) => {
     password: { 
         type: DataTypes.STRING, 
         allowNull: false,
+      validate: {
+        isAlphanumeric: true,
+     },
         set(value) {
           if (value) {
             const salt = bcrypt.genSaltSync(10);     
