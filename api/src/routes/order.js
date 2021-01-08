@@ -39,4 +39,12 @@ server.put("/:id",function(req,res){
     .then(orden => res.send(orden))
 })
 
+server.delete('/:id', function(req,res){
+    Order.destroy({
+      where:{
+        id : req.params.id
+      }
+    }).then(order => res.send("Order Eliminado"))
+   })
+
 module.exports= server;

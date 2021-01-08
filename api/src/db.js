@@ -41,11 +41,11 @@ const { OrderLine } = sequelize.models;
 
 Product.belongsToMany(Category, {through:'product_category'})
 Category.belongsToMany(Product, {through:'product_category'})
-//Order.belongsTo(User)
-// User.hasMany(Order)
-// Product.belongsToMany(Order, {through: 'orderLine'})
-// Order.belongsToMany(Product, {through: 'orderLine'})
-// OrderLine.hasOne(Order)
+Order.belongsTo(User)
+User.hasMany(Order)
+Product.belongsToMany(Order, {through: 'order_Line'})
+Order.belongsToMany(Product, {through: 'order_Line'})
+OrderLine.hasOne(Order)
 
 
 module.exports = {
