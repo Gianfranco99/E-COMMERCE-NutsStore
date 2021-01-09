@@ -21,7 +21,7 @@ const dispatch = useDispatch()
                     <th>PRECIO</th>
                     <th>CANTIDAD</th>
                     <th>SUBTOTAL</th>
-                    <th>EDITAR/ELIMINAR</th>
+                    <th>ELIMINAR</th>
                 </tr>
                 {carrito.map((m) =>(
                         <tr>
