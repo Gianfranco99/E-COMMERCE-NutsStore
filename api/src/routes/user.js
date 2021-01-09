@@ -57,7 +57,8 @@ Order.findOrCreate({
       { status : ["carrito","creada"]}
     ] 
   },
-  default : {
+  defaults : {
+    userId: user,
     price : req.body.price,
     orderProducts : req.body.orderProducts,
     status : req.body.status

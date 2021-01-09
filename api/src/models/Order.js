@@ -15,10 +15,10 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     
-    quantity :{
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
+    // quantity :{
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false
+    // },
 
     status: {
         type: DataTypes.STRING,
