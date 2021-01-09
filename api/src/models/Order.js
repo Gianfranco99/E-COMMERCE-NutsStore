@@ -14,6 +14,11 @@ module.exports = (sequelize) => {
         type: DataTypes.ARRAY(DataTypes.JSON),
         allowNull: false,
       },
+    
+    quantity :{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
 
     status: {
         type: DataTypes.STRING,

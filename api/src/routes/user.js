@@ -1,7 +1,8 @@
 const server = require('express').Router();
 //const { json, JSON } = require('sequelize-types');
 const { User } = require('../db.js');
-
+const {Order} = require('../db.js')
+const { Op } = require("sequelize");
 
 //S34: Crear ruta para creación de usuario
 server.post('/registrarse', (req, res) => {
@@ -45,13 +46,45 @@ server.delete('/:id', function(req,res){
  }).then(user => res.send("User Eliminado"))
 })
 
+//s38 : crear ruta para agregar item al carrito
+server.post('/:id/order',function(req,res){
+const user = req.params.id;
+Order.findOrCreate({
+  where:{ 
+    [Op.and]:
+    [
+      { userId : user},
+      { status : ["carrito","creado"]}
+    ] 
+  },
+  default : {
+    price : req.body.price,
+    orderProducts : req.body.orderProducts,
+    status : req.body.status
+  }
+})
+.then(order => res.send(order))
+})
+
+//s39 : crear ruta que retorne todos los items del carrito
+server.get('/:id/order',function(req,res){
+  
+})
+
+//s40 : crear ruta para vaciar carrito
+server.delete('/:id/order',function(req,res){
+
+})
+
 //s45: crear ruta que retorne todas las ordenes de usuario
 server.get('/:id/orders',function(req,res){
-  User.findOne({
-    where :{
-      id : req.params.id
-    }
-  }).then(user => res.send(JSON.stringify(user.order)))
+  const {id} = req.params
+  Order.findAll({
+  where: {
+  userId: id
+},
+  //include: [Product]
+  }).then(orders => res.send(JSON.stringify(orders)))
 })
 
 
