@@ -1,6 +1,6 @@
 const server = require('express').Router();
+const { Op } = require("sequelize");
 const { Product, product_category } = require('../db.js');
-
 // S21: Crear ruta que devuelva todos los productos
 server.get('/', function (req, res, next) {
 	Product.findAll()
@@ -93,7 +93,9 @@ server.get('/search/search', (req, res, next) => {
 	if (description) {
 		Product.findAll({
 			where: {
-				description: description
+				description: {
+					[Op.like]:`${description}%`
+				}
 			}
 		})
 			.then(products => res.json(products))
@@ -105,10 +107,11 @@ server.get('/search/search', (req, res, next) => {
 server.get('/search/search', (req, res, next) => {
 	const name = req.query.name
 	if(name){
-		
 		Product.findAll({
 			where: {
-				name: req.query.name
+				name:{
+					[Op.like] : `${name}%`
+				}
 			}
 		})
 		.then(products => res.json(products))
