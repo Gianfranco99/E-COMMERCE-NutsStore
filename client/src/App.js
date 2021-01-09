@@ -25,7 +25,7 @@ function App() {
         <GuestRoute path='/SearchProduct' component={SearchProduct}/>  
         <GuestRoute exact path='/products/:id' component={Catalogo}/>
         <GuestRoute exact path='/about' component={Nosotros}/>
-        <GuestRoute exact path='/micuenta' component={MiCuenta}/>
+        <Route exact path='/micuenta' component={MiCuenta}/>
         <GuestRoute exact path='/registro' component={Registrarse}/>    
         <GuestRoute exact path='/carrito' component={Carrito}/>    
         <AuthRoute exact path='/admin' component={Admin}/>
