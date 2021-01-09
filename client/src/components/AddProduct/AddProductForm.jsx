@@ -15,7 +15,7 @@ const AddProductForm = (props) => {
   };
 
   const { register, errors, handleSubmit } = useForm();
-
+  
   const onSubmit = (data, e) => {
     props.addProduct({ ...data, image: Fotos });
     console.log(data)

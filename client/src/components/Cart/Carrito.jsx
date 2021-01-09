@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Carrito.css"
 import imageneliminar from "../../assets/cruz.png"
 import {useSelector,useDispatch} from "react-redux";
@@ -8,8 +8,28 @@ function Carrito() {
 const carrito = useSelector(state => state.productCart)
 const cantidad = useSelector(state => state.count)
 const dispatch = useDispatch()
+let contador = 0;
 
-  return (
+function cantidadProductos(){
+    if(carrito.length > 1){
+        console.log(carrito)
+    }
+}
+
+function sumar (){
+    console.log(contador)
+    return contador = contador+1
+}
+
+function restar (){
+    console.log(contador)
+    if(contador > 0){
+        return contador = contador-1
+    }
+    
+}
+
+return (
     <div>
         <div className= "img-nosotros">
             <p className= "titulo-carrito">Carrito</p>
@@ -23,13 +43,15 @@ const dispatch = useDispatch()
                     <th>SUBTOTAL</th>
                     <th>EDITAR/ELIMINAR</th>
                 </tr>
-                {carrito.map((m) =>(
+                {carrito.map((m, i) =>(
                         <tr>
+                            <td>{m.id}</td>
                             <td>{m.name}</td>
                             <td>{m.price}</td>
                             <td>
-                                <button>+</button>
-                                {<button>-</button> }
+                                <button onClick={() => cantidadProductos()}>+</button>
+                                <input value={contador}></input>
+                                <button  onClick={() => restar()}>-</button>
                             </td>
                             <td>SUBTOTAL</td>
                             <td>
@@ -49,4 +71,4 @@ const dispatch = useDispatch()
   );
 }
 
-export default Carrito;
+export default Carrito
