@@ -4,7 +4,9 @@ const initialState ={
     productSearch:[],// los productos que se buscan
     productCart: [],
     categories:[],
-     count : 0
+    loggedIn: false,
+    user:{},
+    count : 0
 }
 
 function rootReducer (state = initialState,action){
@@ -24,6 +26,18 @@ function rootReducer (state = initialState,action){
             return {
               ...state,
               products: action.payload
+            };
+        case 'SET_LOGIN':
+            return {
+                ...state, 
+                loggedIn: true, 
+                user:action.payload
+            };
+        case 'SET_LOGOUT':
+            return {
+                ...state, 
+                loggedIn: false, 
+                user:{}
             };
         case "ADDPRODUCT_CART":
             return {
