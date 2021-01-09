@@ -28,7 +28,7 @@ function App() {
         <Route exact path='/micuenta' component={MiCuenta}/>
         <GuestRoute exact path='/registro' component={Registrarse}/>    
         <GuestRoute exact path='/carrito' component={Carrito}/>    
-        <AuthRoute exact path='/admin' component={Admin}/>
+        <GuestRoute exact path='/admin' component={Admin}/>
         <AuthRoute exact path='/admin2' component={Admin2}/>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
   </Router>
