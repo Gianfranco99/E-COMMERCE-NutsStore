@@ -90,3 +90,9 @@ export function searchProducts(product) {
       payload
     }
   }
+
+  export function editProduct(){
+    return{
+      type : "EDIT_PRODUCT"
+    }
+  }

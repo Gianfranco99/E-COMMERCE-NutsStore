@@ -1,9 +1,11 @@
 import React from 'react';
+import {useDispatch, useSelector} from 'react-redux'; 
 import { useForm } from 'react-hook-form'
 
 const EditProductForm = (props) => {
 
-    console.log(props.currentProduct)
+    const store =  useSelector((state) => state);
+    const dispatch = useDispatch();
 
     const {register, errors, handleSubmit, setValue} = useForm({
         defaultValues:props.currentProduct
@@ -16,7 +18,7 @@ const EditProductForm = (props) => {
     setValue('category', props.currentProduct.category);
 
     const onSubmit = (data, e) => {
-        console.log(data)
+        console.log('onSubmit pasa', data)
         data.id = props.currentProduct.id;
         props.updateProduct(props.currentProduct.id, data)
         
