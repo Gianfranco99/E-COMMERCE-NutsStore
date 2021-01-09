@@ -4,6 +4,7 @@ const initialState ={
     productSearch:[],// los productos que se buscan
     productCart: [],
     categories:[],
+    editProduct:false,
     loggedIn: false,
     user:{},
     count : 0
@@ -16,6 +17,11 @@ function rootReducer (state = initialState,action){
                 ...state,
                 productSearch : action.payload
             };
+        case "EDIT_PRODUCT":
+            return{
+                ...state,
+                editProduct : true
+            }
         case "SEARCH_PRODUCTS_BY_DESCRIPTION":{
             return {
                 ...state,
