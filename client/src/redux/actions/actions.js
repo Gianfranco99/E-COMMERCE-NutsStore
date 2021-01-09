@@ -91,8 +91,3 @@ export function searchProducts(product) {
     }
   }
 
-  export function editProduct(){
-    return{
-      type : "EDIT_PRODUCT"
-    }
-  }
