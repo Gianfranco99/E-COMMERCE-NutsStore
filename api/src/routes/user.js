@@ -54,7 +54,7 @@ Order.findOrCreate({
     [Op.and]:
     [
       { userId : user},
-      { status : ["carrito","creado"]}
+      { status : ["carrito","creada"]}
     ] 
   },
   default : {
