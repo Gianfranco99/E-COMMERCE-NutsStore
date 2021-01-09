@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogue/Catalogo';
@@ -11,71 +11,26 @@ import Nosotros from "./components/AboutUS/Nosotros"
 import MiCuenta from "./components/MyUser/MiCuenta"
 import Registrarse from "./components/Login/Registrarse"
 import Carrito from "./components/Cart/Carrito"
-import Product from "./components/Product/Product"
 import ProductDetail from './components/Product/ProductDetail';
-
+import GuestRoute from './containers/GuestRoute';
+import AuthRoute from './containers/AuthRoute';
 
 function App() {
   return (
     <div className="App">
-  <Router>
-    <Route path='/' render={() => <NavBar />}
-    />
-    
-    <Route
-      exact path='/'
-      render={() => <Home/>}
-    />
-
-    <Route
-      path='/catalogo'
-      component={() => <Catalogo/>}
-    />
-    <Route
-      path='/SearchProduct'
-      render={() => <SearchProduct />}
-    />
-    <Route       
-      exact path='/products/:id'       
-      render={() => <Catalogo/>}     
-    />
-    <Route
-      exact path='/products/:id'
-      render={() => <Catalogo/>}
-    />
-    <Route
-      exact path='/about'
-      render={() => <Nosotros/>}
-    />
-
-    <Route
-      exact path='/micuenta'
-      render={() => <MiCuenta/>}
-    />
-
-    <Route
-      exact path='/registro'
-      render={() => <Registrarse/>}
-    />    
-
-    <Route
-      exact path='/carrito'
-      render={() => <Carrito/>}
-    />    
-
-    <Route
-      exact path='/admin'
-      render={() => <Admin/>}
-    />
-    <Route
-      exact path='/admin2'
-      render={() => <Admin2/>}
-    />
-    <Route
-      exact path='/productDetail'
-      render={() => <ProductDetail/>}
-    />
-    
+      <Router>
+        <GuestRoute path='/' component={NavBar }/>
+        <GuestRoute exact path='/' component={Home}/>
+        <GuestRoute path='/catalogo' component={Catalogo} />
+        <GuestRoute path='/SearchProduct' component={SearchProduct}/>  
+        <GuestRoute exact path='/products/:id' component={Catalogo}/>
+        <GuestRoute exact path='/about' component={Nosotros}/>
+        <Route exact path='/micuenta' component={MiCuenta}/>
+        <GuestRoute exact path='/registro' component={Registrarse}/>    
+        <GuestRoute exact path='/carrito' component={Carrito}/>    
+        <GuestRoute exact path='/admin' component={Admin}/>
+        <AuthRoute exact path='/admin2' component={Admin2}/>
+        <GuestRoute exact path='/productDetail' component={ProductDetail}/>
   </Router>
  </div>
   );

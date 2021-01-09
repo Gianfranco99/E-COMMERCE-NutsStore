@@ -15,7 +15,6 @@ server.post('/registrarse', (req, res) => {
       .catch((error) => res.status(412).send(error));
 })
 
-
 // S35: Crear ruta para modificar usuario
 server.put('/:id', function (req, res) {
     User.update(req.body, {
@@ -23,7 +22,7 @@ server.put('/:id', function (req, res) {
         id: req.params.id
       }
     })
-      .then(User => res.status(202).send(User))
+      .then(User => res.status(200).send(User))
       .catch((error) => res.send(error))
   })
 
