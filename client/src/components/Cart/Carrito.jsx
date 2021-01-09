@@ -9,24 +9,6 @@ const carrito = useSelector(state => state.productCart)
 const cantidad = useSelector(state => state.count)
 const dispatch = useDispatch()
 
-guardarLOcal()
-obternerLOcal()
-
-function obternerLOcal(){
- let nombre = localStorage.getItem("nombre")
- let persona = JSON.parse( localStorage.getItem("persona"))
- console.log(nombre,persona)
-}
-
-function guardarLOcal(){
-  let persona ={
-    name : "juan",
-    apellido : "pedro"
-  }
-  let nombre = "juan"
-  localStorage.setItem("nombre",nombre)
-  localStorage.setItem("persona", JSON.stringify(persona))
-}
 
   return (
     <div>
