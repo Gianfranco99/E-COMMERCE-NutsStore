@@ -1,6 +1,7 @@
 const server = require('express').Router();
 const { Op } = require("sequelize");
-const { Product, product_category } = require('../db.js');
+const { Product, product_category, Review } = require('../db.js');
+
 // S21: Crear ruta que devuelva todos los productos
 server.get('/', function (req, res, next) {
 	Product.findAll()
@@ -11,15 +12,15 @@ server.get('/', function (req, res, next) {
 });
 
 // S24: Retorna un objeto de tipo producto con todos sus datos (incluidas las categorías e imágenes)
-// server.get('/:id', (req, res, next) => {
-// 	Product.findOne({
-// 		where:{
-// 			id: req.params.id
-// 		}
-// 	})
-// 		.then(product => res.send(product))
-// 		.catch(error => res.send(error))		
-// })
+server.get('/:id', (req, res, next) => {
+	Product.findOne({
+		where:{
+			id: req.params.id
+		}
+	})
+		.then(product => res.send(product))
+		.catch(error => res.send(error))		
+})
 
 // S25: Crear ruta para crear/agregar producto
 server.post('/', function (req, res, next) {
@@ -102,7 +103,7 @@ server.get('/search/search', (req, res, next) => {
 	} else {
 		next()
 	}
-})
+});
 // S23 --> next
 server.get('/search/search', (req, res, next) => {
 	const name = req.query.name
@@ -119,6 +120,60 @@ server.get('/search/search', (req, res, next) => {
 	} else {
 		next()
 	}
-})
+});
+
+	//S54: Crear ruta para crear/agregar Review
+	server.post('/:id/user/:idUser/review', (req, res, next)=>{
+		const {id, idUser} = req.params;
+		Review.create({
+			qualify: req.body.qualify,
+			description: req.body.description,
+			userId: idUser,
+			productId: id
+		})
+			.then(res.status(201).send('Se creó el review'))
+			.catch((err) => err)
+	});
+
+	//S55: Crear ruta para Modificar Review
+	server.put('/:id/review/:idReview',(req, res, next)=> {
+		console.log(req.body)
+		Review.update(req.body, {
+			where: {
+				id: req.params.idReview,
+				productId: req.params.id
+			}
+		})
+			.then(product => res.send(product))
+			.catch((error => res.status(400).send(error)))
+	})
+
+	//S56: Crear Ruta para eliminar Review
+	server.delete('/:id/review/:idReview', (req, res, next)=>{
+		const {id, idReview} = req.params;
+		Review.destroy({
+			where: {
+			id: idReview,
+			productId: id
+		}
+		})
+			.then(res.status(201).send('Se eliminó el review'))
+			.catch((err) => err)
+	})
+
+	//S57: Crear Ruta para obtener todas las reviews de un producto.
+	server.get('/review/:idReview', function (req, res, next) {	
+		// Review.findAll({
+		// 	where:{
+		// 		id: req.params.idReview
+		// 	}
+		// })
+		// .then(review => {
+		// 	res.send(review);
+		// })
+		// .catch(next);
+	}
+	)
+
 
 module.exports = server;
