@@ -162,16 +162,16 @@ server.get('/search/search', (req, res, next) => {
 	})
 
 	//S57: Crear Ruta para obtener todas las reviews de un producto.
-	server.get('/review/:idReview', function (req, res, next) {	
-		// Review.findAll({
-		// 	where:{
-		// 		id: req.params.idReview
-		// 	}
-		// })
-		// .then(review => {
-		// 	res.send(review);
-		// })
-		// .catch(next);
+	server.get('/:id/review', function (req, res, next) {	
+		Review.findAll({
+			where:{
+				productId: req.params.id
+			}
+		})
+		.then(review => {
+			res.send(review);
+		})
+		.catch(next);
 	}
 	)
 
