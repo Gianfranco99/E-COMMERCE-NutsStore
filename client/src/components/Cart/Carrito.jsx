@@ -9,6 +9,7 @@ const carrito = useSelector(state => state.productCart)
 const cantidad = useSelector(state => state.count)
 const dispatch = useDispatch()
 
+
   return (
     <div>
         <div className= "img-nosotros">
