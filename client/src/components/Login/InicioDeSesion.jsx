@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Redirect, Route, useHistory } from "react-router";
-import "./Registrarse.css";
+import "./InicioDeSesion.css";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 import swal from "sweetalert";
 
-function Registrarse() {
-  const { push } = useHistory();
+function InicioDeSesion() {
+  const dispatch = useDispatch();
   const [input, setInput] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -19,44 +18,35 @@ function Registrarse() {
     });
   };
 
-  const registrarse = () => {
+  const iniciarsesion = () => {
+    console.log(input);
     axios
-      .post("http://localhost:3001/auth/registrarse", input)
+      .post("http://localhost:3001/auth/login", input)
       .then((res) => {
-        swal({
-          title: "Cuenta creada!",
-          icon: "success",
+        let {
+          data: { user, token },
+        } = res;
+        window.localStorage.setItem("token", token);
+        dispatch({
+          type: "SET_LOGIN",
+          payload: user,
         });
-        push("/micuenta");
       })
-      .catch((error) => {
+      .catch((err) => {
         swal({
           title: "Algo salió mal",
+          text: "Tu email o contraseña son incorrectos",
           icon: "error",
         });
       });
   };
-
   return (
     <div className="Background-container">
       <div className="Background">
-        <div className="Registro-container">
-          <h3 className="titulo-registrarse">Registrarse</h3>
+        <div className="Login-container">
+          <h3 className="titulo-iniciarsesion">Iniciar sesión</h3>
           <label className="titulo">
-            Nombre:
-            <br></br>
-            <input
-              className="input"
-              type="text"
-              placeholder="Ingrese su nombre"
-              name="name"
-              value={input.name}
-              onChange={handleInputChange}
-            />
-          </label>
-          <p></p>
-          <label className="titulo">
-            Correo electronico:
+            Correo Electronico:
             <br></br>
             <input
               className="input"
@@ -77,17 +67,22 @@ function Registrarse() {
               placeholder="Ingrese su contraseña"
               name="password"
               value={input.password}
+              onKeyPress={(e) => e.key === "Enter" && iniciarsesion()}
               onChange={handleInputChange}
             />
           </label>
           <p></p>
-          <button onClick={registrarse} className="boton-registrarse">
-            Registrarse
+          <button onClick={iniciarsesion} className="boton-ingresar">
+            Ingresar
           </button>
+          <h5 className="titulo2">Si aún no tenes una cuenta, </h5>
+          <a className="titulo3" href="/registro">
+            registrate acá
+          </a>
         </div>
       </div>
     </div>
   );
 }
 
-export default Registrarse;
+export default InicioDeSesion;

@@ -15,7 +15,6 @@ server.post('/registrarse', (req, res) => {
       .catch((error) => res.status(412).send(error));
 })
 
-
 // S35: Crear ruta para modificar usuario
 server.put('/:id', function (req, res) {
     User.update(req.body, {
@@ -54,10 +53,11 @@ Order.findOrCreate({
     [Op.and]:
     [
       { userId : user},
-      { status : ["carrito","creado"]}
+      { status : ["carrito","creada"]}
     ] 
   },
-  default : {
+  defaults : {
+    userId: user,
     price : req.body.price,
     orderProducts : req.body.orderProducts,
     status : req.body.status

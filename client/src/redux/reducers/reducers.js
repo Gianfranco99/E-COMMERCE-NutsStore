@@ -1,10 +1,12 @@
 const initialState ={
     products :[],// todos los productos para tienda
-    detailProduct:[], 
+    detailProduct:[], // estado para mostrar los detalles del producto(ver mas)
     productSearch:[],// los productos que se buscan
-    productCart: [],
-    categories:[],
-     count : 0
+    productCart: [],// los productos que agregan al cart
+    categories:[],// las categorias del producto que se crean en admin2
+    loggedIn: false,// autenticacion de usuario
+    user:{},// el usuario
+    count : 0
 }
 
 function rootReducer (state = initialState,action){
@@ -14,6 +16,7 @@ function rootReducer (state = initialState,action){
                 ...state,
                 productSearch : action.payload
             };
+
         case "SEARCH_PRODUCTS_BY_DESCRIPTION":{
             return {
                 ...state,
@@ -24,6 +27,18 @@ function rootReducer (state = initialState,action){
             return {
               ...state,
               products: action.payload
+            };
+        case 'SET_LOGIN':
+            return {
+                ...state, 
+                loggedIn: true, 
+                user:action.payload
+            };
+        case 'SET_LOGOUT':
+            return {
+                ...state, 
+                loggedIn: false, 
+                user:{}
             };
         case "ADDPRODUCT_CART":
             return {
