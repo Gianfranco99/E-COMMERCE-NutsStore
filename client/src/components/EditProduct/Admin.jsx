@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
 import AddProductForm from './../AddProduct/AddProductForm';
 import EditProductForm from './EditProductForm';
 import ProductTable from '../Tables/ProductTable';
 import style from './../AddProduct/Admin.module.css';
 import axios from 'axios';
+import {getProducts} from '../../redux/actions/actions';
 //instalar react-hook-form
 
 function Admin() {
+  const dispatch = useDispatch();
   const productsData = [];
   //estado.
   const [products, setProducts] = useState(productsData);
@@ -46,6 +49,7 @@ function Admin() {
   });
 
   const editRow = (product) => {
+    dispatch({type: "EDIT_PRODUCT"})
     setEditing(true);
     setCurrentProduct({
       id: product.id,
@@ -83,6 +87,10 @@ function Admin() {
     );
 
   };
+
+  useEffect(() => {
+    dispatch(getProducts());
+ }, [])
 
   return (
     <div className={style.container}>
