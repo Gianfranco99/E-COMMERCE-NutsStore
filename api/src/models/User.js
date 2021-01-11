@@ -41,8 +41,4 @@ module.exports = (sequelize) => {
     //devuelve true si la pass (la hashea) tiene relacion con this.password (hash)
   };
   return User;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> cc13c48f06af66eef50b7be932e4179c3c5d4e48
