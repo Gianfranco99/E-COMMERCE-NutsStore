@@ -8,10 +8,9 @@ import { Link } from 'react-router-dom';
 export default function Producto(props){
     const dispatch = useDispatch();
      const data = useSelector(state => state.products)
-    // const Example = <img src={`data:image/jpeg;base64,${props.image}`} />
     
 
-    console.log(data)
+    
     return (
         <div className='card-container'>
             { 
@@ -22,22 +21,21 @@ export default function Producto(props){
                         </div>
                         <div className='card-content'>
                             <div className='card-title'>
-                                <h3>{props.name}</h3>
-                                <h4></h4>
+                                <p>{props.name}</p>
                             </div>
                             <div className='card-body'>
-                                <p>{props.description}</p>
+                                <p className='card-body'>{props.description} <br/>${props.price}</p>
                             </div>
                         </div>
                         <div className='btn'>
                             <button onClick={() => dispatch(addProductCart(props))}>
-                                <a>Agregar al carrito</a>
+                                <a>Comprar</a>
                             </button>
                         </div>
-                            <div className='btn-more'>
+                            <div className='btn'>
                                 <Link to='/productDetail'>
                                 <button onClick={() => dispatch(DetailProduct(props))}>
-                                    <a>ver mas</a>
+                                    <a>Ver más</a>
                                 </button>
                                 </Link>
                             </div>
@@ -59,10 +57,10 @@ export default function Producto(props){
                     <div className='btn'>
                         <label>Producto no disponible</label>
                     </div>
-                        <div className='btn-more'>
+                        <div className='btn'>
                             <Link to='/productDetail'>
                             <button onClick={() => dispatch(DetailProduct(props))}>
-                                <a>ver mas</a>
+                                <a>Ver más</a>
                             </button>
                             </Link>
                         </div>

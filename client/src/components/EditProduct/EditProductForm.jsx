@@ -1,11 +1,7 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux'; 
 import { useForm } from 'react-hook-form'
 
 const EditProductForm = (props) => {
-
-    const store =  useSelector((state) => state);
-    const dispatch = useDispatch();
 
     const {register, errors, handleSubmit, setValue} = useForm({
         defaultValues:props.currentProduct
@@ -28,7 +24,7 @@ const EditProductForm = (props) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Name</label>
+            <label>Nombre</label>
             <input type="text" name="name" ref ={
                 register({
                     required: {value: true, message: 'campo requerido'}
@@ -37,7 +33,7 @@ const EditProductForm = (props) => {
             <div>
                 {errors?.name?.message}
             </div>
-            <label>Description</label>
+            <label>Descripción</label>
             <input type="text" name="description" ref ={
                 register({
                     required: {value: true, message: 'campo requerido'}
@@ -46,7 +42,7 @@ const EditProductForm = (props) => {
             <div>
                 {errors?.description?.message}
             </div>
-            <label>Price</label>
+            <label>Precio</label>
             <input type="text" name="price" ref ={
                 register({
                     required: {value: true, message: 'campo requerido'}
@@ -64,7 +60,7 @@ const EditProductForm = (props) => {
             <div>
                 {errors?.stock?.message}
             </div>
-            <label>Category</label>
+            <label>Categoría</label>
             <input type="text" name="category" ref ={
                 register({
                     required: {value: true, message: 'campo requerido'}
@@ -74,7 +70,7 @@ const EditProductForm = (props) => {
                 {errors?.stock?.message}
             </div>
 
-            <button>Edit product</button>
+            <button>Editar producto</button>
         </form>
     )
 }
