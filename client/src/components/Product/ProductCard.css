@@ -1,12 +1,16 @@
 .card-container {
-    width: 250px;
-    margin: 50px;
-    overflow: hidden;
-    box-shadow: 0px 0px 15px -5px;
-    transition: 0.3s;
-    animation: ease-in;
-    display: inline-block;
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 360px;
+    width: 240px;
+    background-color: #94564c;
+    border-radius: 15px;
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 4px 4px 5px rgb(131, 130, 130);
+    margin: 30px;
 }
 
 .card-container:hover{
@@ -15,13 +19,16 @@
 }
 
 .image-container img{
-    overflow: hidden;
-    width: 150px;
-    height: 100px;
+    margin: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 240px;
+    height: 180px;
 }
 
 .card-content {
-    margin-top: 0.5rem;
+    padding: 0;
+    text-align: left;
 }
 
 
@@ -32,30 +39,64 @@
 }
 
 .card-title {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.super-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+    height: 460px;
+    background-color: rgb(245, 244, 244);
+    padding: 0;
+    margin: 0;
+    color: black;
 }
 
 .btn {
     display: flex;
     justify-content: center;
+    text-decoration: none;
 }
 
 .btn button {
-    padding: 0.5rem;
-    background-color: white;
+    padding: 5px;
+    background-color: #cab380;
     border: none;
     transition: 0.2s;
-    margin-bottom: 0.5rem;
-    border-radius: 3px;
+    margin-bottom: 5px;
+    border-radius: px;
+    color: black;
 }
 
 .btn button:hover{
     background: rgba(27,156,252,0.1);
 }
 
+.btn a{
+    color: white;
+}
+
 a{
-    text-transform: uppercase;
-    color: #1b9cfc;
+    color: #000000;
     text-decoration: none;
     font-weight: bold;
+}
+
+.card-content p{
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 40px;
+    color: white;
+    margin: 0;
+}
+.card-body p{
+    font-weight: lighter;
+    font-size: 20px;
+    padding-left: 40px;
+    color: white;
 }

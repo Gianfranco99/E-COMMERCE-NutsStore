@@ -1,11 +1,11 @@
 const initialState ={
     products :[],// todos los productos para tienda
-    detailProduct:[], 
+    detailProduct:[], // estado para mostrar los detalles del producto(ver mas)
     productSearch:[],// los productos que se buscan
-    productCart: [],
-    categories:[],
-    loggedIn: false,
-    user:{},
+    productCart: [],// los productos que agregan al cart
+    categories:[],// las categorias del producto que se crean en admin2
+    loggedIn: false,// autenticacion de usuario
+    user:{},// el usuario
     count : 0
 }
 
@@ -16,6 +16,7 @@ function rootReducer (state = initialState,action){
                 ...state,
                 productSearch : action.payload
             };
+
         case "SEARCH_PRODUCTS_BY_DESCRIPTION":{
             return {
                 ...state,

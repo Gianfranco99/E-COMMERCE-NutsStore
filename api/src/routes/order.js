@@ -7,6 +7,7 @@ server.post('/',function (req,res){
     Order.create({
         price : req.body.price,
         orderProducts : req.body.orderProducts,
+        //quantity : req.body.quantity,
         status : req.body.status
     })
     .then(order => res.status(201).send(order))

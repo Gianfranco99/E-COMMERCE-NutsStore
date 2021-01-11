@@ -7,18 +7,19 @@ import { addProductCart, getProducts,getCategory} from "../../redux/actions/acti
 
 function Catalogo() {
   const [CategorySelected, setCategorySelected] = useState("TODOS");
+
   const dispatch = useDispatch();
+
   const producto = useSelector((state) => state.products);
-  const productsIncart = useSelector((state) => state.productCart);
+
   const category = useSelector((state) => state.categories)
+
   useEffect(() => {
     dispatch(getProducts());
   }, []);
  useEffect(()=>{
  dispatch(getCategory())
  },[])
-
-
 
 
   const selectedChange = (e) => {
@@ -34,13 +35,13 @@ function Catalogo() {
       </div>
       <div className="categoriass-container">
         <div className="select-categorias">
-          <p className="titulo-categorias">Shop by categories</p>
+          <p className="titulo-categorias">Comprar por categorías</p>
           <select
             className="select"
             value={CategorySelected}
             onChange={selectedChange}
           >
-            <option value="TODOS">TODOS</option>
+            <option value="TODOS">Ver todas</option>
             {category && category.map(c =>
               <option value = {c.name}>{c.name}</option>
               )}

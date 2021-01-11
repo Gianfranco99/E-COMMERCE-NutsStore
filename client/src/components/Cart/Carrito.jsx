@@ -9,6 +9,7 @@ const carrito = useSelector(state => state.productCart)
 const cantidad = useSelector(state => state.count)
 const dispatch = useDispatch()
 
+
   return (
     <div>
         <div className= "img-nosotros">
@@ -21,7 +22,7 @@ const dispatch = useDispatch()
                     <th>PRECIO</th>
                     <th>CANTIDAD</th>
                     <th>SUBTOTAL</th>
-                    <th>EDITAR/ELIMINAR</th>
+                    <th>ELIMINAR</th>
                 </tr>
                 {carrito.map((m) =>(
                         <tr>
