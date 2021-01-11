@@ -53,11 +53,11 @@ Order.findOrCreate({
     [Op.and]:
     [
       { userId : user},
-      { status : ["carrito","creado"]}
+      { status : ["carrito","creada"]}
     ] 
   },
-  defaults : { 
-    userId : user,
+  defaults : {
+    userId: user,
     price : req.body.price,
     orderProducts : req.body.orderProducts,
     status : req.body.status
