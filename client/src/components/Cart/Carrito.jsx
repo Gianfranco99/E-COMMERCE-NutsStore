@@ -10,26 +10,8 @@ const cantidad = useSelector(state => state.count)
 const dispatch = useDispatch()
 let contador = 0;
 
-function cantidadProductos(){
-    if(carrito.length > 1){
-        console.log(carrito)
-    }
-}
 
-function sumar (){
-    console.log(contador)
-    return contador = contador+1
-}
-
-function restar (){
-    console.log(contador)
-    if(contador > 0){
-        return contador = contador-1
-    }
-    
-}
-
-return (
+  return (
     <div>
         <div className= "img-nosotros">
             <p className= "titulo-carrito">Carrito</p>
@@ -41,7 +23,7 @@ return (
                     <th>PRECIO</th>
                     <th>CANTIDAD</th>
                     <th>SUBTOTAL</th>
-                    <th>EDITAR/ELIMINAR</th>
+                    <th>ELIMINAR</th>
                 </tr>
                 {carrito.map((m, i) =>(
                         <tr>
