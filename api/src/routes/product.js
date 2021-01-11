@@ -12,15 +12,15 @@ server.get('/', function (req, res, next) {
 });
 
 // S24: Retorna un objeto de tipo producto con todos sus datos (incluidas las categorías e imágenes)
-server.get('/:id', (req, res, next) => {
-	Product.findOne({
-		where:{
-			id: req.params.id
-		}
-	})
-		.then(product => res.send(product))
-		.catch(error => res.send(error))		
-})
+// server.get('/:id', (req, res, next) => {
+// 	Product.findOne({
+// 		where:{
+// 			id: req.params.id
+// 		}
+// 	})
+// 		.then(product => res.send(product))
+// 		.catch(error => res.send(error))		
+// })
 
 // S25: Crear ruta para crear/agregar producto
 server.post('/', function (req, res, next) {

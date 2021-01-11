@@ -112,15 +112,15 @@ let contador = 0;
                     <input
                       type="submit"
                       className="btn btn-default"
-                      value="Use cupone"
+                      value="Usar cumpón"
                     />
                   </div>
                 </div>
               </div>
               <div className="pull-right" style={{ margin: 10 }}>
-                <a href="" className="btn btn-primary pull-right">
-                  ORDEN
-                </a>
+                <button className="btn btn-primary pull-right">
+                  COMPRAR
+                </button>
                 <div className="pull-right" style={{ margin: 5 }}>
                   Total price:{' '}
                   <b>
