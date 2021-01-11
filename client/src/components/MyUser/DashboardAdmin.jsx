@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function DashboardAdmin() {
   const { replace, push } = useHistory();
@@ -9,7 +9,11 @@ function DashboardAdmin() {
   return (
     <div>
       <h2>Admin Dashboard</h2>
-      <h3>Aca iria la tabla de pedidos y control de usuarios</h3>
+      <h3>Tabla de pedidos/control de usuarios</h3>
+      <Link to="/admin2">
+        <button>Agregar categoria</button>
+      </Link>
+      <p></p>
       <button
         onClick={() => {
           dispatch({
