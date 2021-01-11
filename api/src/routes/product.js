@@ -12,15 +12,15 @@ server.get('/', function (req, res, next) {
 });
 
 // S24: Retorna un objeto de tipo producto con todos sus datos (incluidas las categorías e imágenes)
-server.get('/:id', (req, res, next) => {
-	Product.findOne({
-		where:{
-			id: req.params.id
-		}
-	})
-		.then(product => res.send(product))
-		.catch(error => res.send(error))		
-})
+// server.get('/:id', (req, res, next) => {
+// 	Product.findOne({
+// 		where:{
+// 			id: req.params.id
+// 		}
+// 	})
+// 		.then(product => res.send(product))
+// 		.catch(error => res.send(error))		
+// })
 
 // S25: Crear ruta para crear/agregar producto
 server.post('/', function (req, res, next) {
@@ -162,16 +162,16 @@ server.get('/search/search', (req, res, next) => {
 	})
 
 	//S57: Crear Ruta para obtener todas las reviews de un producto.
-	server.get('/review/:idReview', function (req, res, next) {	
-		// Review.findAll({
-		// 	where:{
-		// 		id: req.params.idReview
-		// 	}
-		// })
-		// .then(review => {
-		// 	res.send(review);
-		// })
-		// .catch(next);
+	server.get('/:id/review', function (req, res, next) {	
+		Review.findAll({
+			where:{
+				productId: req.params.id
+			}
+		})
+		.then(review => {
+			res.send(review);
+		})
+		.catch(next);
 	}
 	)
 
