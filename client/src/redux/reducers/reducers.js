@@ -1,5 +1,6 @@
 const initialState ={
     products :[],// todos los productos para tienda
+    reviews : [],
     detailProduct:[], // estado para mostrar los detalles del producto(ver mas)
     productSearch:[],// los productos que se buscan
     productCart: [],// los productos que agregan al cart
@@ -28,6 +29,13 @@ function rootReducer (state = initialState,action){
               ...state,
               products: action.payload
             };
+
+        case "GET_REVIEWS":
+            return {
+              ...state,
+              reviews: action.payload
+            };
+
         case 'SET_LOGIN':
             return {
                 ...state, 

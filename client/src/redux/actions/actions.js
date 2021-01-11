@@ -38,6 +38,20 @@ export function searchProducts(product) {
     }
   }
  
+
+  export function getReviews (){
+    return function(dispatch){
+      return fetch(`http://localhost:3001/products/reviews`)
+      .then(response => response.json())
+      .then(json =>{
+        dispatch({
+          type: "GET_REVIEWS",
+          payload:json
+        })
+      })
+    }
+  }
+
   export function addProductCart(payload){
     return {
       type : "ADDPRODUCT_CART",
