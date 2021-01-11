@@ -30,9 +30,18 @@ function Admin() {
 
   //eliminar producto
   const deleteProduct = (id) => {
-    console.log(id);
+    var raw = "";
 
-    setProducts(products.filter((product) => product.id !== id));
+    var requestOptions = {
+    method: 'DELETE',
+    body: raw,
+    redirect: 'follow'
+    };
+
+    fetch(`http://localhost:3001/products/${id}`, requestOptions)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
   };
 
   //editar producto
@@ -47,6 +56,7 @@ function Admin() {
   });
 
   const editRow = (product) => {
+    dispatch({type: "EDIT_PRODUCT"})
     setEditing(true);
     setCurrentProduct({
       id: product.id,
@@ -59,11 +69,30 @@ function Admin() {
   };
 
   const updateProduct = (id, updateProduct) => {
+    console.log('pasa Update', updateProduct, id)
     setEditing(false);
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({"id":id,"name":updateProduct.name,"description":updateProduct.description,"category":updateProduct.category,"price":updateProduct.price,"stock":updateProduct.stock});
+
+    var requestOptions = {
+      method: 'PUT',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch(`http://localhost:3001/products/${id}`, requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
 
     setProducts(
       products.map((product) => (product.id === id ? updateProduct : product))
     );
+
   };
 
   useEffect(() => {
