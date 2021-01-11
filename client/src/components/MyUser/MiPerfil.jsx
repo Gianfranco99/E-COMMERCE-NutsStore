@@ -9,7 +9,6 @@ function MiPerfil() {
   return (
     <>
       <h2>perfil del guest</h2>
-      <h3>Mis pedidos:</h3>
       <button
         onClick={() => {
           dispatch({

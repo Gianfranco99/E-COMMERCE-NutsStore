@@ -13,7 +13,11 @@ function DashboardAdmin() {
         <button>admin2</button>
       </Link>
       <h2>Admin Dashboard</h2>
-      <h3>Aca iria la tabla de pedidos y control de usuarios</h3>
+      <h3>Tabla de pedidos/control de usuarios</h3>
+      <Link to="/admin2">
+        <button>Agregar categoria</button>
+      </Link>
+      <p></p>
       <button
         onClick={() => {
           dispatch({
