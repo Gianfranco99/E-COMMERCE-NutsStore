@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useSelector} from "react-redux";
-
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch} from "react-redux";
+import {getCategory} from '../../redux/actions/actions';
 const CategoryTable = (funcion) => {
-    const props = useSelector((state) => state);
-    console.log('recibe fff',funcion)
+    const dispatch = useDispatch();
+    const category = useSelector((state) => state.categories);
 
     //eliminar categoría
   const deleteCategory = (id) => {
@@ -36,7 +36,11 @@ const CategoryTable = (funcion) => {
        description: category.description,
      });
    };
-     
+
+   useEffect(()=>{
+    dispatch(getCategory())
+    },[])
+
     return (
         <table>
             <thead>
@@ -48,8 +52,8 @@ const CategoryTable = (funcion) => {
             </thead>
             <tbody>
                 {
-                    props.length > 0 ?
-                    props.map(categories => (
+                    category.length > 0 ?
+                    category.map(categories => (
                         <tr key= {categories.id}>
                             <td>{categories.name}</td>
                             <td>{categories.description}</td>

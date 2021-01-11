@@ -9,6 +9,24 @@ function FormCategorie() {
   //estado.
   const [categories, setCategories] = useState(categoriesData);
 
+  //editar categoría
+   const [editing, setEditing] = useState(false);
+   const [currentCategory, setCurrentCategory] = useState({
+     id: null,
+     name: "",
+     description: "",
+   });
+ 
+   const editRow = (category) => {
+     setEditing(true);
+     setCurrentCategory({
+       id: category.id,
+       name: category.name,
+       description: category.description,
+     });
+   };
+
+
   const { register, handleSubmit, errors } = useForm(); // initialize the hook
   const onSubmit = (data, e) => {
     console.log(data);
