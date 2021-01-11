@@ -8,10 +8,9 @@ import { Link } from 'react-router-dom';
 export default function Producto(props){
     const dispatch = useDispatch();
      const data = useSelector(state => state.products)
-    // const Example = <img src={`data:image/jpeg;base64,${props.image}`} />
     
 
-    console.log(data)
+    
     return (
         <div className='card-container'>
             { 

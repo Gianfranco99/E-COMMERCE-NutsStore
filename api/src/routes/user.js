@@ -68,7 +68,16 @@ Order.findOrCreate({
 
 //s39 : crear ruta que retorne todos los items del carrito
 server.get('/:id/order',function(req,res){
-  
+  const user = req.params.id;
+  Order.findAll({
+    where:{
+      [Op.and]:[
+        {userId : user},
+        {status : "carrito"}
+      ]
+    }
+  })
+  .then(order => res.send(order))
 })
 
 //s40 : crear ruta para vaciar carrito
