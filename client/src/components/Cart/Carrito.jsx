@@ -31,8 +31,8 @@ let contador = 0;
                             <td>{m.name}</td>
                             <td>{m.price}</td>
                             <td>
-                                <button onClick={() => cantidadProductos()}>+</button>
-                                <input value={contador}></input>
+                                <button onClick={() => cantidadProductos()}>+</button> 
+                                <input value={contador}></input> 
                                 <button  onClick={() => restar()}>-</button>
                             </td>
                             <td>SUBTOTAL</td>
