@@ -35,7 +35,7 @@ const AddProductForm = (props) => {
         })}
       />
       <div>{errors?.name?.message}</div>
-      <label>Description</label>
+      <label>Descripción</label>
       <input
         type="text"
         name="description"
@@ -44,7 +44,7 @@ const AddProductForm = (props) => {
         })}
       />
       <div>{errors?.description?.message}</div>
-      <label>Price</label>
+      <label>Precio</label>
       <input
         type="text"
         name="price"
@@ -63,7 +63,7 @@ const AddProductForm = (props) => {
       />
       <div>{errors?.stock?.message}</div>
       <FileBase64 multiple={true} onDone={handlerphoto} />
-      <label>Category</label>
+      <label>Categoría</label>
       {/* <input type="text" name="category" 
             }/> */}
       <select
@@ -77,7 +77,7 @@ const AddProductForm = (props) => {
         <option value="nueces">nueces</option>
         <option value="harinas">harinas</option>
       </select>
-      <button>New product</button>
+      <button >Nuevo producto</button>
     </form>
   );
 };

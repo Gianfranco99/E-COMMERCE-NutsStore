@@ -1,20 +1,18 @@
-import React, {useState,useEffect} from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import { addProductCart, getProducts,getCategory} from "../../redux/actions/actions";
+import React from 'react';
+import { useSelector } from "react-redux";
 
 const ProductTable = (funcion) => {
     const props = useSelector((state) => state);
-    const dispatch = useDispatch();
 
     return (
         <table>
             <thead>
             <tr>
                 <th>Producto</th>
-                <th>Description</th>
-                <th>Price</th>
+                <th>Descripción</th>
+                <th>Precio</th>
                 <th>Stock</th>
-                <th>Category</th>
+                <th>Categoría</th>
                 <th>Edit/Delete</th>
             </tr>
             </thead>
@@ -33,19 +31,19 @@ const ProductTable = (funcion) => {
                                 className="button muted-button"
                                 onClick={() => {funcion.editRow(product)}}
                             >
-                                Edit
+                                Editar
                             </button>
                             <button 
                                 className="button muted-button"
                                 onClick={() => {funcion.deleteProduct(product.id)}}
                             >
-                                Delete
+                                Borrar
                             </button>
                             </td>
                         </tr>
                     )) : (
                         <tr>
-                            <td colSpan={3}>No Product</td>
+                            <td colSpan={3}>Sin productos</td>
                         </tr>
                     )
                 }
