@@ -1,55 +1,52 @@
-.img-nosotros {
-  display: flex;
-  background-image: url("../../assets/nosotros1.jpg");
-  height: 358px;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 10%;
+.quantity {
+  float: left;
+  margin-right: 15px;
+  background-color: #eee;
+  position: relative;
+  width: 60px;
+  overflow: hidden;
+  height: 40px;
 }
 
-.titulo-carrito {
-  display: flex;
+.quantity .minus,
+.quantity .plus {
+  line-height: 10px;
+  background-clip: padding-box;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-background-size: 6px 30px;
+  -moz-background-size: 6px 30px;
+  color: #bbb;
+  font-size: 20px;
   position: absolute;
-  font-family: "Playfair Display", serif;
-  color: #612425;
-  font-size: 50px;
-  justify-content: center;
+  height: 50%;
+  border: 0;
+  right: 0;
+  padding: 0;
+  width: 25px;
+  z-index: 3;
 }
 
-.titulos-tabla {
-  background-color: rgb(240, 239, 239);
+.quantity .minus:hover,
+.quantity .plus:hover {
+  background-color: #dad8da;
 }
 
-th {
-  font-size: 13px;
-  font-weight: 500;
-  color: black;
-  text-align: center;
+.quantity .minus {
+  bottom: 0;
+}
+.shopping-cart {
+  margin-top: 20px;
 }
 
-td {
-  font-size: 14px;
-  font-family: "Playfair Display", serif;
-  color: rgb(26, 25, 25);
-  text-align: center;
+.cart-img-obj-fit {
+  object-fit: cover;
 }
 
-.div-table {
-  padding-top: 30px;
-  padding-bottom: 100px;
-  display: flex;
-  justify-content: center;
-}
-
-table {
-  width: 90%;
-  border: rgb(240, 239, 239);
-}
-
-.imageneliminar {
-  width: 20px;
-  height: 20px;
+.quantity-number {
+  font-size: 20px;
+  position: absolute;
+  left: 32%;
+  top: 12%;
 }

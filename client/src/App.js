@@ -14,6 +14,7 @@ import Carrito from "./components/Cart/Carrito"
 import ProductDetail from './components/Product/ProductDetail';
 import GuestRoute from './containers/GuestRoute';
 import AuthRoute from './containers/AuthRoute';
+import Container from 'react-bootstrap/Container';
 
 function App() {
   return (
