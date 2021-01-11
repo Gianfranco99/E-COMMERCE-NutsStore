@@ -23,8 +23,7 @@ module.exports = (sequelize) => {
     stock: { 
       type: DataTypes.INTEGER,
       allowNull: false,
-    }
-,
+    },
     image: {
       type: DataTypes.ARRAY(DataTypes.TEXT), //para guardar imagenes en base64
       allownull: true

@@ -3,6 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const AuthRoute = ({ component: Component, ...rest }) => {
+  console.log('COMPROBADO ESTÁ=', rest.loggedIn)
   return (
     <Route
       {...rest}
@@ -12,7 +13,7 @@ const AuthRoute = ({ component: Component, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/micuenta",
               state: { from: props.location },
             }}
           />

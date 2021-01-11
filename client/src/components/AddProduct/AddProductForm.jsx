@@ -24,7 +24,7 @@ const AddProductForm = (props) => {
   };
 
   const { register, errors, handleSubmit } = useForm();
-
+  
   const onSubmit = (data, e) => {
     e.preventDefault();
     props.addProduct({ ...data, image: Fotos });
