@@ -29,7 +29,7 @@ function App() {
         <GuestRoute exact path='/registro' component={Registrarse}/>    
         <GuestRoute exact path='/carrito' component={Carrito}/>    
         <GuestRoute exact path='/admin' component={Admin}/>
-        <AuthRoute exact path='/admin2' component={Admin2}/>
+        <GuestRoute exact path='/admin2' component={Admin2}/>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
   </Router>
  </div>

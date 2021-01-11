@@ -1,24 +1,17 @@
-import React, {useState,useEffect} from 'react';
-import AddProductForm from "./../AddProduct/AddProductForm";
-import EditProductForm from "./EditProductForm";
-import ProductTable from "../ProductTable/ProductTable";
-import { v4 as uuidv4 } from "uuid";
-import style from "./../AddProduct/Admin.module.css";
-import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-
-import { addProductCart, getProducts,getCategory} from "../../redux/actions/actions";
-
+import React, { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
+import AddProductForm from './../AddProduct/AddProductForm';
+import EditProductForm from './EditProductForm';
+import ProductTable from '../Tables/ProductTable';
+import style from './../AddProduct/Admin.module.css';
+import axios from 'axios';
+import {getProducts} from '../../redux/actions/actions';
 //instalar react-hook-form
 
 function Admin() {
   const dispatch = useDispatch();
-  const productsData = [
-    // { id: uuidv4(), name: 'Nueces 1', description: 'Cereal 1', stock: '20', price: '100', category: 'categoria' },
-    // { id: uuidv4(), name: 'Nueces 2', description: 'Cereal 2', stock: '20', price: '100', category: 'categoria' },
-    // { id: uuidv4(), name: 'Nueces 3', description: 'Cereal 3', stock: '20', price: '100', category: 'categoria' },
-  ];
-  //stado.
+  const productsData = [];
+  //estado.
   const [products, setProducts] = useState(productsData);
 
   //agregar producto
@@ -123,7 +116,6 @@ function Admin() {
           <ProductTable
             products={products}
             deleteProduct={deleteProduct}
-            // setEditing={setEditing}
             editRow={editRow}
           />
         </div>

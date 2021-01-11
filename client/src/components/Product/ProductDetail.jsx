@@ -29,7 +29,7 @@ export default function ProductDetail () {
                   <label>Stock</label>
                   <p>{product.stock}</p>
                   <button className="cart" onClick={() => dispatch(addProductCart(product))}>
-                      agregaralCart
+                      Agregar al carrito
                     </button>
   
                 </div>
