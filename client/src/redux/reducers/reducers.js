@@ -6,7 +6,8 @@ const initialState ={
     categories:[],// las categorias del producto que se crean en admin2
     loggedIn: false,// autenticacion de usuario
     user:{},// el usuario
-    count : 0
+    count : 0,
+    order: []
 }
 
 function rootReducer (state = initialState,action){
@@ -56,6 +57,11 @@ function rootReducer (state = initialState,action){
                 ...state,
               categories : action.payload
             };
+            case "GET_ORDER":
+                return {
+                  ...state,
+                  order: action.payload
+                };
         case "INCREMENT" :
             return {
                 ...state,

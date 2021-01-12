@@ -17,12 +17,7 @@ function Catalogo() {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
- useEffect(()=>{
- dispatch(getCategory())
- },[])
-
-
-  const selectedChange = (e) => {
+   const selectedChange = (e) => {
     let value = e.target.value;
     setCategorySelected(value);
   };

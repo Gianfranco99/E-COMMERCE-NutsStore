@@ -13,6 +13,7 @@ import Registrarse from "./components/Login/Registrarse"
 import Carrito from "./components/Cart/Carrito"
 import ProductDetail from './components/Product/ProductDetail';
 import GuestRoute from './containers/GuestRoute';
+import Order from './components/Order/order'
 import AuthRoute from './containers/AuthRoute';
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
         <GuestRoute exact path='/admin' component={Admin}/>
         <GuestRoute exact path='/admin2' component={Admin2}/>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
+        <GuestRoute exact path='/order' component={Order}/>
+
   </Router>
  </div>
   );

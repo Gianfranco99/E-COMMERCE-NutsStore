@@ -20,6 +20,9 @@ const EditProductForm = (props) => {
         
         //limpiar campos
         e.target.reset();
+        
+
+        alert("producto editado")
     }
 
     return (
@@ -70,7 +73,7 @@ const EditProductForm = (props) => {
                 {errors?.stock?.message}
             </div>
 
-            <button>Editar producto</button>
+            <button >Editar producto</button>
         </form>
     )
 }

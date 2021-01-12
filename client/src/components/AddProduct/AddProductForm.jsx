@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import FileBase64 from "react-file-base64";
+import 'bootstrap/dist/css/bootstrap.min.css';
+//modales de prueba
+//npn i bootstrap reactstrap
+//
+import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
 
 //instalar react-file-base64
 
@@ -8,8 +13,10 @@ const AddProductForm = (props) => {
   //categories desplegable
   // const [CategorySelected, setCategorySelected] = useState('TODOS');
   const [Fotos, setFotos] = useState([]);
+  
 
   const handlerphoto = (files) => {
+    
     let photos64 = files.map((el) => el.base64);
     setFotos(photos64);
   };
@@ -19,7 +26,7 @@ const AddProductForm = (props) => {
   const onSubmit = (data, e) => {
     e.preventDefault();
     props.addProduct({ ...data, image: Fotos });
-    console.log(data)
+    console.log("paso", data)
     //limpiar campos
     e.target.reset();
   };
@@ -79,6 +86,8 @@ const AddProductForm = (props) => {
       </select>
       <button >Nuevo producto</button>
     </form>
+
+
   );
 };
 

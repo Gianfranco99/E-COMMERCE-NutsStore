@@ -13,6 +13,9 @@
     margin: 30px;
 }
 
+.productos-container{
+    display: flex;
+}
 .card-container:hover{
     transform: scale(1.1);
     box-shadow: 0px 0px 15px 0px;    

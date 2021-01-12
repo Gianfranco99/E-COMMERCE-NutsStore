@@ -15,6 +15,7 @@ function Admin() {
   const [products, setProducts] = useState(productsData);
 
   //agregar producto
+  
   const addProduct = (product) => {
     axios
       .post("http://localhost:3001/products", product)
@@ -22,9 +23,9 @@ function Admin() {
   };
 
   //eliminar producto
-  const deleteProduct = (id) => {
+  const deleteProduct = (id,e) => {
     var raw = "";
-
+    console.log("eliminado",id)
     var requestOptions = {
     method: 'DELETE',
     body: raw,
@@ -35,6 +36,10 @@ function Admin() {
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
+
+    alert("producto eliminado")
+    
+    
   };
 
   //editar producto
@@ -85,12 +90,13 @@ function Admin() {
     setProducts(
       products.map((product) => (product.id === id ? updateProduct : product))
     );
-
+      
   };
 
   useEffect(() => {
     dispatch(getProducts());
  }, [])
+ 
 
   return (
     <div className={style.container}>
