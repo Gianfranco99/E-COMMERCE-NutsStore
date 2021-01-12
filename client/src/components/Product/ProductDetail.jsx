@@ -3,23 +3,24 @@ import './ProductDetail.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductCart } from '../../redux/actions/actions';
 import ReviewTable from '../Tables/ReviewTable';
+import ReviewForm from '../Review/ReviewForm';
 
     
 
 export default function ProductDetail () {
     const dispatch = useDispatch();
     const product = useSelector(state => state.detailProduct);
-    const reviewsData = [];
 
   //estado de review.
-  const [reviews, setReviews] = useState(reviewsData);
+  
+  const review = useSelector(state => state.reviews)
 
-    //agregar producto
+    //agregar review
   const addReview = (review) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     
-    var raw = JSON.stringify({"qualify":review.qualify,"description":review.description});
+    var raw = JSON.stringify({"qualify":review.qualify,"description":review.comentario});
     
     var requestOptions = {
       method: 'POST',
@@ -33,22 +34,6 @@ export default function ProductDetail () {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   };
-
-  const deleteReview = () => {
-    var raw = "";
-
-    var requestOptions = {
-      method: 'DELETE',
-      body: raw,
-      redirect: 'follow'
-    };
-    
-    fetch(`http://localhost:3001/products/${review.productId}/review/${review.id}`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-      
-  }
     
       return(
         <div>
@@ -100,13 +85,15 @@ export default function ProductDetail () {
         </div>
         <div>
             <h2>Agregar comentario</h2>
-            <ReviewForm addReview={addReview} />
+            <ReviewForm 
+            addReview={addReview}
+             />
           </div>
         <div className="flex-large">
           <h2>Todos los comentarios</h2>
           <ReviewTable
-            deleteReview ={deleteReview}
-          />
+          review={review}
+        />
         </div>
         </div>
       );

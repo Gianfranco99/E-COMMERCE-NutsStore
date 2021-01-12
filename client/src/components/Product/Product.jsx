@@ -8,6 +8,14 @@ import { Link } from 'react-router-dom';
 export default function Producto(props){
     const dispatch = useDispatch();
      const data = useSelector(state => state.products)
+
+     const maxLength = (props) => {
+        if(props.length < 14){
+            return props;
+        } else {
+            return props.slice(0,11) + '...'; 
+        }
+    };
     
 
     
@@ -24,7 +32,7 @@ export default function Producto(props){
                                 <p>{props.name}</p>
                             </div>
                             <div className='card-body'>
-                                <p className='card-body'>{props.description} <br/>${props.price}</p>
+                                <p className='card-body'>{maxLength(props.description)} <br/>${props.price}</p>
                             </div>
                         </div>
                         <div className='btn'>
