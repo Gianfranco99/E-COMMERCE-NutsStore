@@ -43,7 +43,17 @@ function rootReducer (state = initialState,action){
         case "ADDPRODUCT_CART":
             return {
               ...state,
-              productCart: state.productCart.concat(action.payload)
+              productCart: action.payload
+            };
+        case "REMOVEPRODUCT_CART":
+            return {
+              ...state,
+              productCart: action.payload
+            };
+        case "REMOVEALLPRODUCT_CART":
+            return {
+              ...state,
+              productCart: action.payload
             };
             // cree el reducer para el detalle del producto
             case "DETAIL_PRODUCT":
@@ -56,18 +66,6 @@ function rootReducer (state = initialState,action){
                 ...state,
               categories : action.payload
             };
-        case "INCREMENT" :
-            return {
-                ...state,
-                count : state.count + 1
-            
-        };
-        case "DECREMENT":
-            return {
-                ...state,
-                count: state.count -1
-            
-        };
         case "CLEAN_CART":
             return {
                 productCart:[]

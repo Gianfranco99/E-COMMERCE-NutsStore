@@ -27,7 +27,6 @@
 }
 
 .card-content {
-    margin-top: 5px;
     padding: 0;
     text-align: left;
 }
@@ -55,29 +54,49 @@
     background-color: rgb(245, 244, 244);
     padding: 0;
     margin: 0;
+    color: black;
 }
 
 .btn {
     display: flex;
     justify-content: center;
+    text-decoration: none;
 }
 
 .btn button {
     padding: 5px;
-    background-color: white;
+    background-color: #cab380;
     border: none;
     transition: 0.2s;
     margin-bottom: 5px;
-    border-radius: 3px;
+    border-radius: px;
+    color: black;
 }
 
 .btn button:hover{
     background: rgba(27,156,252,0.1);
 }
 
+.btn a{
+    color: white;
+}
+
 a{
-    text-transform: uppercase;
     color: #000000;
     text-decoration: none;
     font-weight: bold;
+}
+
+.card-content p{
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 40px;
+    color: white;
+    margin: 0;
+}
+.card-body p{
+    font-weight: lighter;
+    font-size: 20px;
+    padding-left: 40px;
+    color: white;
 }
