@@ -13,11 +13,11 @@ const ProductTable = (funcion) => {
             <thead>
             <tr>
                 <th>Producto</th>
-                <th>Description</th>
-                <th>Price</th>
+                <th>Descripción</th>
+                <th>Precio</th>
                 <th>Stock</th>
-                <th>Category</th>
-                <th>Edit/Delete</th>
+                <th>Categoría</th>
+                <th>Editar/Borrar</th>
             </tr>
             </thead>
             <tbody>
@@ -35,19 +35,19 @@ const ProductTable = (funcion) => {
                                 className="button muted-button"
                                 onClick={() => {funcion.editRow(product)}}
                             >
-                                Edit
+                                Editar
                             </button>
                             <button 
                                 className="button muted-button"
                                 onClick={() => {funcion.deleteProduct(product.name)}}
                             >
-                                Delete
+                                Borrar
                             </button>
                             </td>
                         </tr>
                     )) : (
                         <tr>
-                            <td colSpan={3}>No Product</td>
+                            <td colSpan={3}>Sin productos</td>
                         </tr>
                     )
                 }

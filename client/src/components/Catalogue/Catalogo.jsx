@@ -30,13 +30,13 @@ function Catalogo() {
       </div>
       <div className="categoriass-container">
         <div className="select-categorias">
-          <p className="titulo-categorias">Shop by categories</p>
+          <p className="titulo-categorias">Comprar por categorías</p>
           <select
             className="select"
             value={CategorySelected}
             onChange={selectedChange}
           >
-            <option value="TODOS">TODOS</option>
+            <option value="TODOS">Ver todas</option>
             {category && category.map(c =>
               <option value = {c.name}>{c.name}</option>
               )}

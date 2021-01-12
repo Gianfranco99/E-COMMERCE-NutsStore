@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useForm } from "react-hook-form";
 import FileBase64 from "react-file-base64";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //npn i bootstrap reactstrap
 //
 import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
+import { useSelector, useDispatch } from "react-redux";
+import {getCategory} from "../../redux/actions/actions";
 
 //instalar react-file-base64
 
@@ -15,6 +17,13 @@ const AddProductForm = (props) => {
   const [Fotos, setFotos] = useState([]);
   
 
+  const category = useSelector((state) => state.categories)
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getCategory())
+    },[])
+
   const handlerphoto = (files) => {
     
     let photos64 = files.map((el) => el.base64);
@@ -22,7 +31,7 @@ const AddProductForm = (props) => {
   };
 
   const { register, errors, handleSubmit } = useForm();
-
+  
   const onSubmit = (data, e) => {
     e.preventDefault();
     props.addProduct({ ...data, image: Fotos });
@@ -79,10 +88,10 @@ const AddProductForm = (props) => {
           required: { value: true, message: "campo requerido" },
         })}
       >
-        <option value="frutos secos">frutos secos</option>
-        <option value="castañas de caju">castañas de caju</option>
-        <option value="nueces">nueces</option>
-        <option value="harinas">harinas</option>
+        
+            {category && category.map(c =>
+              <option value = {c.name}>{c.name}</option>
+              )}
       </select>
       <button >Nuevo producto</button>
     </form>

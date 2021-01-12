@@ -44,7 +44,17 @@ function rootReducer (state = initialState,action){
         case "ADDPRODUCT_CART":
             return {
               ...state,
-              productCart: state.productCart.concat(action.payload)
+              productCart: action.payload
+            };
+        case "REMOVEPRODUCT_CART":
+            return {
+              ...state,
+              productCart: action.payload
+            };
+        case "REMOVEALLPRODUCT_CART":
+            return {
+              ...state,
+              productCart: action.payload
             };
             // cree el reducer para el detalle del producto
             case "DETAIL_PRODUCT":

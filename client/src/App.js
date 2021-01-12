@@ -15,8 +15,13 @@ import ProductDetail from './components/Product/ProductDetail';
 import GuestRoute from './containers/GuestRoute';
 import Order from './components/Order/order'
 import AuthRoute from './containers/AuthRoute';
+import Container from 'react-bootstrap/Container';
+import { useSelector } from "react-redux";
 
 function App() {
+  const loggedIn = useSelector((state) => state.loggedIn);
+  const user = useSelector((state) => state.user);
+
   return (
     <div className="App">
       <Router>
@@ -28,9 +33,10 @@ function App() {
         <GuestRoute exact path='/about' component={Nosotros}/>
         <Route exact path='/micuenta' component={MiCuenta}/>
         <GuestRoute exact path='/registro' component={Registrarse}/>    
-        <GuestRoute exact path='/carrito' component={Carrito}/>    
+        <GuestRoute exact path='/carrito' component={Carrito}/> 
         <GuestRoute exact path='/admin' component={Admin}/>
-        <GuestRoute exact path='/admin2' component={Admin2}/>
+        {/* {loggedIn && <GuestRoute exact path='/admin2' component={Admin2} />} */}
+        <GuestRoute exact path='/admin2' component={Admin2} loggedIn= {loggedIn}/>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
         <GuestRoute exact path='/order' component={Order}/>
 
