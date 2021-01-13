@@ -16,8 +16,8 @@ import GuestRoute from './containers/GuestRoute';
 import Order from './components/Order/order'
 import AuthRoute from './containers/AuthRoute';
 import Container from 'react-bootstrap/Container';
+import User from "./components/Users/User"
 import { useSelector } from "react-redux";
-
 function App() {
   const loggedIn = useSelector((state) => state.loggedIn);
   const user = useSelector((state) => state.user);
@@ -40,6 +40,7 @@ function App() {
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
         <GuestRoute exact path='/order' component={Order}/>
 
+        <GuestRoute exact path='/user' component={User}/>
   </Router>
  </div>
   );
