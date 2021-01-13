@@ -30,6 +30,7 @@ const AddProductForm = () => {
   useEffect(()=>{
     dispatch(getCategory())
     },[])
+
   //editProductform
   // const {register, errors, handleSubmit, setValue} = useForm({
   //   defaultValues:props.currentProduct
