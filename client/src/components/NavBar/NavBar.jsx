@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 //import Product from './Product.js
 
 function Nav() {
+  const carrito = useSelector((state) => state.productCart);
   const loggedIn = useSelector((state) => state.loggedIn);
   const user = useSelector((state) => state.user);
 
@@ -47,9 +48,14 @@ function Nav() {
             )}
             {!loggedIn && <img className="icono-usuario" src={IconoUsuario} />}
           </Link>
-          <Link to="/Carrito">
-            <img className="carrito" src={Carrito}></img>
-          </Link>
+          <div style={{ position: "relative" }}>
+            <Link to="/Carrito">
+              <img className="carrito" src={Carrito}></img>
+            </Link>
+            <span className="numeroDeCarrito">
+              {carrito.map((p) => p.quantity).reduce((a, b) => a + b, 0)}
+            </span>
+          </div>
         </div>
       </div>
     </nav>
