@@ -103,7 +103,6 @@ export function searchProducts(product) {
     }
   }
   
-
   export function getCategory (){
     return function(dispatch){
       return fetch(`http://localhost:3001/products/category`)
@@ -111,7 +110,7 @@ export function searchProducts(product) {
       .then(json =>{
         dispatch({
           type: "GET_CATEGORY",
-          payload:json
+          payload: json
         })
       })
     }
@@ -141,4 +140,18 @@ export function searchProducts(product) {
       payload
     }
   }
+
+  export function getUsers(){
+    return function(dispatch){
+      return fetch(`http://localhost:3001/user`)
+      .then(r => r.json())
+      .then(json =>{
+        dispatch({
+          type : "GET_USERS",
+          payload: json
+        })
+      })
+    }
+  }
+  
 
