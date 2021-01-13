@@ -1,4 +1,5 @@
-import store from '../store'
+import {store, persistor} from '../store';
+
 export function searchProducts(product) {
     return function(dispatch) {
       return fetch(`http://localhost:3001/products/search/search?name=${product}`)

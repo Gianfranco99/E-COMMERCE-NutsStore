@@ -3,7 +3,7 @@ import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogue/Catalogo';
 import NavBar from './components/NavBar/NavBar';
-import Admin from './components/EditProduct/Admin'
+import Admin from './components/AddProduct/prueba'
 import Admin2 from './components/AddCategory/Admin2'
 import SearchProduct from "./components/SearchBar/SearchProduct"
 import Home from "./components/Home/Home"
@@ -34,7 +34,7 @@ function App() {
         <Route exact path='/micuenta' component={MiCuenta}/>
         <GuestRoute exact path='/registro' component={Registrarse}/>    
         <GuestRoute exact path='/carrito' component={Carrito}/> 
-        <GuestRoute exact path='/admin' component={Admin}/>
+        <GuestRoute exact path='/prueba' component={Admin}/>
         {/* {loggedIn && <GuestRoute exact path='/admin2' component={Admin2} />} */}
         <GuestRoute exact path='/admin2' component={Admin2} loggedIn= {loggedIn}/>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>

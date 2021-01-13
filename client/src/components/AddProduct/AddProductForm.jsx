@@ -1,11 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { useForm } from "react-hook-form";
 import FileBase64 from "react-file-base64";
-import 'bootstrap/dist/css/bootstrap.min.css';
-//modales de prueba
-//npn i bootstrap reactstrap
-//
-import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
 import { useSelector, useDispatch } from "react-redux";
 import {getCategory} from "../../redux/actions/actions";
 
