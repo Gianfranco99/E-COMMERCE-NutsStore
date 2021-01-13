@@ -38,7 +38,7 @@ const AddProductForm = (props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>Producto</label>
-      <input className
+      <input
         type="text"
         name="name"
         ref={register({

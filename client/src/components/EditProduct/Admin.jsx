@@ -93,6 +93,11 @@ function Admin() {
       
   };
 
+  // const camelCase = (props) =>{
+  //   toString.CamelCase(props)
+  // }
+
+
   useEffect(() => {
     dispatch(getProducts());
  }, [])
