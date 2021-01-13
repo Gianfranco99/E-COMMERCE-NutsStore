@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import './ReviewForm.css';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { getReviews } from '../../redux/actions/actions';
@@ -43,16 +44,9 @@ const ReviewForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Comentario</label>
-      <input
-        type="text"
-        name="comentario"
-        ref={register({
-          required: { value: true, message: "campo requerido" },
-        })}
-      />
       <label>Calificación</label>
       <input
+      className="qualify"
         type="number"
         min="0"
         max="5"
@@ -61,7 +55,20 @@ const ReviewForm = (props) => {
           required: { value: true, message: "campo requerido" },
         })}
       />
-      <button onClick={addReview}>Publicar comentario</button>
+      <label>Comentario</label>
+      <input
+      className="text-coment"
+        type="text" 
+        name="comentario"
+        ref={register({
+          required: { value: true, message: "campo requerido" },
+        })}
+      />
+      <div className='btn-review'>
+          <button onClick={addReview}>
+              <a>Publicar comentario</a>
+          </button>
+      </div>
     </form>
   );
 };

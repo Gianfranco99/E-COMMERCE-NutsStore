@@ -7,17 +7,17 @@ import { Link } from 'react-router-dom';
 
 export default function Producto(props){
     const dispatch = useDispatch();
-     const data = useSelector(state => state.products)
+     const data = useSelector(state => state.products);
+
+
 
      const maxLength = (props) => {
-        if(props.length < 14){
+        if(props.length < 12){
             return props;
         } else {
             return props.slice(0,11) + '...'; 
         }
     };
-    
-
     
     return (
         <div className='card-container'>
@@ -32,20 +32,22 @@ export default function Producto(props){
                                 <p>{props.name}</p>
                             </div>
                             <div className='card-body'>
-                                <p className='card-body'>{maxLength(props.description)} <br/>${props.price}</p>
+                                <p>{maxLength(props.description)} <br/>${props.price}</p>
                             </div>
                         </div>
-                        <div className='btn'>
-                            <button onClick={() => dispatch(addProductCart(props))}>
-                                <a>Comprar</a>
-                            </button>
-                        </div>
+                        <div className='btns'>
                             <div className='btn'>
                                 <Link to='/productDetail'>
                                 <button onClick={() => dispatch(DetailProduct(props))}>
                                     <a>Ver más</a>
                                 </button>
                                 </Link>
+                            </div>
+                            <div className='btn'>
+                            <button onClick={() => dispatch(addProductCart(props))}>
+                                <a>Comprar</a>
+                            </button>
+                            </div>
                             </div>
                 </div>
                 ) : (
@@ -56,10 +58,9 @@ export default function Producto(props){
                         <div className='card-content'>
                     <div className='card-title'>
                                 <h3>{props.name}</h3>
-                                <h4></h4>
                         </div>
                         <div className='card-body'>
-                            <p>{props.description}</p>
+                                <p>{maxLength(props.description)} <br/>${props.price}</p>
                         </div>
                     </div>
                     <div className='btn'>

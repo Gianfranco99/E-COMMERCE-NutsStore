@@ -83,17 +83,21 @@ export default function ProductDetail () {
             )
         }
         </div>
-        <div>
-            <h2>Agregar comentario</h2>
-            <ReviewForm 
-            addReview={addReview}
-             />
+        <div className="container">
+        <div className="review-container">
+        <div className="add-review">
+            <h2 className="add-title">Agregar comentario</h2>
+            <ReviewForm/>
           </div>
-        <div className="flex-large">
+          <br/>
+        <div className="see-review">
           <h2>Todos los comentarios</h2>
           <ReviewTable
           review={review}
         />
+        </div>
+        </div>
+        <br/>
         </div>
         </div>
       );
