@@ -45,6 +45,7 @@
   .box h3{
     /*valores default*/
     margin: 0;
+    padding: 0;
 }
 
   .box .colors button{
