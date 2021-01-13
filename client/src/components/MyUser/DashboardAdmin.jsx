@@ -27,20 +27,22 @@ function DashboardAdmin() {
           <button className="boton-admin">Agregar nueva categoria</button>
         </Link>
       </div>
-      <div className="separador-admin">
-        <button
-          className="boton-admin-logout"
-          onClick={() => {
-            dispatch({
-              type: "SET_LOGOUT",
-            });
-            window.localStorage.removeItem("token");
-            replace("/signin");
-            push("/micuenta");
-          }}
-        >
-          Cerrar Sesión
-        </button>
+      <div className="d-flex justify-content-center mt-4">
+        <div className="separador-admin">
+          <button
+            className="boton-admin-logout"
+            onClick={() => {
+              dispatch({
+                type: "SET_LOGOUT",
+              });
+              window.localStorage.removeItem("token");
+              replace("/signin");
+              push("/micuenta");
+            }}
+          >
+            Cerrar Sesión
+          </button>
+        </div>
       </div>
     </div>
   );

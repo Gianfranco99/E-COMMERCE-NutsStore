@@ -41,7 +41,6 @@ server.post("/login", function (req, res, next) {
   try{
     passport.authenticate("local", function (err, user) { //recibe la estrategia que se usa: "local" para LocalStrategy y una funcion que se autoejecuta
      console.log(err, user);
-     console.log(TOKEN_PASSWORD)
      const { id, name, email, isAdmin} = user;
     if (err) return next(err);
       else if (!user) return res.sendStatus(401);
