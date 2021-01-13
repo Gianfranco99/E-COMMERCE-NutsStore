@@ -15,7 +15,6 @@ body {
   margin: 0;
 }
 
-
 main {
   display: block;
 }
@@ -819,6 +818,7 @@ label {
   max-width: 100%;
   display: block;
   margin: 1rem 0 0.5rem;
+  padding-top: 15px;
 }
 
 @media (min-width: 600px) {
