@@ -1,12 +1,16 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import "./Carrito.css"
-import imageneliminar from "../../assets/cruz.png"
-import {useSelector,useDispatch} from "react-redux";
-import Product from "../Product/Product"
-import {addProductCart, removeProductFromCart, removeProductsFromCart} from '../../redux/actions/actions';
-import Row from 'react-bootstrap/Row';
-
+import React, { useEffect, useState, Fragment } from "react";
+import { Link } from "react-router-dom";
+import "./Carrito.css";
+import imageneliminar from "../../assets/cruz.png";
+import { useSelector, useDispatch } from "react-redux";
+import Product from "../Product/Product";
+import {
+  addProductCart,
+  cleanCart,
+  removeProductFromCart,
+  removeProductsFromCart,
+} from "../../redux/actions/actions";
+import Row from "react-bootstrap/Row";
 
 function Carrito() {
 const carrito = useSelector(state => state.productCart)
@@ -51,16 +55,16 @@ var quantity =
                  console.log(quantity)
 
   return (
-      <Fragment>
-          {carrito.length === 0 ? (
+    <Fragment>
+      {carrito.length === 0 ? (
         <Row className="justify-content-center">
           <h4>No hay productos en el carrito</h4>
         </Row>
-        ) : (
-            <Fragment>
+      ) : (
+        <Fragment>
           <div className="card shopping-cart">
             <div className="card-header  text-primary">
-              <i className="fa fa-shopping-cart" aria-hidden="true"></i>{' '}
+              <i className="fa fa-shopping-cart" aria-hidden="true"></i>{" "}
               Shopping cart
               <div className="clearfix"></div>
             </div>
@@ -102,7 +106,9 @@ var quantity =
                           </button>
                           <span className="quantity-number">{quantity}</span>
                           <button
-                            onClick={() => dispatch(removeProductFromCart(payload))}
+                            onClick={() =>
+                              dispatch(removeProductFromCart(payload))
+                            }
                             className="minus"
                           >
                             -
@@ -111,7 +117,9 @@ var quantity =
                       </div>
                       <div className="col-2 col-sm-2 col-md-2 text-right">
                         <button
-                          onClick={() => dispatch(removeProductsFromCart(payload))}
+                          onClick={() =>
+                            dispatch(removeProductsFromCart(payload))
+                          }
                           type="button"
                           className="btn btn-outline-danger btn-xs"
                         >
@@ -125,11 +133,17 @@ var quantity =
               ))}
 
               <div className="pull-right">
-                <Link to={'/catalogo'}>
+                <Link to={"/catalogo"}>
                   <button className="btn btn-outline-primary pull-right">
                     Continuar comprando
                   </button>
                 </Link>
+                <button
+                  onClick={() => dispatch(cleanCart())}
+                  className="btn btn-outline-primary pull-right mr-3"
+                >
+                  Vaciar carrito
+                </button>
               </div>
             </div>
             <div className="card-footer">
@@ -156,7 +170,7 @@ var quantity =
                   COMPRAR
                 </button>
                 <div className="pull-right" style={{ margin: 5 }}>
-                  Total price:{' '}
+                  Total price:{" "}
                   <b>
                     $
                     { price}
@@ -166,11 +180,9 @@ var quantity =
             </div>
           </div>
         </Fragment>
-            )}
-
+      )}
     </Fragment>
-
   );
 }
 
-export default Carrito
+export default Carrito;
