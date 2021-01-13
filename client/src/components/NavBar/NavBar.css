@@ -4,14 +4,19 @@
     display: flex;
     justify-content: space-around;
     height: 95px;
-    margin-bottom: 0;
+    position: fixed;
+    top: 0; 
+    right: 0; 
+    left:0;
+    width: 100%;
+    box-shadow: 0 0 3px 3px #a09f9f
 }
 
 .logo-titulo {
- display: flex;
- width: 30%;
- height: 100%;
- align-items: center;
+  display: flex;
+  width: 30%;
+  height: 100%;
+  align-items: center;
 }
 
 img {
@@ -27,17 +32,27 @@ img {
   margin-top: 5px;
 }
 
+.numeroDeCarrito {
+  position: absolute;
+  padding: 0px 5px;
+  background-color: white;
+  border-radius: 100%;
+  font-size: 11px;
+  bottom: 17px;
+  right: -1px;
+}
+
 .searchbar-carrito {
   display: flex;
   height: 100%;
   align-items: center;
+  position: relative;
 }
 
 .categorias-container {
   height: 100%;
   display: flex;
   align-items: center;
-
 }
 
 .categorias-container ul {
@@ -45,7 +60,7 @@ img {
 }
 
 .nav .logo-titulo span {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-size: 45px;
   color: white;
   margin-left: 15px;
@@ -53,21 +68,20 @@ img {
 
 .nav2 {
   display: flex;
-
 }
 li {
-    display: inline-block;
+  display: inline-block;
 
-    text-align: center;
-    padding: 5px 14px;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-  }
+  text-align: center;
+  padding: 5px 14px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
 
 li a {
-    color: #f2f2f2;
-    text-decoration: none;
+  color: #f2f2f2;
+  text-decoration: none;
 }
 
 li a:hover {
@@ -76,19 +90,19 @@ li a:hover {
 }
 
 li a:visited {
-  color:white;
+  color: white;
 }
 
 li:hover {
-    background-color: #8d3f35;
-    color: black;
-  }
+  background-color: #8d3f35;
+  color: black;
+}
 
 form input {
-    border-radius: 12px;
-    border: none;
-    height: 25px;
-    padding-left: 15px;
+  border-radius: 12px;
+  border: none;
+  height: 25px;
+  padding-left: 15px;
 }
 
 .button-search {
@@ -101,9 +115,9 @@ form input {
 }
 
 .icono-usuario {
-height: 24px;
-width: 28px;
-margin-left: 15px;
-margin-right: 7px;
-margin-top: 5px;
+  height: 24px;
+  width: 28px;
+  margin-left: 15px;
+  margin-right: 7px;
+  margin-top: 5px;
 }
