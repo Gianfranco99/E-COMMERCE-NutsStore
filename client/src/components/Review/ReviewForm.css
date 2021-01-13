@@ -1,0 +1,35 @@
+.btn-review {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-review button {
+    padding: 5px;
+    background-color: #94564c;
+    border: none;
+    transition: 0.2s;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    color: #cab380;
+}
+
+.btn-review button:hover{
+    background: #ffffff;
+}
+
+.text-coment{
+    display: flex;
+    justify-content: left;
+    background-color: white;
+    width: 350px;
+    height: 150px;
+    margin-left: 24px;
+}
+
+.qualify{
+    display:flex;
+    width: 350px;
+    background-color: white;
+    margin-left: 24px;
+}
