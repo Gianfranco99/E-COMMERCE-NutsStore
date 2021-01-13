@@ -10,11 +10,45 @@ import Row from 'react-bootstrap/Row';
 
 function Carrito() {
 const carrito = useSelector(state => state.productCart)
+const userId = useSelector ( state => state.user.id)
 console.log('este es el carrito', carrito)
 const cantidad = useSelector(state => state.count)
 const dispatch = useDispatch()
 let contador = 0;
+var axios = require('axios');
 
+const getOrder = () =>{
+  const order = {"price":price,"orderProducts":carrito ,"quantity":quantity,"status":"creada"};
+  
+
+  var config = {
+    method: 'post',
+    url: `http://localhost:3001/user/${userId}/order`,
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data : order
+  };
+  console.log(config)
+  
+  axios(config)
+  .then(function (response) {
+    console.log(response)
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+var price = 
+           carrito.map(p => p.payload.price * p.quantity)
+                  .reduce((a, b) => a + b, 0)
+                  
+var quantity = 
+          carrito.map(p => p.quantity)
+                  .reduce(reducer)
+                 console.log(quantity)
 
   return (
       <Fragment>
@@ -118,17 +152,14 @@ let contador = 0;
                 </div>
               </div>
               <div className="pull-right" style={{ margin: 10 }}>
-                <button className="btn btn-primary pull-right">
+                <button onClick={getOrder} className="btn btn-primary pull-right">
                   COMPRAR
                 </button>
                 <div className="pull-right" style={{ margin: 5 }}>
                   Total price:{' '}
                   <b>
                     $
-                    {carrito
-                      .map(p => p.payload.price * p.quantity)
-                      .reduce((a, b) => a + b, 0)
-                      .toFixed(2)}
+                    { price}
                   </b>
                 </div>
               </div>
