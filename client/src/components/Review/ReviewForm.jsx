@@ -7,13 +7,14 @@ import { getReviews } from '../../redux/actions/actions';
 const ReviewForm = (props) => {
   const dispatch = useDispatch();
   const reviewState = useSelector((state) => state.reviews);
-
+  
   //agregar review
-  const addReview = (review) => {
+  const addReview = () => {
+    console.log('paa por add review');
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     
-    var raw = JSON.stringify({"qualify":review.qualify,"description":review.comentario, "productID": reviewState.productId});
+    var raw = JSON.stringify({"qualify":reviewState.qualify,"description":reviewState.description});
     
     var requestOptions = {
       method: 'POST',
@@ -22,7 +23,7 @@ const ReviewForm = (props) => {
       redirect: 'follow'
     };
     
-    fetch(`http://localhost:3001/products/${review.productId}/user/${review.userId}/review`, requestOptions)
+    fetch(`http://localhost:3001/products/${reviewState.productId}/user/${reviewState.userId}/review`, requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -36,7 +37,6 @@ const ReviewForm = (props) => {
   
   const onSubmit = (data, e) => {
     e.preventDefault();
-    props.addReview({ ...data});
     console.log(data)
     //limpiar campos
     e.target.reset();
@@ -59,7 +59,7 @@ const ReviewForm = (props) => {
       <input
       className="text-coment"
         type="text" 
-        name="comentario"
+        name="description"
         ref={register({
           required: { value: true, message: "campo requerido" },
         })}
