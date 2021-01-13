@@ -23,7 +23,6 @@
 
 .titulo-tienda {
   display: flex;
-  position: absolute;
   font-family: "Playfair Display", serif;
   color: #612425;
   font-size: 50px;

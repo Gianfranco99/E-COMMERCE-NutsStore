@@ -14,7 +14,8 @@ function Nav() {
   const user = useSelector((state) => state.user);
 
   return (
-    <nav className="nav">
+    <nav>
+      <div className="nav">
       <div className="logo-titulo">
         <img src={NavLogo}></img>
         <span>Nuts Store</span>
@@ -31,10 +32,7 @@ function Nav() {
             <li>
               <Link to="/about">NOSOTROS</Link>
             </li>
-            {/* <li><Link to='/admin'>ADMIN</Link></li>
-                <li><Link to='/admin2'>ADMIN2</Link></li> */}
-            {/* <li className={style.a}><Link className={style.a} to='/SearchProduct'>SearchProduct</Link></li> */}
-          </ul>
+            </ul>
         </div>
         <div className="searchbar-carrito">
           <SearchBar />
@@ -50,6 +48,7 @@ function Nav() {
           <Link to="/Carrito">
             <img className="carrito" src={Carrito}></img>
           </Link>
+        </div>
         </div>
       </div>
     </nav>

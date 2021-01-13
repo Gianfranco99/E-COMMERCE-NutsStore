@@ -4,7 +4,12 @@
     display: flex;
     justify-content: space-around;
     height: 95px;
-    margin-bottom: 0;
+    position: fixed;
+    top: 0; 
+    right: 0; 
+    left:0;
+    width: 100%;
+    box-shadow: 0 0 3px 3px #a09f9f
 }
 
 .logo-titulo {
