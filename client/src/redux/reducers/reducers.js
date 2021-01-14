@@ -77,14 +77,17 @@ function rootReducer (state = initialState,action){
             };
         case "CLEAN_CART":
             return {
+                ...state,
                 productCart:[]
             }
         case "REMOVE_ITEM_CART":
             return {
+                ...state,
                 productCart : state.productCart.filter(p => p.id !== action.payload.id)
             }
         case "GET_USERS":
             return {
+                ...state,
                 users : action.payload
             }
         default: return state
