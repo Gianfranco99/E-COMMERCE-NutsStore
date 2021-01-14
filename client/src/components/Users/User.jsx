@@ -10,13 +10,15 @@ export default function Users (){
 useEffect(()=>{
     dispatch(getUsers())
 },[])
-console.log(users)
 var nombre = users[0];
 console.log(nombre)
 
 return (
     <div>
-        <h1>users</h1>
+        <h1>hola</h1>
+    </div>,
+    <div>
+<h1>holaaaaaaaaaaaaa</h1>
     </div>
 )
 
