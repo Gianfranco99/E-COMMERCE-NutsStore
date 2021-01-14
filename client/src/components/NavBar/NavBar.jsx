@@ -15,6 +15,8 @@ function Nav() {
   const user = useSelector((state) => state.user);
 
   return (
+  <div className="container">
+
     <nav>
       <div className="nav">
       <div className="logo-titulo">
@@ -40,10 +42,10 @@ function Nav() {
           <Link to="/micuenta">
             {loggedIn && user.isAdmin && (
               <img className="icono-usuario" src={IconoUsuarioVerde} />
-            )}
+              )}
             {loggedIn && !user.isAdmin && (
               <img className="icono-usuario" src={IconoUsuarioVerde} />
-            )}
+              )}
             {!loggedIn && <img className="icono-usuario" src={IconoUsuario} />}
           </Link>
           <div style={{ position: "relative" }}>
@@ -58,6 +60,7 @@ function Nav() {
         </div>
       </div>
     </nav>
+    </div>
   );
 }
 

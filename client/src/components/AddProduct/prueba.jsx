@@ -11,84 +11,66 @@ import EditProductForm from "../EditProduct/EditProductForm";
 import ProductTable from "../Tables/ProductTable";
 
 const AddProductForm = () => {
-  //addProductForm
   const [Fotos, setFotos] = useState([]);
   const category = useSelector((state) => state.categories)
   const dispatch = useDispatch();
-  // const props = useSelector((state) => state);
+  const productos = useSelector((state)=> state.products)
+  const [products, setProducts] = useState(productos);
+  const [data, setData] = useState(products);
+  const [modalEditar, setModalEditar] = useState(false);
+  const [modalEliminar, setModalEliminar] = useState(false);
+  const [modalInsertar, setModalInsertar] = useState(false);
+  const [editing, setEditing] = useState(false);
   const handlerphoto = (files) => {  
     let photos64 = files.map((el) => el.base64);
     setFotos(photos64);
   };
-  // const onSubmit = (data, e) => {
-  //   e.preventDefault();
-  //   props.addProduct({ ...data, image: Fotos });
-  //   console.log("paso", data)
-  //   //limpiar campos
-  //   e.target.reset();
-  // };
+
   useEffect(()=>{
     dispatch(getCategory())
     },[])
+  useEffect(() => {
+      dispatch(getProducts());
+   }, [])
 
-  //editProductform
-  // const {register, errors, handleSubmit, setValue} = useForm({
-  //   defaultValues:props.currentProduct
-  // });
-  // const onSubmit = (data, e) => {
-  //   console.log('onSubmit pasa', data)
-  //   data.id = props.currentProduct.id;
-  //   props.updateProduct(props.currentProduct.id, data)
-    
-  //   //limpiar campos
-  //   e.target.reset();
-  // }
+  const axios = require('axios');
+  const agregarproducto  = () => {
+  const productoagregado = {"name":"nombre","description":"description","category":"category","price":123,"stock":123,"image":null};
 
-  // setValue('name', props.currentProduct.name);
-  // setValue('description', props.currentProduct.description);
-  // setValue('price', props.currentProduct.price);
-  // setValue('stock', props.currentProduct.stock);
-  // setValue('category', props.currentProduct.category);
-  //productTable
-  
-  //addProduct
-  // const dispatch = useDispatch();
-  const productsData = [];
-  //estado.
-  const [products, setProducts] = useState(productsData);
-
-  //agregar producto
-  
-  const addProduct = (product) => {
-    axios
-      .post("http://localhost:3001/products", product)
-      .then((res) => console.log("pasopor aca",res));
+  var config = {
+    method: 'post',
+    url: 'http://localhost:3001/products',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+     data : productoagregado
   };
+  console.log(config)
 
-  //eliminar producto
-  const deleteProduct = (id,e) => {
-    var raw = "";
-    console.log("eliminado",id)
-    var requestOptions = {
-    method: 'DELETE',
-    body: raw,
-    redirect: 'follow'
-    };
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  }
 
-    fetch(`http://localhost:3001/products/${id}`, requestOptions)
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+  //modal
+  const insertar =()=>{
+    var valorInsertar=productoSeleccionado;
+    // valorInsertar.id=data[data.length-1].id+1;
+    var dataNueva = productos;
+    dataNueva.push(valorInsertar);
+    setProducts(dataNueva);
+    setModalInsertar(false);
+  }
 
-    alert("producto eliminado")
-    
-    
-  };
 
-  //editar producto
-  const [editing, setEditing] = useState(false);
-  // const [currentProduct, setCurrentProduct] = useState({
-    const [productoSeleccionado, setProductoSeleccionado] = useState({
+
+
+  //edit 
+  const [productoSeleccionado, setProductoSeleccionado] = useState({
     id: null,
     name: "",
     description: "",
@@ -96,7 +78,6 @@ const AddProductForm = () => {
     price: "",
     category: "",
   });
-
   const editRow = (product) => {
     dispatch({type: "EDIT_PRODUCT"})
     setEditing(true);
@@ -109,7 +90,6 @@ const AddProductForm = () => {
       category: product.category,
     });
   };
-
   const updateProduct = (id, updateProduct) => {
     console.log('pasa Update', updateProduct, id)
     setEditing(false);
@@ -131,49 +111,41 @@ const AddProductForm = () => {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
 
-    setProducts(
+    productos(
       products.map((product) => (product.id === id ? updateProduct : product))
     );
-      
+  };
+  const deleteProduct = (id,e) => {
+    var raw = "";
+    console.log("eliminado",id)
+    var requestOptions = {
+    method: 'DELETE',
+    body: raw,
+    redirect: 'follow'
+    };
+
+    fetch(`http://localhost:3001/products/${id}`, requestOptions)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
   };
 
-  useEffect(() => {
-    dispatch(getProducts());
- }, [])
-  
-
-
-  
-
-  const [data, setData] = useState(products);
-  const [modalEditar, setModalEditar] = useState(false);
-  const [modalEliminar, setModalEliminar] = useState(false);
-  const [modalInsertar, setModalInsertar] = useState(false);
-
-  // const [productoSeleccionado, setProductoSeleccionado] = useState({
-  //   // id: '',
-  //   name: '',
-  //   description: '',
-  //   price:'',
-  //   stock:'',
-  //   category:''
-  // });
-//modal
+  //modal
   const seleccionarProducto=(elemento, caso)=>{
-setProductoSeleccionado(elemento);
-(caso==='Editar')?setModalEditar(true):setModalEliminar(true)
-  }
-//modal
-  const handleChange=e=>{
-    const {name, value}=e.target;
-    setProductoSeleccionado((prevState)=>({
-      ...prevState,
-      [name]: value
-    }));
-  }
-//modal
+    setProductoSeleccionado(elemento);
+    (caso==='Editar')?setModalEditar(true):setModalEliminar(true)
+      }
+  //modal
+    const handleChange=e=>{
+      const {name, value}=e.target;
+      setProductoSeleccionado((prevState)=>({
+        ...prevState,
+        [name]: value
+      }));
+    }
+  //modal
   const editar=()=>{
-    var dataNueva=products;
+    var dataNueva=productos;
     dataNueva.map(p=>{
       if(p.id===productoSeleccionado.id){
         p.name=productoSeleccionado.name;
@@ -183,7 +155,7 @@ setProductoSeleccionado(elemento);
         p.category=productoSeleccionado.category;
       }
     });
-    setProducts(dataNueva);
+    setProducts(productos);
     setModalEditar(false);
   }
 //modal
@@ -196,15 +168,13 @@ setProductoSeleccionado(elemento);
     setProductoSeleccionado(null);
     setModalInsertar(true);
   }
-//modal
-  const insertar =()=>{
-    var valorInsertar=productoSeleccionado;
-    // valorInsertar.id=data[data.length-1].id+1;
-    var dataNueva = products;
-    dataNueva.push(valorInsertar);
-    setProducts(dataNueva);
-    setModalInsertar(false);
-  }
+
+  const addProduct = (product) => {
+    axios
+      .post("http://localhost:3001/products", product)
+      .then((res) => console.log("pasopor aca",res));
+  };
+  
 
   return (
     <div className="container">
@@ -221,11 +191,11 @@ setProductoSeleccionado(elemento);
             <th>price</th>
             <th>stock</th>
             <th>category</th>
+            <th>image</th>
           </tr>
         </thead>
         <tbody>
-          
-          {products.map(element=>(
+          {productos.map(element=>(
             <tr>
               <td>{element.id}</td>
               <td>{element.name}</td>
@@ -233,6 +203,7 @@ setProductoSeleccionado(elemento);
               <td>{element.price}</td>
               <td>{element.stock}</td>
               <td>{element.category}</td>
+              <td>{element.image}</td>
               <td><button className="btn btn-primary" onClick={()=>seleccionarProducto(element, 'Editar')}>Editar</button> {"   "} 
               <button className="btn btn-danger" onClick={()=>seleccionarProducto(element, 'Eliminar')}>Eliminar</button></td>
             </tr>
@@ -240,7 +211,6 @@ setProductoSeleccionado(elemento);
           }
         </tbody>
       </table>
-
       <Modal isOpen={modalEditar}>
         <ModalHeader>
           <div>
@@ -249,7 +219,7 @@ setProductoSeleccionado(elemento);
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            {/* <label>ID</label>
+            <label>ID</label>
             <input
               className="form-control"
               readOnly
@@ -257,8 +227,7 @@ setProductoSeleccionado(elemento);
               name="id"
               value={productoSeleccionado && productoSeleccionado.id}
             />
-            <br /> */}
-
+            <br />
             <label>name</label>
             <input
               className="form-control"
@@ -268,7 +237,6 @@ setProductoSeleccionado(elemento);
               onChange={handleChange}
             />
             <br />
-
             <label>description</label>
             <input
               className="form-control"
@@ -278,7 +246,6 @@ setProductoSeleccionado(elemento);
               onChange={handleChange}
             />
             <br />
-
             <label>price</label>
             <input
               className="form-control"
@@ -288,7 +255,6 @@ setProductoSeleccionado(elemento);
               onChange={handleChange}
             />
             <br />
-
             <label>stock</label>
             <input
               className="form-control"
@@ -298,7 +264,6 @@ setProductoSeleccionado(elemento);
               onChange={handleChange}
             />
             <br />
-
             <label>category</label>
             <select name="category">
               {category && category.map(c =>
@@ -306,7 +271,6 @@ setProductoSeleccionado(elemento);
               )}
             </select>
             <br />
-
           </div>
         </ModalBody>
         <ModalFooter>
@@ -321,8 +285,6 @@ setProductoSeleccionado(elemento);
           </button>
         </ModalFooter>
       </Modal>
-
-
       <Modal isOpen={modalEliminar}>
         <ModalBody>
           Estás Seguro que deseas eliminar el producto{productoSeleccionado && productoSeleccionado.name}
@@ -339,8 +301,6 @@ setProductoSeleccionado(elemento);
           </button>
         </ModalFooter>
       </Modal>
-
-
         <Modal isOpen={modalInsertar}>
         <ModalHeader>
           <div>
@@ -349,65 +309,54 @@ setProductoSeleccionado(elemento);
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            {/* <label>ID</label>
+            <label>ID</label>
             <input
               className="form-control"
               readOnly
               type="text"
               name="id"
               // value={data[data.length-1].id+1}
-            />
-            <br /> */}
-
+          
+          />
+            <br />
             <label>name</label>
             <input
               className="form-control"
               type="text"
               name="name"
               value={productoSeleccionado ? productoSeleccionado.name: ''}
-              onChange={handleChange}
-            />
+              onChange={handleChange}/>
             <br />
-
             <label>description</label>
             <input
               className="form-control"
               type="text"
               name="description"
               value={productoSeleccionado ? productoSeleccionado.description: ''}
-              onChange={handleChange}
-            />
+              onChange={handleChange}/>
             <br />
-
             <label>price</label>
             <input
               className="form-control"
               type="text"
               name="price"
               value={productoSeleccionado ? productoSeleccionado.price: ''}
-              onChange={handleChange}
-            />
+              onChange={handleChange}/>
             <br />
-
             <label>stock</label>
             <input
               className="form-control"
               type="text"
               name="stock"
               value={productoSeleccionado ? productoSeleccionado.stock: ''}
-              onChange={handleChange}
-            />
+              onChange={handleChange}/>
             <br />
-
             <label>category</label>
             <select name="category">        
-              {category && category.map(c =>
-               <option value = {c.name}>{c.name}</option>
-              )}
+              {category && category.map(c => <option value = {c.name}>{c.name}</option>)}
             </select>
             <br />
           </div>
-
         </ModalBody>
         <ModalFooter>
           <button className="btn btn-primary"
@@ -416,8 +365,7 @@ setProductoSeleccionado(elemento);
           </button>
           <button
             className="btn btn-danger"
-            onClick={()=>setModalInsertar(false)}
-          >
+            onClick={()=>setModalInsertar(false)}>
             Cancelar
           </button>
         </ModalFooter>
@@ -425,5 +373,4 @@ setProductoSeleccionado(elemento);
     </div>
   );
 }
-
 export default AddProductForm;
