@@ -10,6 +10,7 @@ const AddProductForm = (props) => {
   //categories desplegable
   // const [CategorySelected, setCategorySelected] = useState('TODOS');
   const [Fotos, setFotos] = useState([]);
+  
 
   const category = useSelector((state) => state.categories)
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const AddProductForm = (props) => {
     },[])
 
   const handlerphoto = (files) => {
+    
     let photos64 = files.map((el) => el.base64);
     setFotos(photos64);
   };
@@ -28,7 +30,7 @@ const AddProductForm = (props) => {
   const onSubmit = (data, e) => {
     e.preventDefault();
     props.addProduct({ ...data, image: Fotos });
-    console.log(data)
+    console.log("paso", data)
     //limpiar campos
     e.target.reset();
   };
@@ -90,5 +92,3 @@ const AddProductForm = (props) => {
     </form>
   );
 };
-
-export default AddProductForm;

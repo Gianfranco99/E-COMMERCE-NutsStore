@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .banner-guest {
   display: flex;
   background-image: url("../../assets/bannerfrutossecos2.jpg");

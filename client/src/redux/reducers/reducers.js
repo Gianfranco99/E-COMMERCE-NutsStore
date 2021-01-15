@@ -6,6 +6,8 @@ const initialState ={
     productCart: [],// los productos que agregan al cart
     categories:[],// las categorias del producto que se crean en admin2
     loggedIn: false,// autenticacion de usuario
+    count : 0,
+    order: [],
     user:{},// el usuario registrado en el momento
     users:[], // todos los usarios de la base de datos
     count : 0
@@ -75,6 +77,23 @@ function rootReducer (state = initialState,action){
                 ...state,
               categories : action.payload
             };
+            case "GET_ORDER":
+                return {
+                  ...state,
+                  order: action.payload
+                };
+        case "INCREMENT" :
+            return {
+                ...state,
+                count : state.count + 1
+            
+        };
+        case "DECREMENT":
+            return {
+                ...state,
+                count: state.count -1
+            
+        };
         case "CLEAN_CART":
             return {
                 ...state,

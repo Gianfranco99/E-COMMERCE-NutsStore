@@ -8,6 +8,11 @@
   flex-direction: column;
   justify-content: center;
 } */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .catalogo-banner {
   display: flex;
@@ -34,6 +39,7 @@
   flex-wrap: nowrap;
   align-items: left;
   margin: 40px;
+  
 }
 
 .select-categorias {
