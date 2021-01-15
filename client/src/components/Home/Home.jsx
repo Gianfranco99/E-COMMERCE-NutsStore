@@ -10,36 +10,36 @@ import planta from '../../assets/planta.png';
 
 function Home() {
     return (
-        <div>
-         <div className= "home-container">
-            <div className= "titulo-descripcion-container">
-             <div className= "titulo-container">
-                <span className= "titulo1">
-                    Lo natural y <span className="palabra">saludable</span> en tu hogar, siempre</span>
-             </div>
-             <div className= "descripcion-container">
-                <p className= "descripcion-home">
+      <div className="container-home">
+        <div className= "container-head">
+          <div className= "titulo-descripcion-container">
+            <div className= "titulo-container">
+              <span className= "titulo1">
+                Lo natural y <span className="palabra">saludable</span> en tu hogar, siempre</span>
+            </div>
+            <div className= "descripcion-container">
+              <p className= "descripcion-home">
                 Toda la información de las propiedades de los frutos secos en una sola web. <br/> 
                 Tambien podes disfrutarlos y recibirlos en tu casa, estás a un click de distancia.</p>
-             </div>
             </div>
-             <div className= "boton-container">
+          </div>
+          <div className= "boton-container">
             <Link to="/catalogo">
-                <button className="boton-comprar">COMPRAR</button>
+              <button className="boton-comprar">COMPRAR</button>
             </Link>
-             </div>
-             </div>
-             <br/>
-             <div className="carrusel">
-                 <div className="tarjeta">
-                    <img className="img-tarjeta" src={imageAlmendra} height="180px" border-radius-top="12px" alt="Card 1"/>
-                  <div className="container-tarjeta">
-                    <p className="title">Almendra</p>
-                    <p className="cantidad">Cantidad</p>
-                    <p className="description">Lorem ipsum dolor.</p>
-                    <p className="price">$ 50.00</p>
-                   </div>
-                 </div>
+          </div>
+        </div>
+        <br/>
+        <div className="carrusel">
+          <div className="tarjeta">
+            <img className="img-tarjeta" src={imageAlmendra} height="180px" border-radius-top="12px" alt="Card 1"/>
+            <div className="container-tarjeta">
+              <p className="title">Almendra</p>
+              <p className="cantidad">Cantidad</p>
+              <p className="description">Lorem ipsum dolor.</p>
+              <p className="price">$ 50.00</p>
+            </div>
+          </div>
                  <div className="tarjeta">
                  <img className="img-tarjeta" src={imageAlmendra} height="180px" alt="Card 2"/>
                  <div className="container-tarjeta">

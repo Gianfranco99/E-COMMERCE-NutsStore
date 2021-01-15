@@ -1,9 +1,15 @@
-.container{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* .container{
     max-width: 1200px;
     width: 100%;
     margin: 50px auto;
     box-shadow: 0 0 5px #ccc;
-  }
+  } */
   .details{
     display: flex;
     justify-content: space-around;
@@ -41,6 +47,13 @@
   .box .row span{
     color: crimson;
   }
+
+  .box h3{
+    /*valores default*/
+    margin: 0;
+    padding: 0;
+}
+
   .box .colors button{
     width: 30px;
     height: 30px;

@@ -3,8 +3,8 @@ import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogue/Catalogo';
 import NavBar from './components/NavBar/NavBar';
-import Admin from './components/EditProduct/Admin'
-import Admin2 from './components/AddCategory/Admin2'
+import AddProduct from './components/AddProduct/AddProduct'
+import AddCategoria from './components/AddCategory/AddCategoria'
 import SearchProduct from "./components/SearchBar/SearchProduct"
 import Home from "./components/Home/Home"
 import Nosotros from "./components/AboutUS/Nosotros"
@@ -13,6 +13,7 @@ import Registrarse from "./components/Login/Registrarse"
 import Carrito from "./components/Cart/Carrito"
 import ProductDetail from './components/Product/ProductDetail';
 import GuestRoute from './containers/GuestRoute';
+import Order from './components/Order/order'
 import AuthRoute from './containers/AuthRoute';
 import Container from 'react-bootstrap/Container';
 import User from "./components/Users/User"
@@ -33,10 +34,12 @@ function App() {
         <Route exact path='/micuenta' component={MiCuenta}/>
         <GuestRoute exact path='/registro' component={Registrarse}/>    
         <GuestRoute exact path='/carrito' component={Carrito}/> 
-        <GuestRoute exact path='/admin' component={Admin}/>
+        <GuestRoute exact path='/addProduct' component={AddProduct}/>
         {/* {loggedIn && <GuestRoute exact path='/admin2' component={Admin2} />} */}
-        <GuestRoute exact path='/admin2' component={Admin2} loggedIn= {loggedIn}/>
+        <GuestRoute exact path='/addCategoria' component={AddCategoria} /*loggedIn= {loggedIn}*//>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
+        <GuestRoute exact path='/order' component={Order}/>
+
         <GuestRoute exact path='/user' component={User}/>
   </Router>
  </div>
