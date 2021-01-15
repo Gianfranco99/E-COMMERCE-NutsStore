@@ -23,6 +23,7 @@ function Registrarse() {
     axios
       .post("http://localhost:3001/auth/registrarse", input)
       .then((res) => {
+        console.log(res)
         swal({
           title: "Cuenta creada!",
           icon: "success",
