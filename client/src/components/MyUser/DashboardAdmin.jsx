@@ -22,7 +22,7 @@ function DashboardAdmin() {
         <Link to="/addProduct">
           <button className="boton-admin">Agregar nuevo producto</button>
         </Link>
-        <Link to="/addCategory">
+        <Link to="/addCategoria">
           <button className="boton-admin">Agregar nueva categoria</button>
         </Link>
       </div>
