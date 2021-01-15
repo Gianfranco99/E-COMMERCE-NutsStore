@@ -35,7 +35,7 @@ server.post("/registrarse", async function (req, res, next) {
     );
   } catch (error) {
     console.log(error)
-    res.sendStatus(500).send(error);
+    res.sendStatus(500);
   }
 });
 
@@ -58,7 +58,7 @@ server.post("/login", function (req, res, next) {
             isBanned,
         }, TOKEN_PASSWORD
       ),
-      user
+      user 
       });
     })(req, res, next);
   } catch(err){
