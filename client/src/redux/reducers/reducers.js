@@ -96,6 +96,7 @@ function rootReducer (state = initialState,action){
         };
         case "CLEAN_CART":
             return {
+                ...state,
                 productCart:[]
             }
         case "REMOVE_ITEM_CART":

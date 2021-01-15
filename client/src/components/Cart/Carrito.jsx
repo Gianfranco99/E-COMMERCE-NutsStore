@@ -44,17 +44,18 @@ const getOrder = () =>{
   });
 }
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
-console.log("carrito",carrito)
-if(carrito.length > 0){
+
+if(carrito.length >0){
   var price = 
   carrito.map(p => p.payload.price * p.quantity)
          .reduce((a, b) => a + b, 0)
          
-  var quantity = 
-  carrito.map(p => p.quantity)
-          .reduce(reducer)
-          console.log(quantity)
-}
+var quantity = 
+ carrito.map(p => p.quantity)
+         .reduce(reducer)
+        console.log(quantity)
+      }
+
 
   return (
     <Fragment>
