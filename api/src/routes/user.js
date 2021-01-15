@@ -84,7 +84,6 @@ server.get('/:id/orders',function(req,res){
   where: {
   userId: id
 },
-  //include: [Product]
   }).then(orders => res.send(JSON.stringify(orders)))
 })
 

@@ -31,9 +31,16 @@ module.exports = (sequelize) => {
     },
     isAdmin: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true,
+    defaultValue: false,
     },
+
+    isBanned :{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    }
   }); 
+
+ 
 
   User.prototype.compare = function (pass) {       
     return bcrypt.compareSync(pass, this.password);     //comparar contraseña

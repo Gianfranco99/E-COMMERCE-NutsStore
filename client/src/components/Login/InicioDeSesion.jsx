@@ -16,13 +16,14 @@ function InicioDeSesion() {
       ...input,
       [e.target.name]: e.target.value,
     });
-  };
+  };  
 
   const iniciarsesion = () => {
     console.log(input);
     axios
       .post("http://localhost:3001/auth/login", input)
       .then((res) => {
+        console.log(res)
         let {
           data: { user, token },
         } = res;
