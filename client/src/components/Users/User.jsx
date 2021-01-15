@@ -4,7 +4,7 @@ import {getUsers} from "../../redux/actions/actions"
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Table,Button,Container,Modal,ModalBody,ModalFooter,ModalHeader,FormGroup} from "reactstrap";
 import {IsAdmin,IsBanned} from "./ActionsUsers"
-
+import styleUser from "./User.css"
 export default function Users (){
    const dispatch = useDispatch()
    const users = useSelector(state => state.users)
@@ -13,14 +13,12 @@ export default function Users (){
 },[]);
 
 return (
-    
+    <div className="user">
     <Container>
-        <br/>
-    <Button color="primary">X</Button>
-    <br /><br />
+    <h1>Table of User</h1>
 
 
-    <Table>
+    <Table className="user">
 <thead><tr><th>id</th> 
     <th>Nombre</th>
     <th>email</th>
@@ -51,6 +49,7 @@ return (
 </tbody>
     </Table>
     </Container>
+    </div>
 )
 
 
