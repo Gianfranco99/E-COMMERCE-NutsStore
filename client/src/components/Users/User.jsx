@@ -35,8 +35,14 @@ return (
             <td>{u.name}</td>
             <td>{u.email}</td>
             <td>{u.isAdmin ? "Admin" : "Guest"}</td>
-            <td><Button color="primary" onClick={ ()=> IsAdmin(u)}>cambiar</Button></td>{"  "}
-            <td><Button color="danger" onClick={()=>IsBanned(u) } >banear</Button></td>
+            <td><Button color="primary" onClick={ ()=> IsAdmin(u)}>cambiar</Button></td>
+            {"  "}
+            {
+            u.isBanned ?
+             <td><Button color="danger" onClick={()=>IsBanned(u) } >Desbanear</Button></td> 
+            :
+            <td><Button color="danger" onClick={()=>IsBanned(u) } >Banear</Button></td>
+            }
             <td><Button color="primary">Password</Button></td>
         </tr>
     ))}
