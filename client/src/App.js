@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogue/Catalogo';
 import NavBar from './components/NavBar/NavBar';
 import AddProduct from './components/AddProduct/AddProduct'
-import addCategoria from './components/AddCategory/AddCategoria'
+import AddCategoria from './components/AddCategory/AddCategoria'
 import SearchProduct from "./components/SearchBar/SearchProduct"
 import Home from "./components/Home/Home"
 import Nosotros from "./components/AboutUS/Nosotros"
@@ -36,7 +36,7 @@ function App() {
         <GuestRoute exact path='/carrito' component={Carrito}/> 
         <GuestRoute exact path='/addProduct' component={AddProduct}/>
         {/* {loggedIn && <GuestRoute exact path='/admin2' component={Admin2} />} */}
-        <GuestRoute exact path='/addCategoria' component={addCategoria} loggedIn= {loggedIn}/>
+        <GuestRoute exact path='/addCategoria' component={AddCategoria} /*loggedIn= {loggedIn}*//>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
         <GuestRoute exact path='/order' component={Order}/>
 

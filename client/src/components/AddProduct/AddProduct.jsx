@@ -6,7 +6,7 @@ import {getCategory} from "../../redux/actions/actions";
 import {getProducts} from '../../redux/actions/actions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
-
+import style from "./AddProduct.css"
 const AddProduct = (props) => {
   const [Fotos, setFotos] = useState([]);
   const category = useSelector((state) => state.categories)
@@ -162,7 +162,7 @@ const AddProduct = (props) => {
     setModalInsertar(true);
   }
   return (
-    <div className="container">
+    <div className="container-add-product">
       <h2>Producto</h2>
       <br />
     <button className="btn btn-success" onClick={()=>abrirModalInsertar()}>Insertar</button>

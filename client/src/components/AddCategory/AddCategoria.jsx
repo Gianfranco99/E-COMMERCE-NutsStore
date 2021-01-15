@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {getCategory} from "../../redux/actions/actions";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
-
+import styleAddCategoria from "./AddCategory.css"
 const AddCategory = (props) => {
   const categorias = useSelector((state) => state.categories);
   const dispatch = useDispatch();
@@ -193,7 +193,7 @@ const AddCategory = (props) => {
   };*/
 
   return (
-    <div className="container">
+    <div className="container-add-categoria">
       <h2>Categorias</h2>
       <br />
       <button className="btn btn-success" onClick={()=>abrirModalInsertar()}>Insertar</button>

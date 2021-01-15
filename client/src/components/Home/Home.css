@@ -1,3 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+.container-head {
+    background-image: url("../../assets/home.jpg");
+    height: 800px;
+    background-size: cover;
+    width: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .boton-comprar {
     background-color: #519F10;
     border: none;
@@ -39,16 +55,7 @@
     font-size: 16px;
 }
 
-.home-container {
-    background-image: url("../../assets/home.jpg");
-    height: 700px;
-    background-size: cover;
-    width: 100%;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 
 .boton-container{
     margin-top: 50px;

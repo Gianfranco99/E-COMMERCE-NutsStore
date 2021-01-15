@@ -1,8 +1,9 @@
-.container{
-  height: 10px;
-  padding: 0;
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 
 .nav {
     overflow: hidden;
@@ -10,12 +11,13 @@
     display: flex;
     justify-content: space-around;
     height: 95px;
-  
+    position: fixed;
     top: 0; 
     right: 0; 
     left:0;
     width: 100%;
-    box-shadow: 0 0 3px 3px #a09f9f
+    box-shadow: 0 0 3px 3px #a09f9f;
+    z-index: 1000;
 }
 
 .logo-titulo {
