@@ -3,8 +3,8 @@ import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogue/Catalogo';
 import NavBar from './components/NavBar/NavBar';
-import Admin from './components/AddProduct/prueba'
-import Admin2 from './components/AddCategory/Admin2'
+import AddProduct from './components/AddProduct/AddProduct'
+import addCategoria from './components/AddCategory/AddCategoria'
 import SearchProduct from "./components/SearchBar/SearchProduct"
 import Home from "./components/Home/Home"
 import Nosotros from "./components/AboutUS/Nosotros"
@@ -34,9 +34,9 @@ function App() {
         <Route exact path='/micuenta' component={MiCuenta}/>
         <GuestRoute exact path='/registro' component={Registrarse}/>    
         <GuestRoute exact path='/carrito' component={Carrito}/> 
-        <GuestRoute exact path='/admin' component={Admin}/>
+        <GuestRoute exact path='/addProduct' component={AddProduct}/>
         {/* {loggedIn && <GuestRoute exact path='/admin2' component={Admin2} />} */}
-        <GuestRoute exact path='/admin2' component={Admin2} loggedIn= {loggedIn}/>
+        <GuestRoute exact path='/addCategoria' component={addCategoria} loggedIn= {loggedIn}/>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
         <GuestRoute exact path='/order' component={Order}/>
 

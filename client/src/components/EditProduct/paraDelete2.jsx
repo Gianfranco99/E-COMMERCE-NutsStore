@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux';
 import AddProductForm from './../AddProduct/AddProductForm';
 import EditProductForm from './EditProductForm';
-import ProductTable from '../Tables/ProductTable';
+import ProductTable from '../Tables/paraDelete';
 import style from './../AddProduct/Admin.module.css';
 import axios from 'axios';
 import {getProducts} from '../../redux/actions/actions';
@@ -135,4 +135,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+

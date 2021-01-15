@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import Admin2 from "../AddCategory/Admin2"
+import AddCategoria from "../AddCategory/AddCategoria"
 
 function DashboardAdmin() {
   const { replace, push } = useHistory();
@@ -9,12 +9,12 @@ function DashboardAdmin() {
 
   return (
     <div>
-      <Link to="/admin2">  
-        <button>admin2</button>
+      <Link to="/addCategoria">  
+        <button>addCategoria</button>
       </Link>
       <h2>Admin Dashboard</h2>
       <h3>Tabla de pedidos/control de usuarios</h3>
-      <Link to="/admin2">
+      <Link to="/addCategoria">
         <button>Agregar categoria</button>
       </Link>
       <p></p>

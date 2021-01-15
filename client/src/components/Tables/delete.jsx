@@ -86,4 +86,4 @@ const CategoryTable = (funcion) => {
 
 
 
-export default CategoryTable;
+// export default CategoryTable;

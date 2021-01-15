@@ -78,4 +78,3 @@ const EditProductForm = (props) => {
     )
 }
 
-export default EditProductForm;

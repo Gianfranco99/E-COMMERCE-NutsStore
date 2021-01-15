@@ -90,9 +90,5 @@ const AddProductForm = (props) => {
       </select>
       <button >Nuevo producto</button>
     </form>
-
-
   );
 };
-
-export default AddProductForm;

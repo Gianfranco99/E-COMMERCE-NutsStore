@@ -4,72 +4,19 @@ import FileBase64 from "react-file-base64";
 import { useSelector, useDispatch } from "react-redux";
 import {getCategory} from "../../redux/actions/actions";
 import {getProducts} from '../../redux/actions/actions';
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
-import EditProductForm from "../EditProduct/EditProductForm";
-import ProductTable from "../Tables/ProductTable";
 
-const AddProductForm = () => {
+const AddProduct = (props) => {
   const [Fotos, setFotos] = useState([]);
   const category = useSelector((state) => state.categories)
   const dispatch = useDispatch();
   const productos = useSelector((state)=> state.products)
   const [products, setProducts] = useState(productos);
-  const [data, setData] = useState(products);
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
   const [modalInsertar, setModalInsertar] = useState(false);
   const [editing, setEditing] = useState(false);
-  const handlerphoto = (files) => {  
-    let photos64 = files.map((el) => el.base64);
-    setFotos(photos64);
-  };
-
-  useEffect(()=>{
-    dispatch(getCategory())
-    },[])
-  useEffect(() => {
-      dispatch(getProducts());
-   }, [])
-
-  const axios = require('axios');
-  const agregarproducto  = () => {
-  const productoagregado = {"name":"nombre","description":"description","category":"category","price":123,"stock":123,"image":null};
-
-  var config = {
-    method: 'post',
-    url: 'http://localhost:3001/products',
-    headers: { 
-      'Content-Type': 'application/json'
-    },
-     data : productoagregado
-  };
-  console.log(config)
-
-  axios(config)
-  .then(function (response) {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-  }
-
-  //modal
-  const insertar =()=>{
-    var valorInsertar=productoSeleccionado;
-    // valorInsertar.id=data[data.length-1].id+1;
-    var dataNueva = productos;
-    dataNueva.push(valorInsertar);
-    setProducts(dataNueva);
-    setModalInsertar(false);
-  }
-
-
-
-
-  //edit 
   const [productoSeleccionado, setProductoSeleccionado] = useState({
     id: null,
     name: "",
@@ -77,28 +24,82 @@ const AddProductForm = () => {
     stock: "",
     price: "",
     category: "",
+    image: ""
   });
-  const editRow = (product) => {
-    dispatch({type: "EDIT_PRODUCT"})
-    setEditing(true);
-    setProductoSeleccionado({
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      stock: product.stock,
-      price: product.price,
-      category: product.category,
-    });
-  };
-  const updateProduct = (id, updateProduct) => {
-    console.log('pasa Update', updateProduct, id)
-    setEditing(false);
-
+  useEffect(()=>{
+    dispatch(getCategory())
+    },[])
+  useEffect(() => {
+      dispatch(getProducts());
+   }, [])
+   //modal
+  const seleccionarProducto=(elemento, caso)=>{
+    setProductoSeleccionado(elemento);
+    (caso==='Editar')?setModalEditar(true):setModalEliminar(true)
+      }
+      const handleChange=e=>{
+        const {name, value}=e.target;
+        setProductoSeleccionado((prevState)=>({
+          ...prevState,
+          [name]: value
+        }));
+      }    
+      // const handlerphoto = (files) => {  
+      //   let photos64 = files.map((el) => el.base64);
+      //   setFotos(photos64);
+      // };
+      // const onSubmit = (data, e) => {
+      //   e.preventDefault();
+      //   addProductos({ ...data, image: Fotos });
+      //   console.log("paso", data)
+      //   //limpiar campos
+      //   e.target.reset();
+        
+      // };
+//agregar productos sin fotos aun
+  const addProductos = () =>{
+    var productoadd = productoSeleccionado
+    console.log("otravezSopa",productoadd)
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = JSON.stringify({"id":id,"name":updateProduct.name,"description":updateProduct.description,"category":updateProduct.category,"price":updateProduct.price,"stock":updateProduct.stock});
+    var raw = JSON.stringify({"name":productoadd.name,"description":productoadd.description,"category":productoadd.category,"price":productoadd.price,"stock":productoadd.stock,"image":productoadd.image});
+    console.log("todomenoscategory",raw)
 
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:3001/products", requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  } 
+   //modal
+   const insertar =()=>{
+    var valorInsertar=productoSeleccionado;
+   // valorInsertar.id=data[data.length-1].id+1;
+    var dataNueva = productos;
+    dataNueva.push(valorInsertar);
+    setProducts(dataNueva);
+    setModalInsertar(false);
+    addProductos()
+    window.location.replace("/addProduct");
+  }
+// termina bloque de agregar product
+//edit 
+  const updateProduct = (id, producto) => {  
+    var productoPost=productoSeleccionado
+    setEditing(false);
+    var id=productoPost.id;
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({"id":productoPost.id,"name":productoPost.name,"description":productoPost.description,"category":productoPost.category,"price":productoPost.price,"stock":productoPost.stock});
+    console.log("put", raw)
     var requestOptions = {
       method: 'PUT',
       headers: myHeaders,
@@ -109,73 +110,57 @@ const AddProductForm = () => {
     fetch(`http://localhost:3001/products/${id}`, requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-
-    productos(
-      products.map((product) => (product.id === id ? updateProduct : product))
-    );
+      .catch(error => console.log('error', error));    
   };
+    //modal
+    const editar=()=>{
+      var dataNueva=productos;
+      dataNueva.map(p=>{
+        if(p.id===productoSeleccionado.id){
+          p.name=productoSeleccionado.name;
+          p.description=productoSeleccionado.description;
+          p.price=productoSeleccionado.price;
+          p.stock=productoSeleccionado.stock;
+          p.category=productoSeleccionado.category;
+        }
+      });
+      setProducts(productos);
+      setModalEditar(false);
+      updateProduct()
+      window.location.replace("/addProduct");
+    }
+//termina bloque de edit
+//delete
   const deleteProduct = (id,e) => {
     var raw = "";
-    console.log("eliminado",id)
+    var prod=productoSeleccionado
+    var id = prod.id
+    console.log("eliminado",prod.id)
     var requestOptions = {
     method: 'DELETE',
     body: raw,
     redirect: 'follow'
     };
-
+    
     fetch(`http://localhost:3001/products/${id}`, requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
   };
-
   //modal
-  const seleccionarProducto=(elemento, caso)=>{
-    setProductoSeleccionado(elemento);
-    (caso==='Editar')?setModalEditar(true):setModalEliminar(true)
-      }
-  //modal
-    const handleChange=e=>{
-      const {name, value}=e.target;
-      setProductoSeleccionado((prevState)=>({
-        ...prevState,
-        [name]: value
-      }));
-    }
-  //modal
-  const editar=()=>{
-    var dataNueva=productos;
-    dataNueva.map(p=>{
-      if(p.id===productoSeleccionado.id){
-        p.name=productoSeleccionado.name;
-        p.description=productoSeleccionado.description;
-        p.price=productoSeleccionado.price;
-        p.stock=productoSeleccionado.stock;
-        p.category=productoSeleccionado.category;
-      }
-    });
-    setProducts(productos);
-    setModalEditar(false);
-  }
-//modal
   const eliminar =()=>{
     setProducts(products.filter(p=>p.id!==productoSeleccionado.id));
     setModalEliminar(false);
+    deleteProduct()
+    window.location.replace("/addProduct");
   }
+//termina el delete
+  //modal
 //modal
   const abrirModalInsertar=()=>{
     setProductoSeleccionado(null);
     setModalInsertar(true);
   }
-
-  const addProduct = (product) => {
-    axios
-      .post("http://localhost:3001/products", product)
-      .then((res) => console.log("pasopor aca",res));
-  };
-  
-
   return (
     <div className="container">
       <h2>Producto</h2>
@@ -192,6 +177,7 @@ const AddProductForm = () => {
             <th>stock</th>
             <th>category</th>
             <th>image</th>
+            <th>Editar/Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -265,7 +251,7 @@ const AddProductForm = () => {
             />
             <br />
             <label>category</label>
-            <select name="category">
+            <select name="category" onChange={handleChange}>
               {category && category.map(c =>
                 <option value = {c.name}>{c.name}</option>
               )}
@@ -285,12 +271,12 @@ const AddProductForm = () => {
           </button>
         </ModalFooter>
       </Modal>
-      <Modal isOpen={modalEliminar}>
-        <ModalBody>
-          Estás Seguro que deseas eliminar el producto{productoSeleccionado && productoSeleccionado.name}
+      <Modal isOpen={modalEliminar} >
+        <ModalBody >
+          Estás Seguro que deseas eliminar el producto {productoSeleccionado && productoSeleccionado.name}
         </ModalBody>
-        <ModalFooter>
-          <button className="btn btn-danger" onClick={()=>eliminar()}>
+        <ModalFooter >
+          <button className="btn btn-danger" onClick={()=>eliminar()} >
             Sí
           </button>
           <button
@@ -301,13 +287,13 @@ const AddProductForm = () => {
           </button>
         </ModalFooter>
       </Modal>
-        <Modal isOpen={modalInsertar}>
+        <Modal isOpen={modalInsertar}  >
         <ModalHeader>
           <div>
             <h3>Insertar producto</h3>
           </div>
         </ModalHeader>
-        <ModalBody>
+        <ModalBody >
           <div className="form-group">
             <label>ID</label>
             <input
@@ -316,7 +302,6 @@ const AddProductForm = () => {
               type="text"
               name="id"
               // value={data[data.length-1].id+1}
-          
           />
             <br />
             <label>name</label>
@@ -333,7 +318,8 @@ const AddProductForm = () => {
               type="text"
               name="description"
               value={productoSeleccionado ? productoSeleccionado.description: ''}
-              onChange={handleChange}/>
+              onChange={handleChange}
+              />
             <br />
             <label>price</label>
             <input
@@ -352,15 +338,16 @@ const AddProductForm = () => {
               onChange={handleChange}/>
             <br />
             <label>category</label>
-            <select name="category">        
-              {category && category.map(c => <option value = {c.name}>{c.name}</option>)}
+            <select name="category" onChange={handleChange}>        
+              {category.map(c => <option value = {c.name} >{c.name}</option>)}
             </select>
             <br />
           </div>
         </ModalBody>
         <ModalFooter>
           <button className="btn btn-primary"
-          onClick={()=>insertar()}>
+          onClick={()=>insertar()}
+          type= "submit">
             Insertar
           </button>
           <button
@@ -373,4 +360,4 @@ const AddProductForm = () => {
     </div>
   );
 }
-export default AddProductForm;
+export default AddProduct;

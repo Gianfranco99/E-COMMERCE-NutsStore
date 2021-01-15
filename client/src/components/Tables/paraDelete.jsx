@@ -59,4 +59,3 @@ const ProductTable = (funcion) => {
 
 
 
-export default ProductTable;
