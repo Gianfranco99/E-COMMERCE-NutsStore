@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    review: {
+    desription: {
         type: DataTypes.STRING,
         allowNull: false,
       }

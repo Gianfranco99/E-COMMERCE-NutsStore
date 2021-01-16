@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getReviews } from '../../redux/actions/actions';
 
 const ReviewTable = (props) => {
-    const dispatch = useDispatch();
-    console.log(props)
-
     const review = useSelector(state => state.reviews);
 
     const deleteReview = (id) => {

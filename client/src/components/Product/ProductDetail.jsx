@@ -13,27 +13,7 @@ export default function ProductDetail () {
 
   //estado de review.
   
-  const review = useSelector(state => state.reviews)
-
-    //agregar review
-  const addReview = (review) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    
-    var raw = JSON.stringify({"qualify":review.qualify,"description":review.comentario});
-    
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
-    
-    fetch(`http://localhost:3001/products/${review.productId}/user/${review.userId}/review`, requestOptions)
-      .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-  };
+  const review = useSelector(state => state.reviews);
     
       return(
         <div>
