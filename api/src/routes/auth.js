@@ -42,10 +42,7 @@ server.post("/registrarse", async function (req, res, next) {
 server.post("/login", function (req, res, next) {
   try{
     passport.authenticate("local", function (err, user) { //recibe la estrategia que se usa: "local" para LocalStrategy y una funcion que se autoejecuta
-     console.log(err, user);
-     console.log(TOKEN_PASSWORD)
      const { id, name, email, isAdmin, isBanned} = user;
-     console.log(isBanned)
     if (err) return next(err);
       else if (!user || isBanned) return res.status(401).send("No existe su usuario o su usario esta baneado");
       else return res.send({
@@ -58,7 +55,7 @@ server.post("/login", function (req, res, next) {
             isBanned,
         }, TOKEN_PASSWORD
       ),
-      user 
+      user
       });
     })(req, res, next);
   } catch(err){

@@ -78,12 +78,15 @@ function InicioDeSesion() {
           </button>
           <h5 className="titulo2">Si aún no tenes una cuenta, </h5>
           <a className="titulo3" href="/registro">
-            registrate acá
+            registrate acá            
           </a>
+          <a href="/registro"><small>¿Has olvidado tu contraseña?</small></a>
+          {/* <h6 className="titulo2">¿Has olvidado tu contraseña?</h6> */}
+          {/* <a className="titulo3" href="/registro"> */}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default InicioDeSesion;
