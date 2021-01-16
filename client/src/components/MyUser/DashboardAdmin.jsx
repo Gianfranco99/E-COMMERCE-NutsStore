@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-<<<<<<< HEAD
-import Admin2 from "../AddCategory/Admin2"
-=======
  import AddCategoria from "../AddCategory/AddCategoria"
->>>>>>> bad69c9876bdf0769518c32614d7b2bf7ee889f0
 
 function DashboardAdmin() {
   const { replace, push } = useHistory();
