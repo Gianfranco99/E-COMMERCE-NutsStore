@@ -1,30 +1,46 @@
 const server = require('express').Router();
-//const { json, JSON } = require('sequelize-types');
 const { User } = require('../db.js');
 const { Order } = require('../db.js')
 const { Op } = require("sequelize");
-// const { transporter } = require ('./../mailer');
+const jwt = require("jsonwebtoken");
+const { TOKEN_PASSWORD } = process.env;
+const nodemailer= require("nodemailer")
 
-// Send me an e-mail
-// server.post('/send-email', (req, res) => {
-//   const { email } = req.body;
+server.post("/send-email",function (req,res){
+  const {email} = req.body
+  const token = jwt.sign({email},TOKEN_PASSWORD)
 
-//   transporter.sendMail(data, () => {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: "gianfranco.benvenuto99@gmail.com", // generated ethereal user
+      pass:"ijeyuyyomxdhlelq", // generated ethereal password
+    },
+  });
 
-//   })
+  transporter.verify().then( ()=>{
+      console.log("ready for send emails")
+  } )
+console.log(email)
 
-//   const data = {
-//     from: "no-reply@nuts-store.com",
-//     to: email,
-//     subject: "reset-password",
-//     html: `<p>
-//             Por favor, haga click en el siguiente enlace para crear una nueva contraseña:
-//             <a>
-//               http://localhost:3000/registrarse
-//             </a>
-//           </p>`
-//   };
-// });
+  const linkReset = `http://localhost:3000/registrarse/recuperar-contraseña/${token}`
+  console.log(linkReset)
+  const data={
+    from: "no-reply@nuts-store.com",
+    to: email,
+    subject: "reset-password",
+    html: `<p>
+            Por favor, haga click en el siguiente enlace para crear una nueva contraseña:
+            <a href=${linkReset}>
+              LINK
+            </a>
+          </p>`
+  }
+  transporter.sendMail(data)
+  console.log(data)
+})
 
 
 /*
