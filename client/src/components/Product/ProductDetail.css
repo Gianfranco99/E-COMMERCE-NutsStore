@@ -1,9 +1,15 @@
-.container{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* .container{
     max-width: 1200px;
     width: 100%;
-    margin: 100px auto;
+    margin: 50px auto;
     box-shadow: 0 0 5px #ccc;
-  }
+  } */
   .details{
     display: flex;
     justify-content: space-around;
@@ -41,10 +47,17 @@
   .box .row span{
     color: crimson;
   }
+
+  .box h3{
+    /*valores default*/
+    margin: 0;
+    padding: 0;
+}
+
   .box .colors button{
     width: 30px;
     height: 30px;
-    border: 1px solid #333;
+    border: 1px solid #A5554A;
     outline: none;
     margin-right: 5px;
     cursor: pointer;
@@ -75,11 +88,39 @@
     border: 1px solid lightseagreen;
   }
   .box .cart{
-    background: #333;
+    background: #A5554A;
     color: white;
     outline: none;
     border: none;
     cursor: pointer;
     padding: 10px 25px;
     margin-top: 15px;
+  }
+
+  .review-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 30px;
+  }
+
+  .add-review{
+    background-color: #d3b47e;
+    border: 3px solid #A5554A;
+    width: 400px;
+    height: 400px;
+    color:#A5554A;
+    box-shadow: 0px 0px 5px 0px;    
+  }
+
+  .add-tittle{
+    font-size: 18px;
+  }
+
+  .see-review{
+    width: 700px;
+    height: 100%;
+    border: 3px solid#A5554A;
+    box-shadow: 0px 0px 5px 0px; 
+    font-size: 18px;   
   }

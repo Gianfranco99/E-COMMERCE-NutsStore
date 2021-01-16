@@ -10,11 +10,15 @@ import { useSelector } from "react-redux";
 //import Product from './Product.js
 
 function Nav() {
+  const carrito = useSelector((state) => state.productCart);
   const loggedIn = useSelector((state) => state.loggedIn);
   const user = useSelector((state) => state.user);
 
   return (
-    <nav className="nav">
+  <div className="container-nav">
+
+    <nav>
+      <div className="nav">
       <div className="logo-titulo">
         <img src={NavLogo}></img>
         <span>Nuts Store</span>
@@ -31,28 +35,32 @@ function Nav() {
             <li>
               <Link to="/about">NOSOTROS</Link>
             </li>
-            {/* <li><Link to='/admin'>ADMIN</Link></li>
-                <li><Link to='/admin2'>ADMIN2</Link></li> */}
-            {/* <li className={style.a}><Link className={style.a} to='/SearchProduct'>SearchProduct</Link></li> */}
-          </ul>
+            </ul>
         </div>
         <div className="searchbar-carrito">
           <SearchBar />
           <Link to="/micuenta">
             {loggedIn && user.isAdmin && (
               <img className="icono-usuario" src={IconoUsuarioVerde} />
-            )}
+              )}
             {loggedIn && !user.isAdmin && (
               <img className="icono-usuario" src={IconoUsuarioVerde} />
-            )}
+              )}
             {!loggedIn && <img className="icono-usuario" src={IconoUsuario} />}
           </Link>
-          <Link to="/Carrito">
-            <img className="carrito" src={Carrito}></img>
-          </Link>
+          <div style={{ position: "relative" }}>
+            <Link to="/Carrito">
+              <img className="carrito" src={Carrito}></img>
+            </Link>
+            <span className="numeroDeCarrito">
+              {carrito.map((p) => p.quantity).reduce((a, b) => a + b, 0)}
+            </span>
+          </div>
+        </div>
         </div>
       </div>
     </nav>
+    </div>
   );
 }
 

@@ -1,11 +1,13 @@
 import React, {useState,useEffect} from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { addProductCart, getProducts,getCategory} from "../../redux/actions/actions";
+// import { addProductCart, getProducts,getCategory} from "../../redux/actions/actions";
 
 const ProductTable = (funcion) => {
     const props = useSelector((state) => state);
-    const dispatch = useDispatch();
-
+    // const dispatch = useDispatch();
+    
+    console.log(funcion)
+    
     return (
         <table>
             <thead>
@@ -37,7 +39,7 @@ const ProductTable = (funcion) => {
                             </button>
                             <button 
                                 className="button muted-button"
-                                onClick={() => {funcion.deleteProduct(product.id)}}
+                                onClick={() => {funcion.deleteProduct(product.name)}}
                             >
                                 Borrar
                             </button>
@@ -57,4 +59,3 @@ const ProductTable = (funcion) => {
 
 
 
-export default ProductTable;

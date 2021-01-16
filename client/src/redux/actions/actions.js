@@ -1,3 +1,5 @@
+import {store,persistor} from '../store'
+
 export function searchProducts(product) {
     return function(dispatch) {
       return fetch(`http://localhost:3001/products/search/search?name=${product}`)
@@ -38,12 +40,75 @@ export function searchProducts(product) {
     }
   }
  
-  export function addProductCart(payload){
-    return {
-      type : "ADDPRODUCT_CART",
-      payload
+
+  export function getReviews (){
+    return function(dispatch){
+      return fetch(`http://localhost:3001/products/reviews`)
+      .then(response => response.json())
+      .then(json =>{
+        dispatch({
+          type: "GET_REVIEWS",
+          payload:json
+        })
+      })
     }
   }
+
+  export function addProductCart(payload){
+     const existing = store.getState().productCart.filter(
+      p => p.payload?.id === payload.id,
+    ).length;
+    let products = [...store.getState().productCart];
+    if (existing === 0) {
+      products = [{ payload, quantity: 1 }, ...products];
+    }
+    if (existing === 1) {
+      let _product = products.find(p => p.payload?.id === payload.id);
+      const index = products.indexOf(_product);
+      const filtered = store.getState().productCart.filter(
+        p => p.payload?.id !== payload.id,
+      );
+      _product.quantity++;
+      filtered.splice(index, 0, _product); // at index
+    }
+
+    return {
+      type : "ADDPRODUCT_CART",
+      payload: products
+    }
+  }
+  export function removeProductFromCart(payload){
+    const existing = store.getState().productCart.find(
+      p => p.payload.id === payload.id,
+    );
+    let products = [...store.getState().productCart];
+    if (existing.quantity === 1) {
+      products = products.filter(p => p.payload.id !== payload.id);
+    }
+  
+    if (existing.quantity > 1) {
+      let _product = products.find(p => p.payload.id === payload.id);
+      _product.quantity--;
+    }
+
+    return {
+      type : "REMOVEPRODUCT_CART",
+      payload: products
+    }
+
+  }
+
+  export function removeProductsFromCart(payload){
+    let products = [...store.getState().productCart];
+  products = products.filter(p => p.payload.id !== payload.id);
+
+  return {
+    type : "REMOVEALLPRODUCT_CART",
+    payload: products
+  }
+
+  }
+
 // se creo un action para el detalle del producto
   export function DetailProduct (payload){
     return {
@@ -52,7 +117,6 @@ export function searchProducts(product) {
     }
   }
   
-
   export function getCategory (){
     return function(dispatch){
       return fetch(`http://localhost:3001/products/category`)
@@ -60,7 +124,7 @@ export function searchProducts(product) {
       .then(json =>{
         dispatch({
           type: "GET_CATEGORY",
-          payload:json
+          payload: json
         })
       })
     }
@@ -90,4 +154,30 @@ export function searchProducts(product) {
       payload
     }
   }
+  export function getOrder (){
+    return function(dispatch){
+      return fetch(`http://localhost:3001/orders`)
+      .then(response => response.json())
+      .then(json =>{
+        dispatch({
+          type: "GET_ORDER",
+          payload:json
+        })
+      })
+    }
+  }
+
+  export function getUsers(){
+    return function(dispatch){
+      return fetch(`http://localhost:3001/user`)
+      .then(r => r.json())
+      .then(json =>{
+        dispatch({
+          type : "GET_USERS",
+          payload: json
+        })
+      })
+    }
+  }
+  
 

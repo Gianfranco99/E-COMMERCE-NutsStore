@@ -48,20 +48,12 @@ server.delete('/:id', function(req,res){
 //s38 : crear ruta para agregar item al carrito
 server.post('/:id/order',function(req,res){
 const user = req.params.id;
-Order.findOrCreate({
-  where:{ 
-    [Op.and]:
-    [
-      { userId : user},
-      { status : ["carrito","creada"]}
-    ] 
-  },
-  defaults : {
+Order.create({
     userId: user,
     price : req.body.price,
+    quantity : req.body.quantity,
     orderProducts : req.body.orderProducts,
     status : req.body.status
-  }
 })
 .then(order => res.send(order))
 })
@@ -92,7 +84,6 @@ server.get('/:id/orders',function(req,res){
   where: {
   userId: id
 },
-  //include: [Product]
   }).then(orders => res.send(JSON.stringify(orders)))
 })
 

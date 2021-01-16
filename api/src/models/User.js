@@ -33,7 +33,14 @@ module.exports = (sequelize) => {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
     },
+
+    isBanned :{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    }
   }); 
+
+ 
 
   User.prototype.compare = function (pass) {       
     return bcrypt.compareSync(pass, this.password);     //comparar contraseña

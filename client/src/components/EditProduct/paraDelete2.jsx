@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux';
 import AddProductForm from './../AddProduct/AddProductForm';
 import EditProductForm from './EditProductForm';
-import ProductTable from '../Tables/ProductTable';
+import ProductTable from '../Tables/paraDelete';
 import style from './../AddProduct/Admin.module.css';
 import axios from 'axios';
 import {getProducts} from '../../redux/actions/actions';
@@ -15,6 +15,7 @@ function Admin() {
   const [products, setProducts] = useState(productsData);
 
   //agregar producto
+  
   const addProduct = (product) => {
     axios
       .post("http://localhost:3001/products", product)
@@ -22,9 +23,9 @@ function Admin() {
   };
 
   //eliminar producto
-  const deleteProduct = (id) => {
+  const deleteProduct = (id,e) => {
     var raw = "";
-
+    console.log("eliminado",id)
     var requestOptions = {
     method: 'DELETE',
     body: raw,
@@ -35,6 +36,10 @@ function Admin() {
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
+
+    alert("producto eliminado")
+    
+    
   };
 
   //editar producto
@@ -85,12 +90,18 @@ function Admin() {
     setProducts(
       products.map((product) => (product.id === id ? updateProduct : product))
     );
-
+      
   };
+
+  // const camelCase = (props) =>{
+  //   toString.CamelCase(props)
+  // }
+
 
   useEffect(() => {
     dispatch(getProducts());
  }, [])
+ 
 
   return (
     <div className={style.container}>
@@ -124,4 +135,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+
