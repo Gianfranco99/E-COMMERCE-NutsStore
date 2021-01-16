@@ -1,8 +1,58 @@
 const server = require('express').Router();
 //const { json, JSON } = require('sequelize-types');
 const { User } = require('../db.js');
-const {Order} = require('../db.js')
+const { Order } = require('../db.js')
 const { Op } = require("sequelize");
+// const { transporter } = require ('./../mailer');
+
+// Send me an e-mail
+// server.post('/send-email', (req, res) => {
+//   const { email } = req.body;
+
+//   transporter.sendMail(data, () => {
+
+//   })
+
+//   const data = {
+//     from: "no-reply@nuts-store.com",
+//     to: email,
+//     subject: "reset-password",
+//     html: `<p>
+//             Por favor, haga click en el siguiente enlace para crear una nueva contraseña:
+//             <a>
+//               http://localhost:3000/registrarse
+//             </a>
+//           </p>`
+//   };
+// });
+
+
+/*
+INTRODUZCA E-MAIL PARA RECUPERAR CONSTRASEÑA
+
+[CAMPO PARA E-MAIL]
+
+BOTÓN: ENVIAR --> dispara                    
+                    --> un onSubmit --> sendMail
+
+*/
+
+/*
+PASS RESET --> PUT / user.password = {Number}
+
+*/
+
+// ruta para password reset
+server.put('/:id/password-reset', (req, res) => {
+  const { id } = req.params;  
+  User.update(req.body, {
+    where: {
+      id: id
+    },
+  })
+  .then(user => res.send(user))
+  .catch(error => error)
+});
 
 //S34: Crear ruta para creación de usuario
 server.post('/registrarse', (req, res) => {
