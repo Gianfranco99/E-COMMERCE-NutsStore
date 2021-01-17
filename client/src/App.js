@@ -18,6 +18,8 @@ import AuthRoute from './containers/AuthRoute';
 import Container from 'react-bootstrap/Container';
 import User from "./components/Users/User"
 import { useSelector } from "react-redux";
+import Password from './components/Password/Password';
+
 function App() {
   const loggedIn = useSelector((state) => state.loggedIn);
   const user = useSelector((state) => state.user);
@@ -39,6 +41,7 @@ function App() {
         <GuestRoute exact path='/addCategoria' component={AddCategoria} /*loggedIn= {loggedIn}*//>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
         <GuestRoute exact path='/order' component={Order}/>
+        <GuestRoute path='/recuperar-contraseña' component={Password}/>
 
         <GuestRoute exact path='/user' component={User}/>
   </Router>
