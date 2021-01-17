@@ -164,7 +164,7 @@ const AddProduct = (props) => {
       setProducts(productos);
       setModalEditar(false);
       updateProduct()
-      window.location.replace("/addProduct");
+      // window.location.replace("/addProduct");
     }
 //termina bloque de edit
 //delete
