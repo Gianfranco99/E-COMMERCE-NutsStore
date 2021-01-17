@@ -78,7 +78,7 @@ const AddProduct = (props) => {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   } 
-   //modal
+   
    const insertar =()=>{
     var valorInsertar=productoSeleccionado;
    // valorInsertar.id=data[data.length-1].id+1;
