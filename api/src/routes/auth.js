@@ -19,7 +19,8 @@ server.get("/me", async (req, res, next) => {
 server.post("/registrarse", async function (req, res, next) {
   try {
     const user = await User.create(req.body);
-    const { id, name, email, isAdmin} = user;
+    const { id, name, email, isAdmin, isBanned} = user;
+    console.log(user)
     res.status(200).send(
       jwt.sign(
         {
@@ -27,23 +28,23 @@ server.post("/registrarse", async function (req, res, next) {
             name,
             email,
             isAdmin,
+            isBanned,
         },
         TOKEN_PASSWORD
       )
     );
   } catch (error) {
     console.log(error)
-    res.sendStatus(500).send(error);
+    res.sendStatus(500);
   }
 });
 
 server.post("/login", function (req, res, next) {
   try{
     passport.authenticate("local", function (err, user) { //recibe la estrategia que se usa: "local" para LocalStrategy y una funcion que se autoejecuta
-     console.log(err, user);
-     const { id, name, email, isAdmin} = user;
+     const { id, name, email, isAdmin, isBanned} = user;
     if (err) return next(err);
-      else if (!user) return res.sendStatus(401);
+      else if (!user || isBanned) return res.status(401).send("No existe su usuario o su usario esta baneado");
       else return res.send({
         token: jwt.sign( 
         {
@@ -51,6 +52,7 @@ server.post("/login", function (req, res, next) {
             name,
             email, 
             isAdmin,
+            isBanned,
         }, TOKEN_PASSWORD
       ),
       user

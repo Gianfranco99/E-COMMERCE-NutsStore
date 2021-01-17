@@ -17,13 +17,16 @@ passport.use(
         id,
         name,
         email,
-        isAdmin
+        isAdmin,
+        isBanned
+
       } = user;
       return done(null, {  //devolver usuario
         id,
         name,
         email,
-        isAdmin
+        isAdmin,
+        isBanned
       });
     }
   )

@@ -16,7 +16,7 @@ function DashboardAdmin() {
         <h2 className="titulo-tabla-pedidos">Tabla de pedidos</h2>
       </div>
       <div className="admin-botones">
-        <Link to="/admin">
+        <Link to="/user">
           <button className="boton-admin">Usuarios</button>
         </Link>
         <Link to="/addProduct">

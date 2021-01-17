@@ -51,7 +51,6 @@ Order.hasMany(OrderLine)
 
 Product.hasMany(Review);
 Review.belongsTo(User);
-Product.belongsTo(Product);
 
 
 module.exports = {
