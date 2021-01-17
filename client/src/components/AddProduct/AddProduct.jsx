@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from "react";
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { useForm } from "react-hook-form";
 import FileBase64 from "react-file-base64";
 import { useSelector, useDispatch } from "react-redux";
@@ -44,6 +45,19 @@ const AddProduct = (props) => {
           [name]: value
         }));
       }    
+
+      const handleValidSubmit = e=> {
+        const {name, value}=e.target;
+        setProductoSeleccionado({name: value.name});
+      }
+      const handleInvalidSubmit = e => {
+        const { name, errors, value} = e.target
+        setProductoSeleccionado({name: value.name, error: true});
+      }
+      const closeModal =() => {
+        setProductoSeleccionado({name: false, error: false});
+      }
+    
       // const handlerphoto = (files) => {  
       //   let photos64 = files.map((el) => el.base64);
       //   setFotos(photos64);
@@ -170,7 +184,7 @@ const AddProduct = (props) => {
       <table className="table table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
+
             <th>name</th>
             <th>description</th>
             <th>price</th>
@@ -183,7 +197,7 @@ const AddProduct = (props) => {
         <tbody>
           {productos.map(element=>(
             <tr>
-              <td>{element.id}</td>
+              
               <td>{element.name}</td>
               <td>{element.description}</td>
               <td>{element.price}</td>
@@ -205,15 +219,8 @@ const AddProduct = (props) => {
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label>ID</label>
-            <input
-              className="form-control"
-              readOnly
-              type="text"
-              name="id"
-              value={productoSeleccionado && productoSeleccionado.id}
-            />
-            <br />
+            
+           
             <label>name</label>
             <input
               className="form-control"
@@ -295,23 +302,14 @@ const AddProduct = (props) => {
         </ModalHeader>
         <ModalBody >
           <div className="form-group">
-            <label>ID</label>
-            <input
-              className="form-control"
-              readOnly
-              type="text"
-              name="id"
-              // value={data[data.length-1].id+1}
-          />
+            
             <br />
-            <label>name</label>
-            <input
-              className="form-control"
-              type="text"
-              name="name"
-              value={productoSeleccionado ? productoSeleccionado.name: ''}
+           
+            <AvForm onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit}>
+              <AvField name="name" label="name" type="text" required value={productoSeleccionado ? productoSeleccionado.name: ''}
               onChange={handleChange}/>
-            <br />
+            </AvForm>
+           
             <label>description</label>
             <input
               className="form-control"
@@ -321,32 +319,30 @@ const AddProduct = (props) => {
               onChange={handleChange}
               />
             <br />
-            <label>price</label>
-            <input
-              className="form-control"
-              type="text"
-              name="price"
-              value={productoSeleccionado ? productoSeleccionado.price: ''}
+            
+            <AvForm onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit}>
+              <AvField name="price" label="price" type="text" required value={productoSeleccionado ? productoSeleccionado.price: ''}
               onChange={handleChange}/>
-            <br />
-            <label>stock</label>
-            <input
-              className="form-control"
-              type="text"
-              name="stock"
-              value={productoSeleccionado ? productoSeleccionado.stock: ''}
+            </AvForm>
+            
+            
+            <AvForm onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit}>
+              <AvField name="stock" label="stock" type="text" required value={productoSeleccionado ? productoSeleccionado.stock: ''}
               onChange={handleChange}/>
-            <br />
+            </AvForm>
+            
             <label>category</label>
-            <select name="category" onChange={handleChange}>        
+            <select name="category" onChange={handleChange} > 
+            <option  value="" disabled>Seleccione categoria</option>       
               {category.map(c => <option value = {c.name} >{c.name}</option>)}
             </select>
             <br />
           </div>
         </ModalBody>
         <ModalFooter>
-          <button className="btn btn-primary"
+        <button className="btn btn-primary" 
           onClick={()=>insertar()}
+          disabled = {!productoSeleccionado}
           type= "submit">
             Insertar
           </button>
