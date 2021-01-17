@@ -91,7 +91,15 @@ server.put('/:id', function (req, res) {
       .then(User => res.status(200).send(User))
       .catch((error) => res.send(error))
   })
-
+  server.put('/', function (req, res) {
+    User.update(req.body, {
+      where: {
+        email: req.body.email
+      }
+    })
+      .then(User => res.status(200).send(User))
+      .catch((error) => res.send(error))
+  })
 
 //S36: Crear ruta que retorne todos los usuarios
   server.get('/', function (req, res, next) {
