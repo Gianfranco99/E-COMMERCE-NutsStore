@@ -7,3 +7,11 @@
 .container-add-product{
     margin-top: 100px;
   }
+
+
+  td{ 
+    width: 100px; 
+    max-width: 100px; /* add this */ 
+    white-space: nowrap; 
+    overflow: hidden; 
+   } 

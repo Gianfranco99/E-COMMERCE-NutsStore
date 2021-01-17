@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from "react";
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { useForm } from "react-hook-form";
 import FileBase64 from "react-file-base64";
 import { useSelector, useDispatch } from "react-redux";
@@ -37,34 +38,42 @@ const AddProduct = (props) => {
     setProductoSeleccionado(elemento);
     (caso==='Editar')?setModalEditar(true):setModalEliminar(true)
       }
-      const handleChange=e=>{
+       
+
+      const handleValidSubmit = e=> {
         const {name, value}=e.target;
-        setProductoSeleccionado((prevState)=>({
-          ...prevState,
-          [name]: value
-        }));
-      }    
-      // const handlerphoto = (files) => {  
-      //   let photos64 = files.map((el) => el.base64);
-      //   setFotos(photos64);
-      // };
+        setProductoSeleccionado({name: value.name});
+      }
+      const handleInvalidSubmit = e => {
+        const { name, errors, value} = e.target
+        setProductoSeleccionado({name: value.name, error: true});
+      }
+      const closeModal =() => {
+        setProductoSeleccionado({name: false, error: false});
+      }
+    
+     
+
+      
       // const onSubmit = (data, e) => {
       //   e.preventDefault();
-      //   addProductos({ ...data, image: Fotos });
+      //   props.addProduct({ ...data, image: Fotos });
       //   console.log("paso", data)
       //   //limpiar campos
       //   e.target.reset();
-        
       // };
+
+
+
 //agregar productos sin fotos aun
-  const addProductos = () =>{
+  const addProductos = (imag) =>{
     var productoadd = productoSeleccionado
-    console.log("otravezSopa",productoadd)
+  
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({"name":productoadd.name,"description":productoadd.description,"category":productoadd.category,"price":productoadd.price,"stock":productoadd.stock,"image":productoadd.image});
-    console.log("todomenoscategory",raw)
+   
 
     var requestOptions = {
       method: 'POST',
@@ -78,7 +87,32 @@ const AddProduct = (props) => {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   } 
+  const handleChange=e=>{
+    const {name, value}=e.target;
+    setProductoSeleccionado((prevState)=>({
+      ...prevState,
+      [name]: value
+    }));
+  }  
+
+ 
+  const handlerphoto = (files) => {
+    // console.log(files[0].base64)
+    let photos64 = files.map((el) => el.base64);
+    setFotos(photos64);
+
+  };
+  const onSubmit = (data) => {
+    var data = productoSeleccionado
+    addProductos(...data.image = Fotos);
+    
+    
    
+  };
+  const getFiles = (files) => {
+    setFotos(files)
+  }
+   //modal
    const insertar =()=>{
     var valorInsertar=productoSeleccionado;
    // valorInsertar.id=data[data.length-1].id+1;
@@ -86,9 +120,12 @@ const AddProduct = (props) => {
     dataNueva.push(valorInsertar);
     setProducts(dataNueva);
     setModalInsertar(false);
-    addProductos()
-    window.location.replace("/addProduct");
+    // addProductos()
+    onSubmit()
+     
+    // window.location.replace("/addProduct");
   }
+  
 // termina bloque de agregar product
 //edit 
   const updateProduct = (id, producto) => {  
@@ -99,7 +136,7 @@ const AddProduct = (props) => {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({"id":productoPost.id,"name":productoPost.name,"description":productoPost.description,"category":productoPost.category,"price":productoPost.price,"stock":productoPost.stock});
-    console.log("put", raw)
+    
     var requestOptions = {
       method: 'PUT',
       headers: myHeaders,
@@ -127,7 +164,7 @@ const AddProduct = (props) => {
       setProducts(productos);
       setModalEditar(false);
       updateProduct()
-      window.location.replace("/addProduct");
+      // window.location.replace("/addProduct");
     }
 //termina bloque de edit
 //delete
@@ -170,7 +207,7 @@ const AddProduct = (props) => {
       <table className="table table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
+
             <th>name</th>
             <th>description</th>
             <th>price</th>
@@ -183,13 +220,13 @@ const AddProduct = (props) => {
         <tbody>
           {productos.map(element=>(
             <tr>
-              <td>{element.id}</td>
+              
               <td>{element.name}</td>
               <td>{element.description}</td>
               <td>{element.price}</td>
               <td>{element.stock}</td>
               <td>{element.category}</td>
-              <td>{element.image}</td>
+              <td><img src="{element.image}" alt="image prueba" /></td>
               <td><button className="btn btn-primary" onClick={()=>seleccionarProducto(element, 'Editar')}>Editar</button> {"   "} 
               <button className="btn btn-danger" onClick={()=>seleccionarProducto(element, 'Eliminar')}>Eliminar</button></td>
             </tr>
@@ -205,15 +242,8 @@ const AddProduct = (props) => {
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label>ID</label>
-            <input
-              className="form-control"
-              readOnly
-              type="text"
-              name="id"
-              value={productoSeleccionado && productoSeleccionado.id}
-            />
-            <br />
+            
+           
             <label>name</label>
             <input
               className="form-control"
@@ -295,23 +325,14 @@ const AddProduct = (props) => {
         </ModalHeader>
         <ModalBody >
           <div className="form-group">
-            <label>ID</label>
-            <input
-              className="form-control"
-              readOnly
-              type="text"
-              name="id"
-              // value={data[data.length-1].id+1}
-          />
+            
             <br />
-            <label>name</label>
-            <input
-              className="form-control"
-              type="text"
-              name="name"
-              value={productoSeleccionado ? productoSeleccionado.name: ''}
+           
+            <AvForm onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit}>
+              <AvField name="name" label="name" type="text" required value={productoSeleccionado ? productoSeleccionado.name: ''}
               onChange={handleChange}/>
-            <br />
+            </AvForm>
+           
             <label>description</label>
             <input
               className="form-control"
@@ -321,32 +342,32 @@ const AddProduct = (props) => {
               onChange={handleChange}
               />
             <br />
-            <label>price</label>
-            <input
-              className="form-control"
-              type="text"
-              name="price"
-              value={productoSeleccionado ? productoSeleccionado.price: ''}
+            
+            <AvForm onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit}>
+              <AvField name="price" label="price" type="text" required value={productoSeleccionado ? productoSeleccionado.price: ''}
               onChange={handleChange}/>
-            <br />
-            <label>stock</label>
-            <input
-              className="form-control"
-              type="text"
-              name="stock"
-              value={productoSeleccionado ? productoSeleccionado.stock: ''}
+            </AvForm>
+            
+            
+            <AvForm onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit}>
+              <AvField name="stock" label="stock" type="text" required value={productoSeleccionado ? productoSeleccionado.stock: ''}
               onChange={handleChange}/>
-            <br />
+            </AvForm>
+            
             <label>category</label>
-            <select name="category" onChange={handleChange}>        
+            <select name="category" onChange={handleChange} required
+            defaultValue=""> 
+              <option value="" disabled>Agregar Categoria</option>      
               {category.map(c => <option value = {c.name} >{c.name}</option>)}
             </select>
             <br />
           </div>
         </ModalBody>
+        <FileBase64 multiple={true} onDone={handlerphoto} />
         <ModalFooter>
-          <button className="btn btn-primary"
+        <button className="btn btn-primary" 
           onClick={()=>insertar()}
+          disabled = {!productoSeleccionado}
           type= "submit">
             Insertar
           </button>
