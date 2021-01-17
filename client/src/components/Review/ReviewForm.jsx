@@ -74,7 +74,7 @@ const ReviewForm = () => {
         })}
       />
       <div className='btn-review'>
-          <button onClick={addReview}>
+          <button>
               <a>Publicar comentario</a>
           </button>
       </div>
