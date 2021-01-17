@@ -1,7 +1,7 @@
 import React from "react"
 import style from "./Password.css"
 import {useState} from "react"
-import newPassword from "./ActionPassword"
+import newPassword from "./newPassword"
 
 export default function Password(){
 
@@ -17,7 +17,10 @@ export default function Password(){
         [e.target.name]: e.target.value,
       });
     };
-  
+    
+    var queryToken = window.location.search;
+    queryToken = queryToken.slice(1, queryToken.length);
+
     return (
 
         <div className="Background-container">
@@ -63,7 +66,7 @@ export default function Password(){
                 />
               </label>
               <p></p>
-              <button  onClick={newPassword(input)} className="boton-registrarse">
+              <button  onClick={newPassword(input, queryToken)} className="boton-registrarse">
                Cambiar Contraseña
               </button>
             </div>
