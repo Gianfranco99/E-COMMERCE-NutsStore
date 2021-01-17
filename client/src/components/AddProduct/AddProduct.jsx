@@ -332,8 +332,9 @@ const AddProduct = (props) => {
             </AvForm>
             
             <label>category</label>
-            <select name="category" onChange={handleChange} > 
-            <option  value="" disabled>Seleccione categoria</option>       
+            <select name="category" onChange={handleChange} required
+            defaultValue=""> 
+              <option value="" disabled>Agregar Categoria</option>      
               {category.map(c => <option value = {c.name} >{c.name}</option>)}
             </select>
             <br />
