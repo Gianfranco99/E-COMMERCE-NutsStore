@@ -1,7 +1,7 @@
 export const IsAdmin = (u) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-
+  
   var admin = JSON.stringify({ "isAdmin": u.isAdmin ? false : true })
   var userId = u.id
 
