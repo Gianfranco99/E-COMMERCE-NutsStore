@@ -38,13 +38,7 @@ const AddProduct = (props) => {
     setProductoSeleccionado(elemento);
     (caso==='Editar')?setModalEditar(true):setModalEliminar(true)
       }
-      const handleChange=e=>{
-        const {name, value}=e.target;
-        setProductoSeleccionado((prevState)=>({
-          ...prevState,
-          [name]: value
-        }));
-      }    
+       
 
       const handleValidSubmit = e=> {
         const {name, value}=e.target;
@@ -58,27 +52,28 @@ const AddProduct = (props) => {
         setProductoSeleccionado({name: false, error: false});
       }
     
-      // const handlerphoto = (files) => {  
-      //   let photos64 = files.map((el) => el.base64);
-      //   setFotos(photos64);
-      // };
+     
+
+      
       // const onSubmit = (data, e) => {
       //   e.preventDefault();
-      //   addProductos({ ...data, image: Fotos });
+      //   props.addProduct({ ...data, image: Fotos });
       //   console.log("paso", data)
       //   //limpiar campos
       //   e.target.reset();
-        
       // };
+
+
+
 //agregar productos sin fotos aun
-  const addProductos = () =>{
+  const addProductos = (imag) =>{
     var productoadd = productoSeleccionado
-    console.log("otravezSopa",productoadd)
+  
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({"name":productoadd.name,"description":productoadd.description,"category":productoadd.category,"price":productoadd.price,"stock":productoadd.stock,"image":productoadd.image});
-    console.log("todomenoscategory",raw)
+   
 
     var requestOptions = {
       method: 'POST',
@@ -92,6 +87,31 @@ const AddProduct = (props) => {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   } 
+  const handleChange=e=>{
+    const {name, value}=e.target;
+    setProductoSeleccionado((prevState)=>({
+      ...prevState,
+      [name]: value
+    }));
+  }  
+
+ 
+  const handlerphoto = (files) => {
+    // console.log(files[0].base64)
+    let photos64 = files.map((el) => el.base64);
+    setFotos(photos64);
+
+  };
+  const onSubmit = (data) => {
+    var data = productoSeleccionado
+    addProductos(...data.image = Fotos);
+    
+    
+   
+  };
+  const getFiles = (files) => {
+    setFotos(files)
+  }
    //modal
    const insertar =()=>{
     var valorInsertar=productoSeleccionado;
@@ -100,9 +120,12 @@ const AddProduct = (props) => {
     dataNueva.push(valorInsertar);
     setProducts(dataNueva);
     setModalInsertar(false);
-    addProductos()
-    window.location.replace("/addProduct");
+    // addProductos()
+    onSubmit()
+     
+    // window.location.replace("/addProduct");
   }
+  
 // termina bloque de agregar product
 //edit 
   const updateProduct = (id, producto) => {  
@@ -113,7 +136,7 @@ const AddProduct = (props) => {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({"id":productoPost.id,"name":productoPost.name,"description":productoPost.description,"category":productoPost.category,"price":productoPost.price,"stock":productoPost.stock});
-    console.log("put", raw)
+    
     var requestOptions = {
       method: 'PUT',
       headers: myHeaders,
@@ -203,7 +226,7 @@ const AddProduct = (props) => {
               <td>{element.price}</td>
               <td>{element.stock}</td>
               <td>{element.category}</td>
-              <td>{element.image}</td>
+              <td><img src="{element.image}" alt="image prueba" /></td>
               <td><button className="btn btn-primary" onClick={()=>seleccionarProducto(element, 'Editar')}>Editar</button> {"   "} 
               <button className="btn btn-danger" onClick={()=>seleccionarProducto(element, 'Eliminar')}>Eliminar</button></td>
             </tr>
@@ -340,6 +363,7 @@ const AddProduct = (props) => {
             <br />
           </div>
         </ModalBody>
+        <FileBase64 multiple={true} onDone={handlerphoto} />
         <ModalFooter>
         <button className="btn btn-primary" 
           onClick={()=>insertar()}
