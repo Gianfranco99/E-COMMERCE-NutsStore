@@ -58,7 +58,10 @@ var quantity =
 
 
   return (
+    
     <Fragment>
+      <div className="container-cart">
+
       {carrito.length === 0 ? (
         <Row className="justify-content-center">
           <h4>No hay productos en el carrito</h4>
@@ -83,7 +86,7 @@ var quantity =
                           alt="prewiew"
                           width="120"
                           height="80"
-                        />
+                          />
                       </Link>
                     </div>
                     <div className="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
@@ -94,7 +97,7 @@ var quantity =
                       <div
                         className="col-3 col-sm-3 col-md-6 text-md-right"
                         style={{ paddingTop: 5 }}
-                      >
+                        >
                         <h5>
                           <strong>${payload.price.toFixed(2)}</strong>
                         </h5>
@@ -104,7 +107,7 @@ var quantity =
                           <button
                             onClick={() => dispatch(addProductCart(payload))} //() => dispatch(addProductCart(props))
                             className="plus"
-                          >
+                            >
                             +
                           </button>
                           <span className="quantity-number">{quantity}</span>
@@ -113,7 +116,7 @@ var quantity =
                               dispatch(removeProductFromCart(payload))
                             }
                             className="minus"
-                          >
+                            >
                             -
                           </button>
                         </div>
@@ -125,7 +128,7 @@ var quantity =
                           }
                           type="button"
                           className="btn btn-outline-danger btn-xs"
-                        >
+                          >
                           <i className="fa fa-trash" aria-hidden="true"></i>
                         </button>
                       </div>
@@ -144,7 +147,7 @@ var quantity =
                 <button
                   onClick={() => dispatch(cleanCart())}
                   className="btn btn-outline-primary pull-right mr-3"
-                >
+                  >
                   Vaciar carrito
                 </button>
               </div>
@@ -157,14 +160,14 @@ var quantity =
                       type="text"
                       className="form-control"
                       placeholder="cupone code"
-                    />
+                      />
                   </div>
                   <div className="col-6">
                     <input
                       type="submit"
                       className="btn btn-default"
                       value="Usar cumpón"
-                    />
+                      />
                   </div>
                 </div>
               </div>
@@ -184,6 +187,7 @@ var quantity =
           </div>
         </Fragment>
       )}
+      </div>
     </Fragment>
   );
 }

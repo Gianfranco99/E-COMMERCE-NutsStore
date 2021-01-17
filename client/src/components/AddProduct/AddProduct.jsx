@@ -10,6 +10,7 @@ import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
 import style from "./AddProduct.css"
 const AddProduct = (props) => {
   const [Fotos, setFotos] = useState([]);
+  const [editFotos, setEditFotos] = useState([])
   const category = useSelector((state) => state.categories)
   const dispatch = useDispatch();
   const productos = useSelector((state)=> state.products)
@@ -32,7 +33,7 @@ const AddProduct = (props) => {
     },[])
   useEffect(() => {
       dispatch(getProducts());
-   }, [])
+   },[])
    //modal
   const seleccionarProducto=(elemento, caso)=>{
     setProductoSeleccionado(elemento);
@@ -51,21 +52,7 @@ const AddProduct = (props) => {
       const closeModal =() => {
         setProductoSeleccionado({name: false, error: false});
       }
-    
-     
 
-      
-      // const onSubmit = (data, e) => {
-      //   e.preventDefault();
-      //   props.addProduct({ ...data, image: Fotos });
-      //   console.log("paso", data)
-      //   //limpiar campos
-      //   e.target.reset();
-      // };
-
-
-
-//agregar productos sin fotos aun
   const addProductos = (imag) =>{
     var productoadd = productoSeleccionado
   
@@ -94,23 +81,33 @@ const AddProduct = (props) => {
       [name]: value
     }));
   }  
-
- 
+   
   const handlerphoto = (files) => {
     // console.log(files[0].base64)
     let photos64 = files.map((el) => el.base64);
     setFotos(photos64);
 
   };
+  const handlerphotos = (files) => {
+    // console.log(files[0].base64)
+    let photo64 = files.map((el) => el.base64);
+    setEditFotos(photo64);
+
+  };
   const onSubmit = (data) => {
     var data = productoSeleccionado
-    addProductos(...data.image = Fotos);
-    
-    
-   
+    addProductos(...data.image = Fotos);   
+  };
+
+  const onSubmit1 = (data) => {
+    var data = productoSeleccionado
+    updateProduct(...data.image = editFotos);   
   };
   const getFiles = (files) => {
     setFotos(files)
+  }
+  const getFile = (files) => {
+    setEditFotos(files)
   }
    //modal
    const insertar =()=>{
@@ -123,7 +120,7 @@ const AddProduct = (props) => {
     // addProductos()
     onSubmit()
      
-    // window.location.replace("/addProduct");
+    window.location.replace("/addProduct");
   }
   
 // termina bloque de agregar product
@@ -135,7 +132,7 @@ const AddProduct = (props) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = JSON.stringify({"id":productoPost.id,"name":productoPost.name,"description":productoPost.description,"category":productoPost.category,"price":productoPost.price,"stock":productoPost.stock});
+    var raw = JSON.stringify({"id":productoPost.id,"name":productoPost.name,"description":productoPost.description,"category":productoPost.category,"price":productoPost.price,"stock":productoPost.stock, "image":productoPost.image});
     
     var requestOptions = {
       method: 'PUT',
@@ -159,12 +156,14 @@ const AddProduct = (props) => {
           p.price=productoSeleccionado.price;
           p.stock=productoSeleccionado.stock;
           p.category=productoSeleccionado.category;
+          p.image=productoSeleccionado.image
         }
       });
       setProducts(productos);
       setModalEditar(false);
-      updateProduct()
-      // window.location.replace("/addProduct");
+     // updateProduct()
+      onSubmit1()
+     // window.location.replace("/addProduct");
     }
 //termina bloque de edit
 //delete
@@ -189,7 +188,7 @@ const AddProduct = (props) => {
     setProducts(products.filter(p=>p.id!==productoSeleccionado.id));
     setModalEliminar(false);
     deleteProduct()
-    window.location.replace("/addProduct");
+   window.location.replace("/addProduct");
   }
 //termina el delete
   //modal
@@ -218,7 +217,7 @@ const AddProduct = (props) => {
           </tr>
         </thead>
         <tbody>
-          {productos.map(element=>(
+          {productos.map((element)=>(
             <tr>
               
               <td>{element.name}</td>
@@ -226,7 +225,13 @@ const AddProduct = (props) => {
               <td>{element.price}</td>
               <td>{element.stock}</td>
               <td>{element.category}</td>
-              <td><img src="{element.image}" alt="image prueba" /></td>
+              <td><img className="img-responsive cart-img-obj-fit"
+                       src={element.image}
+                       alt="prewiew"
+                       width="120"
+                       height="80"
+                  />
+              </td>
               <td><button className="btn btn-primary" onClick={()=>seleccionarProducto(element, 'Editar')}>Editar</button> {"   "} 
               <button className="btn btn-danger" onClick={()=>seleccionarProducto(element, 'Eliminar')}>Eliminar</button></td>
             </tr>
@@ -287,6 +292,7 @@ const AddProduct = (props) => {
               )}
             </select>
             <br />
+            <FileBase64 multiple={true} onDone={handlerphotos} />
           </div>
         </ModalBody>
         <ModalFooter>
