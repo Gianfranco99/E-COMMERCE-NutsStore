@@ -42,25 +42,9 @@ console.log(email)
   console.log(data)
 })
 
-
-/*
-INTRODUZCA E-MAIL PARA RECUPERAR CONSTRASEÑA
-
-[CAMPO PARA E-MAIL]
-
-BOTÓN: ENVIAR --> dispara                    
-                    --> un onSubmit --> sendMail
-
-*/
-
-/*
-PASS RESET --> PUT / user.password = {Number}
-
-*/
-
 // ruta para password reset
 server.put('/:id/password-reset', (req, res) => {
-  const { id } = req.params;  
+  const { id } = req.params;
   User.update(req.body, {
     where: {
       id: id
