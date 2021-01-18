@@ -10,7 +10,7 @@ export default function Users() {
     const users = useSelector(state => state.users)
     useEffect(() => {
         dispatch(getUsers())
-    }, []);
+    });
 
     return (
         <div className="user">
