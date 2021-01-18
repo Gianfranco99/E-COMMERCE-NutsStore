@@ -31,7 +31,7 @@ function Catalogo() {
   };
 
   return (
-    <div>
+    <div className="container-catalogo">
       <div className="catalogo-banner">
         <p className="titulo-tienda">Tienda</p>
       </div>

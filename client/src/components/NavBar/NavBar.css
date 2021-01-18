@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+.container-nav{
+  margin-top: 100px;
+}
 
 .nav {
     overflow: hidden;

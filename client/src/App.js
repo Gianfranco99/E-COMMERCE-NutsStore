@@ -39,7 +39,7 @@ function App() {
         <Route exact path='/micuenta' component={MiCuenta}/>
         <GuestRoute exact path='/registro' component={Registrarse}/>    
         <GuestRoute exact path='/carrito' component={Carrito}/> 
-        <AuthRoute path='/addProduct' component={AddProduct}/>
+        <GuestRoute path='/addProduct' component={AddProduct}/>
         {/* {loggedIn && <GuestRoute exact path='/admin2' component={Admin2} />} */}
         <GuestRoute exact path='/addCategoria' component={AddCategoria} /*loggedIn= {loggedIn}*//>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
