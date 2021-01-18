@@ -3,6 +3,7 @@ import "./InicioDeSesion.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import swal from "sweetalert";
+import { useHistory } from "react-router-dom";
 
 function InicioDeSesion() {
   const dispatch = useDispatch();
@@ -10,6 +11,11 @@ function InicioDeSesion() {
     email: "",
     password: "",
   });
+  let history = useHistory();
+  function handleClick() {
+    history.push("/email");
+  }
+
 
   const handleInputChange = function (e) {
     setInput({
@@ -80,7 +86,7 @@ function InicioDeSesion() {
           <a className="titulo3" href="/registro">
             registrate acá            
           </a>
-          <a href="/registro"><small>¿Has olvidado tu contraseña?</small></a>
+          <a href="/email" ><small>¿Has olvidado tu contraseña?</small></a>
           {/* <h6 className="titulo2">¿Has olvidado tu contraseña?</h6> */}
           {/* <a className="titulo3" href="/registro"> */}
         </div>

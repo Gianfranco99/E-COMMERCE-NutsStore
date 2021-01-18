@@ -4,11 +4,12 @@ const { Order } = require('../db.js')
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const { TOKEN_PASSWORD } = process.env;
-const nodemailer= require("nodemailer")
+const nodemailer = require("nodemailer");
+const verifyToken = require('./verifyToken');
 
-server.post("/send-email",function (req,res){
-  const {email} = req.body
-  const token = jwt.sign({email},TOKEN_PASSWORD)
+server.post("/send-email", function (req, res) {
+  const { email } = req.body
+  const token = jwt.sign({ email }, TOKEN_PASSWORD)
 
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -16,18 +17,17 @@ server.post("/send-email",function (req,res){
     secure: true, // true for 465, false for other ports
     auth: {
       user: "gianfranco.benvenuto99@gmail.com", // generated ethereal user
-      pass:"ijeyuyyomxdhlelq", // generated ethereal password
+      pass: "ijeyuyyomxdhlelq", // generated ethereal password
     },
   });
 
-  transporter.verify().then( ()=>{
-      console.log("ready for send emails")
-  } )
-console.log(email)
+  transporter.verify().then(() => {
+    console.log("ready for send emails")
+  });
 
-  const linkReset = `http://localhost:3000/registrarse/recuperar-contraseña/${token}`
+  const linkReset = `http://localhost:3000/recuperar-contraseña?${token}`
   console.log(linkReset)
-  const data={
+  const data = {
     from: "no-reply@nuts-store.com",
     to: email,
     subject: "reset-password",
@@ -37,131 +37,125 @@ console.log(email)
               LINK
             </a>
           </p>`
-  }
-  transporter.sendMail(data)
+  };
+  transporter.sendMail(data, (error, info) => {
+    if (error) {
+      res.status(500).send(error.message);
+    } else {
+      res.status(200).jsonp(info);
+      console.log('e-amil successfully sended! Oh yeah');
+    }
+  })
   console.log(data)
-})
+});
 
-
-/*
-INTRODUZCA E-MAIL PARA RECUPERAR CONSTRASEÑA
-
-[CAMPO PARA E-MAIL]
-
-BOTÓN: ENVIAR --> dispara                    
-                    --> un onSubmit --> sendMail
-
-*/
-
-/*
-PASS RESET --> PUT / user.password = {Number}
-
-*/
-
-// ruta para password reset
+// ruta para blanqueo de clave desde administrador
+// borra la clave
 server.put('/:id/password-reset', (req, res) => {
-  const { id } = req.params;  
+  const { id } = req.params;
   User.update(req.body, {
     where: {
       id: id
     },
   })
-  .then(user => res.send(user))
-  .catch(error => error)
+    .then(user => res.send(user))
+    .catch(error => error)
 });
 
 //S34: Crear ruta para creación de usuario
 server.post('/registrarse', (req, res) => {
-    User.create({
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password
-    })
-      .then((created) => res.status(201).send(created))
-      .catch((error) => res.status(412).send(error));
+  User.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  })
+    .then((created) => res.status(201).send(created))
+    .catch((error) => res.status(412).send(error));
 })
 
 // S35: Crear ruta para modificar usuario
 server.put('/:id', function (req, res) {
-    User.update(req.body, {
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(User => res.status(200).send(User))
-      .catch((error) => res.send(error))
+  User.update(req.body, {
+    where: {
+      id: req.params.id
+    }
   })
-  server.put('/', function (req, res) {
-    User.update(req.body, {
-      where: {
-        email: req.body.email
-      }
-    })
-      .then(User => res.status(200).send(User))
-      .catch((error) => res.send(error))
+    .then(User => res.status(200).send(User))
+    .catch((error) => res.send(error))
+});
+
+// Ruta para que el usuario genere una nueva clave
+// Si el token coincide
+server.put('/', verifyToken, async function (req, res) {
+  User.update(req.body, {
+    where: {
+      email: req.body.email
+    }
   })
+    .then(User => res.status(200).send(User))
+    .catch((error) => res.send(error))
+})
 
 //S36: Crear ruta que retorne todos los usuarios
-  server.get('/', function (req, res, next) {
-    User.findAll()
-      .then(User => {
-        res.send(User);
-      })
-      .catch(next);
-  });
+server.get('/', function (req, res, next) {
+  User.findAll()
+    .then(User => {
+      res.send(User);
+    })
+    .catch(next);
+});
 
 //s37: crear ruta para eliminar usuario
-server.delete('/:id', function(req,res){
- User.destroy({
-   where:{
-     id : req.params.id
-   }
- }).then(user => res.send("User Eliminado"))
+server.delete('/:id', function (req, res) {
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(user => res.send("User Eliminado"))
 })
 
 //s38 : crear ruta para agregar item al carrito
-server.post('/:id/order',function(req,res){
-const user = req.params.id;
-Order.create({
+server.post('/:id/order', function (req, res) {
+  const user = req.params.id;
+  Order.create({
     userId: user,
-    price : req.body.price,
-    quantity : req.body.quantity,
-    orderProducts : req.body.orderProducts,
-    status : req.body.status
-})
-.then(order => res.send(order))
+    price: req.body.price,
+    quantity: req.body.quantity,
+    orderProducts: req.body.orderProducts,
+    status: req.body.status
+  })
+    .then(order => res.send(order))
 })
 
 //s39 : crear ruta que retorne todos los items del carrito
-server.get('/:id/order',function(req,res){
+server.get('/:id/order', function (req, res) {
   const user = req.params.id;
   Order.findAll({
-    where:{
-      [Op.and]:[
-        {userId : user},
-        {status : "carrito"}
+    where: {
+      [Op.and]: [
+        { userId: user },
+        { status: "carrito" }
       ]
     }
   })
-  .then(order => res.send(order))
+    .then(order => res.send(order))
 })
 
 //s40 : crear ruta para vaciar carrito
-server.delete('/:id/order',function(req,res){
+server.delete('/:id/order', function (req, res) {
 
 })
 
 //s45: crear ruta que retorne todas las ordenes de usuario
-server.get('/:id/orders',function(req,res){
-  const {id} = req.params
+server.get('/:id/orders', function (req, res) {
+  const { id } = req.params
   Order.findAll({
-  where: {
-  userId: id
-},
+    where: {
+      userId: id
+    },
   }).then(orders => res.send(JSON.stringify(orders)))
 })
 
 
 
 module.exports = server;
-  

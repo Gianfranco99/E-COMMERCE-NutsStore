@@ -1,135 +1,100 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment, setState } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {getOrder} from '../../redux/actions/actions';
+import styleOrder from './order.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default function Order (props) {
   const orden = useSelector((state) => state.order)
   const dispatch = useDispatch();
-  const [order, setOrder] = useState(orden) 
-  const [modalEditar, setModalEditar] = useState(false);
-  const [modalEliminar, setModalEliminar] = useState(false);  
-  const [editing, setEditing] = useState(false);
-  const [orderSeleccionado, setOrderSeleccionado] =useState({
-    orderId: '',
-    orderPrice: '',
-    orderProducts: '',
-    status: ''
-  });
-
+  const [ordenEnCurso, setOrdenEnCurso] = useState()
+  const [modal, setModal] = useState(false);
+  var primerorder = orden.map((p)=> p.orderProducts)
+  console.log("primer",primerorder)
   useEffect(()=>{
-      dispatch(getOrder())
-    },[])
-  console.log(order)
-  const handleChange=e=>{
-    const {name, value}=e.target;
-    setOrderSeleccionado((prevState)=>({
-      ...prevState,
-      [name]: value
-    }));
-  } 
-  const seleccionarOrder = (element, caso)=>{
-    setOrderSeleccionado(element);
-    (caso === 'Editar')?setModalEditar(true):setModalEliminar(true)
-    }
-  const editar = () => {
-    var orderNueva = order;
-    orderNueva.map(orden =>{
-      if(orden.id === orderSeleccionado.id){
-        orden.status=orderSeleccionado.status;
+    dispatch(getOrder())
+  },[])
+
+  //modal
+  const {
+    className
+  } = props;
+  const toggle = () => setModal(!modal);
+  const usuario = (id) => {
+    console.log(id)
+    orden.map((d)=> {
+      if(d.id === id){
+       return  setOrdenEnCurso([d])
       }
     })
-      setOrder(orderNueva);
-      setModalEditar(false);
+    toggle()
   }
-
-  const eliminar = () =>{
-    setOrder(order.filter(order=>order.id!==orderSeleccionado.id));
-    setModalEliminar(false)
-  }
-   
   return (
-    <div>
+    <div className="container-order">
       <h2>Tabla Order</h2>
-    <br/>
-    <table className="table table-bordered">
-      <thead>
-        <tr>
-          <th>orderId</th>
-          <th>orderPrice</th>
-          <th>orderProducts</th>
-          <th>orderStatus</th>
-          <th>Editar/Eliminar</th>
-        </tr>
-      </thead>
-      <tbody>
-        {orden.map(c =>(
+      <br/>
+      <table className="table table-bordered">
+        <thead>
           <tr>
-            <td>{c.id}</td>                
-            <td>{c.price}</td>
-            <td>{c.orderProducts[0].name}</td>
-            <td>{c.status}</td>
-            <td>
-              <button className="btn btn-primary" onClick={()=>seleccionarOrder(c, 'Editar')}>Editar</button> {"  "}
-              <button className="btn btn-danger" onClick={()=>seleccionarOrder(c, 'Eliminar')}>Eliminar</button>
-            </td>
-          </tr>     
-          ))
-        }
-      </tbody>
-    </table>
+            <th>order Id</th>
+            <th>price total</th>
+            <th>order user</th>
+            <th>order status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <Fragment>
+          {orden.map((c, i )=>(          
+            <Fragment key={i}>
+              <tr>
+                <td>{c.id}</td>                
+                <td>{c.price}</td>
+                <td><Button id={c.id} color="primary" onClick={(e)=>usuario(parseInt(e.target.id))}>ordenes</Button></td>
+                <td>{c.status}</td>
+              </tr>     
+            </Fragment>
+            ))   
+          }
+          </Fragment>
+        </tbody>
+      </table>   
 
-    <Modal isOpen={modalEditar}>
-      <ModalHeader>
-        <div>
-          <h3>Editar Order</h3>
-        </div>
-      </ModalHeader>
-      <ModalBody>
-        <div className="form-group">        
-          <label>Estado</label>
-          <input
-            className="form-control"
-            type="text"
-            name="status"
-            value={orderSeleccionado && orderSeleccionado.status}
-            onChange={handleChange}
-          />
-          <br />
-        </div>
-      </ModalBody>
-      <ModalFooter>
-        <button className="btn btn-primary" onClick={()=>editar()}>
-          Actualizar
-        </button>
-        <button
-          className="btn btn-danger"
-          onClick={()=>setModalEditar(false)}
-        >
-          Cancelar
-        </button>
-      </ModalFooter>
-    </Modal>
-
-
-      <Modal isOpen={modalEliminar}>
+      <Modal isOpen={modal} toggle={toggle} className={className}>
+        <ModalHeader toggle={toggle}>Ordenes del usuario</ModalHeader>
         <ModalBody>
-          Seguro que queres eliminar la orden? {orderSeleccionado && order.id}
-        </ModalBody>
-        <ModalFooter>
-          <button className="btn btn-danger" onClick={()=>eliminar()}>
-            Sí
-          </button>
-          <button
-            className="btn btn-secondary"
-            onClick={()=>setModalEliminar(false)}
-          >
-            No
-          </button>
-        </ModalFooter>
-      </Modal>      
-      </div>
+        mostrar order
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Id de producto</th>
+                <th>nombre de producto</th>
+                <th>categoria de producto</th>
+                <th>precio de producto</th>
+              </tr>
+              <Fragment>
+              {
+                !ordenEnCurso?
+                (<p>no hay ordenes</p>
+                  ):(       
+                    <Fragment>         
+                      {ordenEnCurso[0].orderProducts.map((p,i)=>
+                        <tr key = {i}>                            
+                          <td>{p.id}</td>
+                          <td>{p.name}</td>
+                          <td>{p.description}</td>
+                          <td>$ {p.price}</td>
+                        </tr>
+                      )}
+                    </Fragment>
+                  )                
+              }
+              </Fragment>
         
+            </thead>
+          </table>
+        </ModalBody>
+      </Modal>
+    </div> 
     )
 }
