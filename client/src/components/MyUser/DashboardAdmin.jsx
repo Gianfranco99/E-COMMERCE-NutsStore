@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
  import AddCategoria from "../AddCategory/AddCategoria"
+ import stylosDashboard from "./DashboardAdmin.css"
 
 function DashboardAdmin() {
   const { replace, push } = useHistory();
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="container-admin">
       <div className="banner-admin">
         <h2 className="titulo-admin">Admin Dashboard</h2>
       </div>
