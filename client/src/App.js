@@ -19,6 +19,9 @@ import Container from 'react-bootstrap/Container';
 import User from "./components/Users/User"
 import { useSelector } from "react-redux";
 import Password from './components/Password/Password';
+import MercadoPago from "./components/MercadoPago/MercadoPago"
+import IngresarEmail from './components/Password/IngresarEmail';
+
 
 function App() {
   const loggedIn = useSelector((state) => state.loggedIn);
@@ -36,14 +39,15 @@ function App() {
         <Route exact path='/micuenta' component={MiCuenta}/>
         <GuestRoute exact path='/registro' component={Registrarse}/>    
         <GuestRoute exact path='/carrito' component={Carrito}/> 
-        <GuestRoute exact path='/addProduct' component={AddProduct}/>
+        <AuthRoute path='/addProduct' component={AddProduct}/>
         {/* {loggedIn && <GuestRoute exact path='/admin2' component={Admin2} />} */}
         <GuestRoute exact path='/addCategoria' component={AddCategoria} /*loggedIn= {loggedIn}*//>
         <GuestRoute exact path='/productDetail' component={ProductDetail}/>
         <GuestRoute exact path='/order' component={Order}/>
         <GuestRoute path='/recuperar-contraseña' component={Password}/>
-
+        <GuestRoute path='/mercadopago/pagos' component={MercadoPago}/>
         <GuestRoute exact path='/user' component={User}/>
+        <GuestRoute exact path='/email' component={IngresarEmail}/>
   </Router>
  </div>
   );
