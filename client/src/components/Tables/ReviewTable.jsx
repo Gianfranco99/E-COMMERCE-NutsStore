@@ -33,6 +33,10 @@ const ReviewTable = ({id}) => {
           
       }
 
+      const short = (props) => {
+        return props.slice(2, 10);
+      };
+
 
     useEffect(()=>{
         dispatch(getReviews(id))
@@ -45,6 +49,7 @@ const ReviewTable = ({id}) => {
                 <th>Usuario</th>
                 <th>Calificación</th>
                 <th>Comentario</th>
+                <th>Fecha</th>
                 <th>Borrar</th>
                 </tr>
             </thead>
@@ -68,6 +73,7 @@ const ReviewTable = ({id}) => {
                             }
                             </td></div>
                             <div className="description"><td>{review.description}</td></div>
+                            <div className="fecha"><td>{short(review.createdAt)}</td></div>
 
 
                             { review.userId === idUser ? <td>

@@ -72,6 +72,20 @@
   width: 90%;
 }
 
+.pics{
+  display: flex;
+  justify-content: left;
+  height: 400px;
+}
+
+.pics img{
+  display: flex;
+  width: auto;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 4px 4px 5px rgb(131, 130, 130);
+}
+
 .separador {
   display: flex;
   background-color: rgb(228, 226, 226);
