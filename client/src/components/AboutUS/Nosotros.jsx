@@ -1,5 +1,8 @@
 import React from 'react';
 import nosotrosimagen from "../../assets/nosotrosimagen.png"
+import uno from '../../assets/hands.png';
+import dos from '../../assets/they.png';
+import tres from '../../assets/pair.jpeg';
 import planta from "../../assets/planta.png"
 import "./Nosotros.css"
 
@@ -9,6 +12,11 @@ function Nosotros() {
     <div className="container-about">
         <div className= "img-nosotros">
             <p className= "titulo-nosotros">Nosotros</p>
+        </div>
+        <div className="pics">
+            <img src={uno} alt="Business"/>
+            <img src={dos} alt="Hands"/>
+            <img src={tres} alt="People"/>
         </div>
         <div className= "principal-nosotros">
             <div className='nosotros-bienvenidos-container'>
