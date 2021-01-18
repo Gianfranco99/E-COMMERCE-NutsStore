@@ -74,7 +74,7 @@ var quantity =
               Shopping cart
               <div className="clearfix"></div>
             </div>
-            <div className="card-body">
+            <div className="card-body carro">
               {carrito.map(({ payload, quantity }, i) => (
                 <Fragment key={i}>
                   <div className="row">
