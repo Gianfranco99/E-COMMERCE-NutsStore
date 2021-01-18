@@ -42,16 +42,9 @@
     text-align: left;
 }
 
-
-.card-body h3,p{
-    /*valores default*/
-    margin: 0;
-    padding-left:40px;
-}
-
 .card-title {
     margin-bottom: 0;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 .super-container{
@@ -79,7 +72,7 @@
     background-color: #cab380;
     border: none;
     transition: 0.2s;
-    margin-bottom: 5px;
+    margin-top: 5px;
     border-radius: 6px;
     color: #94564c;
 }
@@ -104,13 +97,16 @@ a{
     padding-left: 40px;
     color: white;
     margin: 0;
+    height: 30px;
 }
 .card-body p{
     font-weight: lighter;
     font-size: 20px;
     padding: 0;
+    margin: 0;
+    margin-bottom: 5px;
     padding-left: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     color: white;
 }
 

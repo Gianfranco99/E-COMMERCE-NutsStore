@@ -41,9 +41,9 @@ export function searchProducts(product) {
   }
  
 
-  export function getReviews (){
+  export function getReviews (productId){
     return function(dispatch){
-      return fetch(`http://localhost:3001/products/reviews`)
+      return fetch(`http://localhost:3001/products/${productId}/review`)
       .then(response => response.json())
       .then(json =>{
         dispatch({

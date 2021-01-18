@@ -107,27 +107,6 @@ function Home() {
                     <p className="price">$ 40.00</p>
                    </div>
                  </div>
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
                  </section>
              </div>
              <br/>
