@@ -3,10 +3,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.container-about{
+  background-image: url("../../assets/home.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
 .img-nosotros {
   display: flex;
-  background-image: url("../../assets/nosotros1.jpg");
+  /* background-image: url("../../assets/nosotros1.jpg"); */
   height: 358px;
   width: 100%;
   background-repeat: no-repeat;

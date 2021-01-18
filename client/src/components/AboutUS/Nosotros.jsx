@@ -6,7 +6,7 @@ import "./Nosotros.css"
 function Nosotros() {
 
   return (
-    <div>
+    <div className="container-about">
         <div className= "img-nosotros">
             <p className= "titulo-nosotros">Nosotros</p>
         </div>

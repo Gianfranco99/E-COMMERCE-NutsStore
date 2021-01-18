@@ -10,6 +10,10 @@
     display: flex;
 }
 
+.container-miCuenta{
+    margin-top:100px;
+}
+
 .Background {
     background-image: url("../../assets/frutosbackground.jpeg");
     background-size: cover;

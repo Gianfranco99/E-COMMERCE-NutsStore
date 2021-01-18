@@ -80,10 +80,10 @@ export default function Order (props) {
                     <Fragment>         
                       {ordenEnCurso[0].orderProducts.map((p,i)=>
                         <tr key = {i}>                            
-                          <td>{p.id}</td>
-                          <td>{p.name}</td>
-                          <td>{p.description}</td>
-                          <td>$ {p.price}</td>
+                          <td>{p.payload.id}</td>
+                          <td>{p.payload.name}</td>
+                          <td>{p.payload.description}</td>
+                          <td>$ {p.payload.price}</td>
                         </tr>
                       )}
                     </Fragment>
