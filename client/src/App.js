@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import {BrowserRouter as Router } from 'react-router-dom';
 import Catalogo from './components/Catalogue/Catalogo';
 import NavBar from './components/NavBar/NavBar';
 import AddProduct from './components/AddProduct/AddProduct'
@@ -21,33 +21,34 @@ import { useSelector } from "react-redux";
 import Password from './components/Password/Password';
 import MercadoPago from "./components/MercadoPago/MercadoPago"
 import IngresarEmail from './components/Password/IngresarEmail';
+import InicioDeSesion from './components/Login/InicioDeSesion';
 
 
 function App() {
-  const loggedIn = useSelector((state) => state.loggedIn);
-  const user = useSelector((state) => state.user);
+  //const loggedIn = useSelector((state) => state.loggedIn);
+  // const user = useSelector((state) => state.user);
 
   return (
     <div className="App">
       <Router>
         <GuestRoute path='/' component={NavBar }/>
         <GuestRoute exact path='/' component={Home}/>
-        <GuestRoute path='/catalogo' component={Catalogo} />
+        <GuestRoute exact path='/catalogo' component={Catalogo} />
         <GuestRoute path='/SearchProduct' component={SearchProduct}/>  
-        <GuestRoute exact path='/products/:id' component={Catalogo}/>
-        <GuestRoute exact path='/about' component={Nosotros}/>
-        <Route exact path='/micuenta' component={MiCuenta}/>
-        <GuestRoute exact path='/registro' component={Registrarse}/>    
-        <GuestRoute exact path='/carrito' component={Carrito}/> 
-        <GuestRoute path='/addProduct' component={AddProduct}/>
-        {/* {loggedIn && <GuestRoute exact path='/admin2' component={Admin2} />} */}
-        <GuestRoute exact path='/addCategoria' component={AddCategoria} /*loggedIn= {loggedIn}*//>
-        <GuestRoute exact path='/productDetail' component={ProductDetail}/>
-        <GuestRoute exact path='/order' component={Order}/>
+        <GuestRoute path='/products/:id' component={Catalogo}/>
+        <GuestRoute path='/about' component={Nosotros}/>
+        <AuthRoute path='/micuenta' component={MiCuenta}/>
+        <GuestRoute path='/login' component={InicioDeSesion}/>
+        <GuestRoute path='/registro' component={Registrarse}/>    
+        <GuestRoute path='/carrito' component={Carrito}/> 
+        <AuthRoute path='/addProduct' component={AddProduct}/>
+        <AuthRoute path='/addCategoria' component={AddCategoria} />
+        <GuestRoute path='/productDetail' component={ProductDetail}/>
+        <GuestRoute path='/order' component={Order}/>
         <GuestRoute path='/recuperar-contraseña' component={Password}/>
         <GuestRoute path='/mercadopago/pagos' component={MercadoPago}/>
-        <GuestRoute exact path='/user' component={User}/>
-        <GuestRoute exact path='/email' component={IngresarEmail}/>
+        <AuthRoute path='/user' component={User}/>
+        <GuestRoute path='/email' component={IngresarEmail}/>
   </Router>
  </div>
   );

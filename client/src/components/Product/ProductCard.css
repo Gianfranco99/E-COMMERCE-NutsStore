@@ -9,19 +9,20 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    height: 360px;
-    width: 240px;
+    height: 363px;
+    width: 201px;
     background-color: #A5554A;
     border-radius: 15px;
     font-size: medium;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 4px 4px 5px rgb(131, 130, 130);
-    margin: 30px;
+    margin: 25px;
 }
 
 .productos-container{
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 100%;
 }
 
 .card-container:hover{
@@ -30,11 +31,13 @@
 }
 
 .image-container img{
-    margin: 0;
+    margin: 5px;
+    /* margin-top: 5px; */
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    width: 240px;
-    height: 180px;
+    width: 195px;
+    height: 170px;
+    
 }
 
 .card-content {
@@ -65,6 +68,7 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
+    font-size: 20px;
 }
 
 .btn button {
@@ -78,7 +82,7 @@
 }
 
 .btn button:hover{
-    background: rgba(27,156,252,0.1);
+    background: rgba(27, 154, 252, 0.664);
 }
 
 .btn a{
@@ -93,8 +97,9 @@ a{
 
 .card-content p{
     font-weight: bold;
-    font-size: 30px;
-    padding-left: 40px;
+    font-size: 20px;
+    /* padding-left: 40px; */
+    text-align: center;
     color: white;
     margin: 0;
     height: 30px;
@@ -105,7 +110,7 @@ a{
     padding: 0;
     margin: 0;
     margin-bottom: 5px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
     padding-bottom: 0px;
     color: white;
 }
@@ -117,7 +122,7 @@ a{
 
 .btns {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: center;
     padding-bottom: 15px;
 }

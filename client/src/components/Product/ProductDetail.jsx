@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addProductCart } from '../../redux/actions/actions';
 import ReviewTable from '../Tables/ReviewTable';
 import ReviewForm from '../Review/ReviewForm';
+import qualify4  from '../../assets/qualify4.png';
 
     
 
@@ -12,7 +13,7 @@ export default function ProductDetail () {
     const product = useSelector(state => state.detailProduct);
     
       return(
-        <div>
+        <div className="constainer-rewiews">
         <div className="container">
           { product.stock > 0 ? (
               <div className="details">
@@ -24,11 +25,12 @@ export default function ProductDetail () {
                   <div className="row">
                     <h2>{product.name}</h2>                    
                   </div>
-                  <h3>${product.price}</h3>
-  
                   <p>{product.description}</p>
-                  <label>Stock</label>
-                  <p>{product.stock}</p>
+                  <h3>${product.price}</h3>  
+                  <br/>
+                  <label>Stock: {product.stock}</label>
+                  <td><img className="qualify-img"src={qualify4} alt="qualify 4" /></td>
+                 
                   <button className="cart" onClick={() => dispatch(addProductCart(product))}>
                       Agregar al carrito
                     </button>
@@ -51,8 +53,8 @@ export default function ProductDetail () {
                   <h3>${product.price}</h3>
   
                   <p>{product.description}</p>
+                 
                   <label>Stock</label>
-                  <p>{product.stock}</p>
                   <label>Producto no disponible</label>  
                 </div>
               </div>

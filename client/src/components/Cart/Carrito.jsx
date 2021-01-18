@@ -45,7 +45,7 @@ const getOrder = () =>{
     console.log(error);
   });
   
-  history.push('/mercadopago/pagos')
+ history.push('/mercadopago/pagos')
 }
 
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -79,7 +79,7 @@ var quantity =
               Shopping cart
               <div className="clearfix"></div>
             </div>
-            <div className="card-body">
+            <div className="card-body carro">
               {carrito.map(({ payload, quantity }, i) => (
                 <Fragment key={i}>
                   <div className="row">

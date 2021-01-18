@@ -9,6 +9,7 @@ import planta from '../../assets/planta.png';
 
 
 function Home() {
+  
     return (
       <div className="container-home">
         <div className= "container-head">
@@ -30,84 +31,7 @@ function Home() {
           </div>
         </div>
         <br/>
-        <div className="carrusel">
-          <div className="tarjeta">
-            <img className="img-tarjeta" src={imageAlmendra} height="180px" border-radius-top="12px" alt="Card 1"/>
-            <div className="container-tarjeta">
-              <p className="title">Almendra</p>
-              <p className="cantidad">Cantidad</p>
-              <p className="description">Lorem ipsum dolor.</p>
-              <p className="price">$ 50.00</p>
-            </div>
-          </div>
-                 <div className="tarjeta">
-                 <img className="img-tarjeta" src={imageAlmendra} height="180px" alt="Card 2"/>
-                 <div className="container-tarjeta">
-                    <p className="title">Pistacho</p>
-                    <p className="cantidad">Cantidad</p>
-                    <p className="description">Lorem ipsum dolor.</p>
-                    <p className="price">$ 30.00</p>
-                   </div>
-                 </div>
-                 <div className="tarjeta">
-                 <img className="img-tarjeta"  src={imageAlmendra} height="180px" alt="Card 3"/>
-                 <div className="container-tarjeta">
-                    <p className="title">Nueces</p>
-                    <p className="cantidad">Cantidad</p>
-                    <p className="description">Lorem ipsum dolor.</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
-             </div>
-             <br/>
-             <div className="carrusel">
-                 <div>
-                     <img className="banner" src={bannerAlmendra} alt="banner Almendra"/>
-                 </div>
-                 <div >
-                     <img className="banner" src={bannerPistacho} alt="banner Pistacho"/>
-                 </div>
-             </div>
-             <br/>
-             <div>
-                 <h2>Productos Destacados</h2>
-                 <section className="destacados">
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
-                 <div className="tarjeta-destacados">
-                 <img className="img-tarjeta-destacados"  src={imageAlmendra} alt="Card 1"/>
-                 <div className="container-tarjeta-destacados">
-                    <p className="title-destacados">Nueces</p>
-                    <p className="price">$ 40.00</p>
-                   </div>
-                 </div>
-                 </section>
+        <div >
              </div>
              <br/>
              <footer>
