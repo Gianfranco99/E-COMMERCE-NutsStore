@@ -1,19 +1,18 @@
 import { Route, Redirect } from "react-router-dom";
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 const AuthRoute = ({ component: Component, ...rest }) => {
-  console.log('COMPROBADO ESTÁ=', rest.loggedIn)
   return (
     <Route
-      {...rest}
-      render={(props) =>
+      {...rest} 
+      render={props =>
         rest.loggedIn ? (
           <Component {...props} />
         ) : (
           <Redirect
             to={{
-              pathname: "/micuenta",
+              pathname: "/login",
               state: { from: props.location },
             }}
           />
@@ -23,4 +22,9 @@ const AuthRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default AuthRoute;
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.auth.loggedIn
+  };
+};
+export default connect(mapStateToProps)(AuthRoute);
