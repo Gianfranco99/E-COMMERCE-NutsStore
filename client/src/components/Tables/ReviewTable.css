@@ -27,15 +27,15 @@
 }
 
 .with-coments img{
-    height: 35px;
-    width: 120px;
+    height: 30px;
+    width: 105px;
     padding-left: 40;
 }
 
 .name {
     display: flex;
     justify-content: center;
-    width: 150px;
+    width: 130px;
 }
 .qualify-img{
     display: flex;
@@ -45,8 +45,7 @@
 .description{
     display: flex;
     justify-content: center;
-    width: 200px;
-    margin-left: 20px;
+    width: 170px;
 }
 .register{
     display: flex;
@@ -56,6 +55,15 @@
 
 }
 
+.fecha{
+    margin-left: 30px;
+    margin-right: 18px;
+}
+
 .register a{
     color: #A5554A;
+}
+
+.table-container td{
+    font-size: 14px;
 }
