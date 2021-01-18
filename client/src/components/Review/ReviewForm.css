@@ -15,7 +15,7 @@
     background-color: #94564c;
     border: none;
     transition: 0.2s;
-    margin-bottom: 5px;
+    margin-top: 30px;
     border-radius: 6px;
     color: #cab380;
 }
@@ -29,7 +29,7 @@
     justify-content: left;
     background-color: white;
     width: 350px;
-    height: 150px;
+    height: 170px;
     margin-left: 24px;
 }
 

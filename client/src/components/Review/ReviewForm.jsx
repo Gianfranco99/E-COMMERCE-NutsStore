@@ -7,7 +7,6 @@ const ReviewForm = () => {
   const user = useSelector((state)=> state.user);
   const product = useSelector((state) => state.detailProduct);
   const { register, handleSubmit } = useForm();
-
   const [newReview, setNewReview] = useState({
     qualify: 0,
     description: ""
@@ -19,6 +18,7 @@ const ReviewForm = () => {
       [e.target.name]: e.target.value,
     })
   }
+  
   
     //agregar review
     const addReview = (newReview) => {
@@ -33,7 +33,7 @@ const ReviewForm = () => {
         body: raw,
         redirect: 'follow'
       };
-
+      
       fetch(`http://localhost:3001/products/${product.id}/user/${user.id}/review`, requestOptions)
         .then(response => response.json())
         .then(result => console.log(result))

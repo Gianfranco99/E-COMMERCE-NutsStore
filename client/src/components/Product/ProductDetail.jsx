@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProductDetail.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductCart } from '../../redux/actions/actions';
@@ -10,10 +10,6 @@ import ReviewForm from '../Review/ReviewForm';
 export default function ProductDetail () {
     const dispatch = useDispatch();
     const product = useSelector(state => state.detailProduct);
-
-  //estado de review.
-  
-  const review = useSelector(state => state.reviews);
     
       return(
         <div>
@@ -66,15 +62,14 @@ export default function ProductDetail () {
         <div className="container">
         <div className="review-container">
         <div className="add-review">
-            <h2 className="add-title">Agregar comentario</h2>
+            <h2>Agregar comentario</h2>
             <ReviewForm/>
           </div>
           <br/>
         <div className="see-review">
           <h2>Todos los comentarios</h2>
           <ReviewTable
-          review={review}
-        />
+          id={product.id}/>
         </div>
         </div>
         <br/>
