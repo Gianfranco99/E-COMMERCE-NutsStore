@@ -17,7 +17,7 @@ export default function IngresarEmail(){
     };
 
     function handleClick() {
-        alert(!input.email ? "Tiene que ingresar un email" :  "Revise su casilla de correo")
+        alert(!input.email ? "Tiene que ingresar un email" : "Revise su casilla de correo")
         if(input.email){sendEmail()}
         
       }
