@@ -5,17 +5,13 @@ import { useDispatch } from "react-redux";
 import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 
-function InicioDeSesion() {
+function InicioDeSesion(props) {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
   let history = useHistory();
-  function handleClick() {
-    history.push("/email");
-  }
-
 
   const handleInputChange = function (e) {
     setInput({
@@ -38,6 +34,11 @@ function InicioDeSesion() {
           type: "SET_LOGIN",
           payload: user,
         });
+        dispatch({
+          type: "SET_USER",
+          payload: user
+        });
+        history.push('/micuenta')
       })
       .catch((err) => {
         swal({

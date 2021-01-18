@@ -11,6 +11,8 @@ import {
   removeProductsFromCart,
 } from "../../redux/actions/actions";
 import Row from "react-bootstrap/Row";
+import { useHistory } from "react-router-dom";
+
 
 function Carrito() {
 const carrito = useSelector(state => state.productCart)
@@ -20,10 +22,10 @@ const cantidad = useSelector(state => state.count)
 const dispatch = useDispatch()
 let contador = 0;
 var axios = require('axios');
+var history = useHistory();
 
 const getOrder = () =>{
-  const order = {"price":price,"orderProducts":carrito ,"quantity":quantity,"status":"creada"};
-  
+  const order = {"price":price,"orderProducts":carrito ,"quantity":quantity,"status":"creada"}; 
 
   var config = {
     method: 'post',
@@ -42,7 +44,10 @@ const getOrder = () =>{
   .catch(function (error) {
     console.log(error);
   });
+  
+  history.push('/mercadopago/pagos')
 }
+
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
 if(carrito.length >0){

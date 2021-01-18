@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 function Nav() {
   const carrito = useSelector((state) => state.productCart);
-  const loggedIn = useSelector((state) => state.loggedIn);
+  const loggedIn = useSelector((state) => state.auth.loggedIn); 
   const user = useSelector((state) => state.user);
 
   return (
