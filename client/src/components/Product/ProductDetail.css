@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.box div {
+  align-items: center;
+}
+
   .container{
     max-width: 1200px;
     width: 100%;
@@ -37,7 +47,7 @@
   }
   .box .row{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 15px;
   }
   .box .row h2{
@@ -51,7 +61,6 @@
   .box h3{
     /*valores default*/
     margin: 0;
-    padding: 0;
 }
 
   .box .colors button{
@@ -61,10 +70,6 @@
     outline: none;
     margin-right: 5px;
     cursor: pointer;
-  }
-  .box p{
-    line-height: 1.5;
-    margin: 15px 0;
   }
   .thumb{
     width: 100%;
@@ -110,7 +115,19 @@
     width: 400px;
     height: 400px;
     color:#A5554A;
-    box-shadow: 0px 0px 5px 0px;    
+    box-shadow: 0px 0px 5px 0px;   
+    margin-bottom: 20px; 
+  }
+
+  /* .qualify-img {
+    display: flex;
+    height: 30px;
+    width: 120px;
+    margin-left: 86px;
+  } */
+
+  td{
+    justify-content: center;
   }
 
   .add-tittle h2{
@@ -124,9 +141,10 @@
     height: 100%;
     border: 3px solid#A5554A;
     box-shadow: 0px 0px 5px 0px; 
-    font-size: 18px;   
+    font-size: 16px;   
   }
 
   .see-review h2{
+    font-size: 28px;
     padding-top: 10px;
   }

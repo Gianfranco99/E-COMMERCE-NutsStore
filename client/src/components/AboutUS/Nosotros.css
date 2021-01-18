@@ -3,10 +3,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.container-about{
+  background-image: url("../../assets/home.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
 .img-nosotros {
   display: flex;
-  background-image: url("../../assets/nosotros1.jpg");
+  /* background-image: url("../../assets/nosotros1.jpg"); */
   height: 358px;
   width: 100%;
   background-repeat: no-repeat;
@@ -62,6 +70,20 @@
   font-weight: 500;
   font-size: 12px;
   width: 90%;
+}
+
+.pics{
+  display: flex;
+  justify-content: left;
+  height: 400px;
+}
+
+.pics img{
+  display: flex;
+  width: auto;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 4px 4px 5px rgb(131, 130, 130);
 }
 
 .separador {

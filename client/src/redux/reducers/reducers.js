@@ -5,7 +5,7 @@ const initialState ={
     productSearch:[],// los productos que se buscan
     productCart: [],// los productos que agregan al cart
     categories:[],// las categorias del producto que se crean en admin2
-    loggedIn: false,// autenticacion de usuario
+    auth: {loggedIn:false},// autenticacion de usuario
     count : 0,
     order: [],
     user:{},// el usuario registrado en el momento
@@ -13,7 +13,7 @@ const initialState ={
     count : 0
 }
 
-function rootReducer (state = initialState,action){
+function rootReducer (state = initialState, action){
     switch(action.type){
         case "SEARCH_PRODUCTS":
             return {
@@ -38,18 +38,31 @@ function rootReducer (state = initialState,action){
               ...state,
               reviews: action.payload
             };
+        case "SET_USER":
+            return {
+              ...state,
+              loggedIn: true,
+              user: action.payload
+            };
 
         case 'SET_LOGIN':
             return {
                 ...state, 
-                loggedIn: true, 
-                user:action.payload
+                auth: {
+                    loggedIn: true, 
+                    user:action.payload
+                }
+                
             };
         case 'SET_LOGOUT':
             return {
                 ...state, 
-                loggedIn: false, 
-                user:{}
+                auth:{
+                    loggedIn: false, 
+                    user:{}
+                },
+                user:{},
+                loggedIn: false
             };
         case "ADDPRODUCT_CART":
             return {
