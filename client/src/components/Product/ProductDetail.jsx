@@ -24,11 +24,11 @@ export default function ProductDetail () {
                   <div className="row">
                     <h2>{product.name}</h2>                    
                   </div>
-                  <h3>${product.price}</h3>
-  
                   <p>{product.description}</p>
-                  <label>Stock</label>
-                  <p>{product.stock}</p>
+                  <h3>${product.price}</h3>  
+                  <br/>
+                  <label>Stock: {product.stock}</label>
+                 
                   <button className="cart" onClick={() => dispatch(addProductCart(product))}>
                       Agregar al carrito
                     </button>
@@ -51,8 +51,8 @@ export default function ProductDetail () {
                   <h3>${product.price}</h3>
   
                   <p>{product.description}</p>
+                 
                   <label>Stock</label>
-                  <p>{product.stock}</p>
                   <label>Producto no disponible</label>  
                 </div>
               </div>
