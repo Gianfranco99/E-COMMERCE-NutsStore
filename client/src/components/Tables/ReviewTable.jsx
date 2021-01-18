@@ -83,7 +83,7 @@ const ReviewTable = ({id}) => {
                             <a 
                                 href="http://localhost:3000/micuenta"
                             >
-                                Regístrate
+                                Ingresa
                             </a>
                             </td></div> }
                         </tr>
