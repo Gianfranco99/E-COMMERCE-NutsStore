@@ -9,7 +9,7 @@ import storage from 'redux-persist/lib/storage'
 const persistConfig = { // configuration object for redux-persist
   key: 'root',
   storage, // define which storage to use
-  whitelist: ['productCart']
+  whitelist: ['user',"loggedIn","productCart"]
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
