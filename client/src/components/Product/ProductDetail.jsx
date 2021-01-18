@@ -13,7 +13,7 @@ export default function ProductDetail () {
     const product = useSelector(state => state.detailProduct);
     
       return(
-        <div>
+        <div className="constainer-rewiews">
         <div className="container">
           { product.stock > 0 ? (
               <div className="details">
