@@ -3,9 +3,17 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
-.container-head {
+  .container-home{
     background-image: url("../../assets/home.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    
+  }
+.container-head {
+    /* background-image: url("../../assets/home.jpg"); */
     height: 800px;
     background-size: cover;
     width: 100%;
