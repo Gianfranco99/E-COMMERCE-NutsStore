@@ -45,8 +45,8 @@ let preference={
     installments:3   
     },
     back_urls:{
-        succes:   "http://localhost:3001/mercadopago/pagos",
-        failure : "http://localhost:3001/mercadopago/pagos"   
+        success:   "http://localhost:3001/mercadopago/pagos",
+        failure :  "http://localhost:3001/mercadopago/pagos"   
     },
 };
 
