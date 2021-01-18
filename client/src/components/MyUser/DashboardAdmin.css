@@ -13,25 +13,25 @@
   
 }
 .banner-admin {
-    display: flex;
-    /* background-image: url("../../assets/nosotros1.jpg"); */
-    height: 358px;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    align-items: center;
-    justify-content: center;
-    margin-top: 100px;
-    /* padding-left: 10%; */
+  display: flex;
+  /* background-image: url("../../assets/nosotros1.jpg"); */
+  height: 358px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  /* padding-left: 10%; */
   
 }
 
 .titulo-admin {
   display: flex;
-    font-family: "Playfair Display", serif;
-    color: #612425;
-    font-size: 50px;
-    justify-content: center;
+  font-family: "Playfair Display", serif;
+  color: #612425;
+  font-size: 100px;
+  justify-content: center;
 }
 
 
@@ -72,6 +72,11 @@
   font-size: 14px !important;
   padding: 15px !important;
   margin: 5px !important;
+  
+}
+
+.d-flex {
+  padding-bottom: 13%;
 }
 
 /* .separador-admin {

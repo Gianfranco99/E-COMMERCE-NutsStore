@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+.constainer-rewiews{
+  background-image: url("../../assets/home.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
 .box {
   display: flex;
   flex-direction: column;

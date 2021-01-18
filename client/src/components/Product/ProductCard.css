@@ -9,19 +9,20 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    height: 340px;
-    width: 200px;
+    height: 363px;
+    width: 201px;
     background-color: #A5554A;
     border-radius: 15px;
     font-size: medium;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 4px 4px 5px rgb(131, 130, 130);
-    margin: 91px;
+    margin: 25px;
 }
 
 .productos-container{
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 100%;
 }
 
 .card-container:hover{
