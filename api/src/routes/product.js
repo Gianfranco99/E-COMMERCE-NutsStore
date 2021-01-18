@@ -1,6 +1,7 @@
 const server = require('express').Router();
 const { Op } = require("sequelize");
-const { Product, product_category, Review } = require('../db.js');
+const { Product, product_category, Review, User } = require('../db.js');
+
 
 // S21: Crear ruta que devuelva todos los productos
 server.get('/', function (req, res, next) {
@@ -166,7 +167,8 @@ server.get('/search/search', (req, res, next) => {
 		Review.findAll({
 			where:{
 				productId: req.params.id
-			}
+			},
+			include:[User]
 		})
 		.then(review => {
 			res.send(review);

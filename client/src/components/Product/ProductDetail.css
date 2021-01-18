@@ -4,12 +4,12 @@
   box-sizing: border-box;
 }
 
-/* .container{
+  .container{
     max-width: 1200px;
     width: 100%;
-    margin: 50px auto;
+    margin: 120px auto;
     box-shadow: 0 0 5px #ccc;
-  } */
+  }
   .details{
     display: flex;
     justify-content: space-around;
@@ -113,8 +113,10 @@
     box-shadow: 0px 0px 5px 0px;    
   }
 
-  .add-tittle{
+  .add-tittle h2{
     font-size: 18px;
+    padding-top: 10px;
+    background-color: blue;
   }
 
   .see-review{
@@ -123,4 +125,8 @@
     border: 3px solid#A5554A;
     box-shadow: 0px 0px 5px 0px; 
     font-size: 18px;   
+  }
+
+  .see-review h2{
+    padding-top: 10px;
   }
