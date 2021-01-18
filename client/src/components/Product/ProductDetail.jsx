@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addProductCart } from '../../redux/actions/actions';
 import ReviewTable from '../Tables/ReviewTable';
 import ReviewForm from '../Review/ReviewForm';
+import qualify4  from '../../assets/qualify4.png';
 
     
 
@@ -28,6 +29,7 @@ export default function ProductDetail () {
                   <h3>${product.price}</h3>  
                   <br/>
                   <label>Stock: {product.stock}</label>
+                  <td><img className="qualify-img"src={qualify4} alt="qualify 4" /></td>
                  
                   <button className="cart" onClick={() => dispatch(addProductCart(product))}>
                       Agregar al carrito
