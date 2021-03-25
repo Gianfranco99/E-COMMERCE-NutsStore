@@ -40,7 +40,7 @@ const ReviewTable = ({id}) => {
 
     useEffect(()=>{
         dispatch(getReviews(id))
-        })
+        },[])
         
     return (
         <table className="table-container">

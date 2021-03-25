@@ -7,21 +7,22 @@ const { Product, product_category, Review, User } = require('../db.js');
 server.get('/', function (req, res, next) {
 	Product.findAll()
 		.then(products => {
+			
 			res.send(products);
 		})
 		.catch(next);
 });
 
 // S24: Retorna un objeto de tipo producto con todos sus datos (incluidas las categorías e imágenes)
-// server.get('/:id', (req, res, next) => {
-// 	Product.findOne({
-// 		where:{
-// 			id: req.params.id
-// 		}
-// 	})
-// 		.then(product => res.send(product))
-// 		.catch(error => res.send(error))		
-// })
+server.get('/:id', (req, res, next) => {
+	Product.findOne({
+		where:{
+			id: req.params.id
+		}
+	})
+		.then(product => res.send(product))
+		.catch(error => res.send(error))		
+})
 
 // S25: Crear ruta para crear/agregar producto
 server.post('/', function (req, res, next) {

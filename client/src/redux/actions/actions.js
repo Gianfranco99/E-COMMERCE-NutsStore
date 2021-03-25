@@ -39,6 +39,20 @@ export function searchProducts(product) {
       })
     }
   }
+
+  export function getProductByID(productId){
+    return function(dispatch){
+      return fetch(`http://localhost:3001/products/${productId}`)
+      .then(response => response.json())
+      .then(json =>{
+        dispatch({
+          type:"PRODUCT_ID",
+          payload:json
+        })
+      })
+    }
+  }
+  
  
 
   export function getReviews (productId){
@@ -119,7 +133,7 @@ export function searchProducts(product) {
   
   export function getCategory (){
     return function(dispatch){
-      return fetch(`http://localhost:3001/products/category`)
+      return fetch(`http://localhost:3001/products/category/category`)
       .then(response => response.json())
       .then(json =>{
         dispatch({

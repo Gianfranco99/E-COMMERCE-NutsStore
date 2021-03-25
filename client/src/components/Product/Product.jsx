@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductCard.css';
 import {useDispatch, useSelector} from 'react-redux';
-import {addProductCart, DetailProduct} from '../../redux/actions/actions';
+import {addProductCart, DetailProduct,getProductByID} from '../../redux/actions/actions';
 import { Link } from 'react-router-dom';
-
-
 export default function Producto(props){
     const dispatch = useDispatch();
      const data = useSelector(state => state.products);
-
 
 
      const maxLength = (props) => {
@@ -38,7 +35,7 @@ export default function Producto(props){
                         <div className='btns'>
                             <div className='btn'>
                                 <Link to='/productDetail'>
-                                <button onClick={() => dispatch(DetailProduct(props))}>
+                                <button onClick={() => dispatch(getProductByID(props.id))}>
                                     <a>Ver más</a>
                                 </button>
                                 </Link>
@@ -76,7 +73,8 @@ export default function Producto(props){
                     </div>        
                 )
             }
-        </div>        
+        </div>   
+             
     )    
 }
 
