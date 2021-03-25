@@ -2,9 +2,32 @@ import React from "react"
 import style from "./Password.css"
 import {useState} from "react"
 import newPassword from "./newPassword"
+import { useHistory } from "react-router-dom";
 
 export default function Password(){
+  let history = useHistory();
+  const newPassword = (data, token) =>{
+    var myHeaders = new Headers();
+    myHeaders.append("token", token)
+    myHeaders.append("Content-Type", "application/json");
+console.log(data.password)
+var raw = JSON.stringify({"password":data.password,"email":data.email});
 
+var requestOptions = {
+  method: 'PUT',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:3001/user", requestOptions)
+  .then(response => {
+  response.json();
+  history.push("/micuenta");})
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+  
+}
     const [input, setInput] = useState({
       name: "",
       email: "",
@@ -66,7 +89,7 @@ export default function Password(){
                 />
               </label>
               <p></p>
-              <button  onClick={newPassword(input, queryToken)} className="boton-registrarse">
+              <button  onClick= {()=> newPassword(input, queryToken)} className="boton-registrarse">
                Cambiar Contraseña
               </button>
             </div>

@@ -79,12 +79,13 @@ function rootReducer (state = initialState, action){
               ...state,
               productCart: action.payload
             };
-            // cree el reducer para el detalle del producto
-            case "DETAIL_PRODUCT":
-                return {
-                  ...state,
-                  detailProduct: action.payload
-                };
+
+            case "PRODUCT_ID":
+                return{
+                    ...state,
+                    detailProduct: action.payload
+                }
+
         case "GET_CATEGORY" :
             return{
                 ...state,

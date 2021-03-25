@@ -45,7 +45,7 @@ const getOrder = () =>{
     console.log(error);
   });
   
-  history.push('/mercadopago/pagos')
+ history.push('/mercadopago/pagos')
 }
 
 const reducer = (accumulator, currentValue) => accumulator + currentValue;

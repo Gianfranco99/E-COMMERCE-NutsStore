@@ -1,7 +1,7 @@
 const server = require('express').Router();
 const { Category, Product } = require('../db.js');
 
-server.get('/', function (req, res, next) {
+server.get('/category', function (req, res, next) {
   Category.findAll()
 
     .then(category => {
