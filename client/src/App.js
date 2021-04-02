@@ -37,14 +37,14 @@ function App() {
         <GuestRoute path='/SearchProduct' component={SearchProduct}/>  
         <GuestRoute path='/products/:id' component={Catalogo}/>
         <GuestRoute path='/about' component={Nosotros}/>
-        <AuthRoute path='/micuenta' component={MiCuenta}/>
+        <GuestRoute path='/micuenta' component={MiCuenta}/>
         <GuestRoute path='/login' component={InicioDeSesion}/>
         <GuestRoute path='/registro' component={Registrarse}/>    
         <GuestRoute path='/carrito' component={Carrito}/> 
-        <GuestRoute path='/addProduct' component={AddProduct}/>
-        <GuestRoute path='/addCategoria' component={AddCategoria} />
+        <AuthRoute path='/addProduct' component={AddProduct}/>
+        <AuthRoute path='/addCategoria' component={AddCategoria} />
         <GuestRoute path='/productDetail' component={ProductDetail}/>
-        <GuestRoute path='/order' component={Order}/>
+        <AuthRoute path='/order' component={Order}/>
         <GuestRoute path='/recuperar-contraseña' component={Password}/>
         <GuestRoute path='/mercadopago/pagos' component={MercadoPago}/>
         <AuthRoute path='/user' component={User}/>

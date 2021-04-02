@@ -88,8 +88,6 @@ function InicioDeSesion(props) {
             registrate acá            
           </a>
           <a href="/email" ><small>¿Has olvidado tu contraseña?</small></a>
-          {/* <h6 className="titulo2">¿Has olvidado tu contraseña?</h6> */}
-          {/* <a className="titulo3" href="/registro"> */}
         </div>
       </div>
     </div>

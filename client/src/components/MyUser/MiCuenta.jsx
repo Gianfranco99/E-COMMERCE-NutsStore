@@ -4,16 +4,24 @@ import InicioDeSesion from "../Login/InicioDeSesion";
 import DashboardAdmin from "./DashboardAdmin";
 import MiPerfil from "./MiPerfil";
 
-
 function MiCuenta() {
   const user = useSelector((state) => state.auth.user);
-
+  const loggedIn = useSelector((state) => state.auth.loggedIn); 
   return (
     <Fragment>
-      {user.isAdmin  ? 
-      (<DashboardAdmin /> ):(
-        <MiPerfil />
+      { !loggedIn &&
+      (
+        <InicioDeSesion/>
       )}
+      { loggedIn && user.isAdmin  &&
+      (
+        <DashboardAdmin/>
+      )}
+      { loggedIn && !user.isAdmin  &&
+      (
+        <MiPerfil/>
+      )}
+      
     </Fragment>
   );
 }

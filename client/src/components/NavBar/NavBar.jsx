@@ -38,16 +38,21 @@ function Nav() {
             </ul>
         </div>
         <div className="searchbar-carrito">
-          <SearchBar />
-          <Link to="/micuenta">
-            {loggedIn && user.isAdmin && (
+          <SearchBar />        
+            {loggedIn && user && (
+              <div>
+              <Link to="/micuenta">
               <img className="icono-usuario" src={IconoUsuarioVerde} />
+                </Link>
+              </div>
               )}
-            {loggedIn && !user.isAdmin && (
-              <img className="icono-usuario" src={IconoUsuarioVerde} />
-              )}
-            {!loggedIn && <img className="icono-usuario" src={IconoUsuario} />}
-          </Link>
+            {!loggedIn && (
+          <div>
+            <Link to="/login">
+              <img className="icono-usuario" src={IconoUsuario} />
+            </Link>
+          </div>
+            )}
           <div style={{ position: "relative" }}>
             <Link to="/Carrito">
               <img className="carrito" src={Carrito}></img>

@@ -37,7 +37,7 @@ function DashboardAdmin() {
               });
               window.localStorage.removeItem("token");
               replace("/signin");
-              push("/micuenta");
+              push("/login");
             }}
           >
             Cerrar Sesión
